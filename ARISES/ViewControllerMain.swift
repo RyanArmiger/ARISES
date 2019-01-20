@@ -136,9 +136,9 @@ class ViewControllerMain: UIViewController{
         
 
         //Observers to determine keyboard state
-        nc.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        nc.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
-        nc.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        nc.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     //MARK: - Update Day
@@ -165,7 +165,7 @@ class ViewControllerMain: UIViewController{
         switch self.state
         {
         case .food:
-            view.bringSubview(toFront: viewFood)
+            view.bringSubviewToFront(viewFood)
             containerFood.isHidden = false
             containerAdvice.isHidden = true
             containerHealth.isHidden = true
@@ -181,7 +181,7 @@ class ViewControllerMain: UIViewController{
             adviceLabel.isHidden = false
             
         case .exercise:
-            self.view.bringSubview(toFront: self.viewExercise)
+            self.view.bringSubviewToFront(self.viewExercise)
             containerFood.isHidden = true
             containerAdvice.isHidden = true
             containerHealth.isHidden = true
@@ -197,7 +197,7 @@ class ViewControllerMain: UIViewController{
             adviceLabel.isHidden = false
             
         case .health:
-            self.view.bringSubview(toFront: self.viewHealth)
+            self.view.bringSubviewToFront(self.viewHealth)
             containerFood.isHidden = true
             containerAdvice.isHidden = true
             containerHealth.isHidden = false
@@ -213,7 +213,7 @@ class ViewControllerMain: UIViewController{
             adviceLabel.isHidden = false
             
         case .advice:
-            view.bringSubview(toFront: viewAdvice)
+            view.bringSubviewToFront(viewAdvice)
             containerFood.isHidden = true
             containerAdvice.isHidden = false
             containerHealth.isHidden = true
@@ -326,7 +326,7 @@ class ViewControllerMain: UIViewController{
         let doneButtonBar = UIToolbar()
         doneButtonBar.sizeToFit()
         
-        let flexible = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: #selector(doneWithPicker))
+        let flexible = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: self, action: #selector(doneWithPicker))
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(doneWithPicker))
         
         doneButtonBar.setItems([flexible, doneButton], animated: true)
@@ -349,7 +349,7 @@ class ViewControllerMain: UIViewController{
     //MARK: - Settings
     ///Opens phone settings
     @IBAction func settingsPopup(_ sender: Any) {
-        UIApplication.shared.open(URL(string:UIApplicationOpenSettingsURLString)!)
+        UIApplication.shared.open(URL(string:UIApplication.openSettingsURLString)!)
     }
 }
 

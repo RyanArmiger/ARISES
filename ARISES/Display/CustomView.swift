@@ -15,21 +15,21 @@ import UIKit
 */
 class CustomView: UIView {
     
-	//MARK: Member Variables
-	///CGFloat containing the maximum glucose measurement for that day.
+    //MARK: Member Variables
+    ///CGFloat containing the maximum glucose measurement for that day.
     var dailyHigh: CGFloat
-	///CGFloat containing the minimum glucose measurement for that day.
+    ///CGFloat containing the minimum glucose measurement for that day.
     var dailyLow: CGFloat
-	///CGFloat containing the mean average of the glucose measurements for that day.
+    ///CGFloat containing the mean average of the glucose measurements for that day.
     var avgArrayValue: CGFloat
     
-	//MARK: Methods
-	/**
-		The init method is called on the instantiation of a CustomView. It initializes the member variables to 0 which is used to determine
-		if there is any data stored for this CustomView.
-		- Paramater frame: CGRect, the bounds of the View.
-		- Paramater dailyHigh: CGFloat, the maximum glucose reading for the day.
-	*/
+    //MARK: Methods
+    /**
+        The init method is called on the instantiation of a CustomView. It initializes the member variables to 0 which is used to determine
+        if there is any data stored for this CustomView.
+        - Paramater frame: CGRect, the bounds of the View.
+        - Paramater dailyHigh: CGFloat, the maximum glucose reading for the day.
+    */
     init(frame: CGRect, dailyHigh: CGFloat) {
         self.dailyHigh = 0
         self.avgArrayValue = 0
@@ -44,12 +44,12 @@ class CustomView: UIView {
         super.init(coder: aDecoder)
     }
     
-	/**
-		This is an override method from the superclass and is called when the CustomView is created by the ViewController. It calls
-		methods which draw the 'safe' region onto the view. It also sets the visibility of the CustomView depending on if the CustomView
-		has data stored in it.
-		- Paramater rect: CGRect, the bounds of the CustomView.
-	*/
+    /**
+        This is an override method from the superclass and is called when the CustomView is created by the ViewController. It calls
+        methods which draw the 'safe' region onto the view. It also sets the visibility of the CustomView depending on if the CustomView
+        has data stored in it.
+        - Paramater rect: CGRect, the bounds of the CustomView.
+    */
     override func draw(_ rect: CGRect) {
 
         let path = UIBezierPath(rect: bounds)
@@ -59,8 +59,8 @@ class CustomView: UIView {
         
         colourMiddleBand()
         
-		//If no data is stored (i.e the view is still initialized), makes the view invisible.
-        if(!((self.dailyLow == 0) && (self.dailyHigh == 0) && (self.avgArrayValue == 0))){           
+        //If no data is stored (i.e the view is still initialized), makes the view invisible.
+        if(!((self.dailyLow == 0) && (self.dailyHigh == 0) && (self.avgArrayValue == 0))){
             self.isHidden = false
             drawRangeBar()
         }else{
@@ -89,10 +89,10 @@ class CustomView: UIView {
         UIRectFill(topRect)
     }
     
-	/**
-		Method used to draw the glucose range bar and create the mark for the average glucose measurement. It uses a UIBezierPath for the 
-		range and average. It is able to do this accurately due to the relative size nature of the CustomView.
-	*/
+    /**
+        Method used to draw the glucose range bar and create the mark for the average glucose measurement. It uses a UIBezierPath for the
+        range and average. It is able to do this accurately due to the relative size nature of the CustomView.
+    */
     private func drawRangeBar(){
         
         let h = bounds.height
