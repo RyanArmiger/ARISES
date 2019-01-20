@@ -2092,30 +2092,31 @@
                         </connections>
                     </view>
                     <connections>
-                        <outlet property="Basal" destination="sO0-rE-GzH" id="f6O-1C-no2"/>
-                        <outlet property="currentGlucose" destination="Z6U-cI-lXW" id="MIf-x3-hbM"/>
-                        <outlet property="leftGestureRecognizer" destination="N4Q-XD-b3a" id="SJq-V8-oSg"/>
-                        <outlet property="leftSideViewContainer" destination="Ag7-z6-FpG" id="0Hl-7Q-Bcu"/>
-                        <outlet property="leftView1" destination="mED-L5-pEA" id="yfQ-Ib-khd"/>
-                        <outlet property="leftView2" destination="x0W-Sa-IPF" id="vm5-S8-IYV"/>
-                        <outlet property="leftView3" destination="dhv-Ev-dHs" id="YbI-0Z-ZS7"/>
-                        <outlet property="pickerTextField" destination="5Fg-oh-rg7" id="xXn-qb-rMK"/>
-                        <outlet property="rightGestureRecognizer" destination="aTZ-Pb-k2J" id="vsT-62-uQc"/>
-                        <outlet property="rightSideViewContainer" destination="ZEV-bY-Kyk" id="kQV-w9-Xhq"/>
-                        <outlet property="rightView" destination="8Cm-ZE-NMX" id="hBS-qY-17s"/>
-                        <outlet property="rightView2" destination="Qa2-Ya-7Ex" id="zt7-A6-Sic"/>
-                        <outlet property="rightView3" destination="1F5-oK-ud4" id="qEs-of-K34"/>
+                        <outlet property="Basal" destination="sO0-rE-GzH" id="hZB-uO-krb"/>
+                        <outlet property="chartView" destination="hhK-5Y-w2W" id="GA6-zY-V6M"/>
+                        <outlet property="currentGlucose" destination="Z6U-cI-lXW" id="gkd-jY-r3j"/>
+                        <outlet property="leftGestureRecognizer" destination="N4Q-XD-b3a" id="ghS-PO-EA0"/>
+                        <outlet property="leftSideViewContainer" destination="Ag7-z6-FpG" id="290-Ch-qEJ"/>
+                        <outlet property="leftView1" destination="mED-L5-pEA" id="H3Z-IR-je4"/>
+                        <outlet property="leftView2" destination="x0W-Sa-IPF" id="C7q-Og-nsz"/>
+                        <outlet property="leftView3" destination="dhv-Ev-dHs" id="hsC-zW-AkM"/>
+                        <outlet property="pickerTextField" destination="5Fg-oh-rg7" id="nqg-LS-4SA"/>
+                        <outlet property="rightGestureRecognizer" destination="aTZ-Pb-k2J" id="8Ip-uX-Uwo"/>
+                        <outlet property="rightSideViewContainer" destination="ZEV-bY-Kyk" id="RGH-hF-rGs"/>
+                        <outlet property="rightView" destination="8Cm-ZE-NMX" id="pgw-bz-cvp"/>
+                        <outlet property="rightView2" destination="Qa2-Ya-7Ex" id="KCK-L7-xXX"/>
+                        <outlet property="rightView3" destination="1F5-oK-ud4" id="K8h-h4-VzI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EFG-cG-APi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="right" id="aTZ-Pb-k2J" userLabel="RightGestureRecognizer">
                     <connections>
-                        <action selector="rightGesture:" destination="xlR-5O-fuC" id="XUp-G0-TwT"/>
+                        <action selector="rightGesture:" destination="xlR-5O-fuC" id="U1B-L0-ZqE"/>
                     </connections>
                 </swipeGestureRecognizer>
                 <swipeGestureRecognizer direction="left" id="N4Q-XD-b3a" userLabel="LeftGestureRecognizer">
                     <connections>
-                        <action selector="leftGesture:" destination="xlR-5O-fuC" id="EWN-XA-x0i"/>
+                        <action selector="leftGesture:" destination="xlR-5O-fuC" id="LEq-en-Tbe"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>

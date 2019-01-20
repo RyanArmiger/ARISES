@@ -386,7 +386,7 @@ extension UIView {
     }
     
     @IBInspectable
-    var borderColor: UIColor? {
+    var borderColorInsp: UIColor? {
         get {
             if let color = layer.borderColor {
                 return UIColor(cgColor: color)
