@@ -31,6 +31,8 @@ class ViewControllerMain: UIViewController{
     
     //MARK: - Outlets
     // Views with status indicators
+    
+    @IBOutlet weak private var tabsContainerView: UIView!
     @IBOutlet weak private var viewHealth: UIView!
     @IBOutlet weak private var viewFood: UIView!
     @IBOutlet weak private var viewAdvice: UIView!
@@ -144,7 +146,36 @@ class ViewControllerMain: UIViewController{
 //        startTimer()
         
     }
+//
+    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+        switch UIDevice.current.orientation{
+        case .portrait: break
+//            tabsContainerView.isHidden = false
+        case .portraitUpsideDown: break
+//            tabsContainerView.isHidden = false
+        case .landscapeLeft:
+            tabsContainerView.isHidden = true
+        case .landscapeRight:
+            tabsContainerView.isHidden = true
+        default:
+            tabsContainerView.isHidden = false
+        }
+    }
     
+    override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+        switch UIDevice.current.orientation{
+        case .portrait:
+            tabsContainerView.isHidden = false
+        case .portraitUpsideDown:
+            tabsContainerView.isHidden = false
+        case .landscapeLeft: break
+//            tabsContainerView.isHidden = true
+        case .landscapeRight: break
+//            tabsContainerView.isHidden = true
+        default:
+            tabsContainerView.isHidden = false
+        }
+    }
 //   private weak var timer: Timer?
 //
 //    private func startTimer() {
@@ -212,7 +243,7 @@ class ViewControllerMain: UIViewController{
         switch self.state
         {
         case .food:
-            view.bringSubviewToFront(viewFood)
+            tabsContainerView.bringSubviewToFront(viewFood)
             containerFood.isHidden = false
             containerAdvice.isHidden = true
             containerHealth.isHidden = true
@@ -228,7 +259,7 @@ class ViewControllerMain: UIViewController{
             adviceLabel.isHidden = false
             
         case .exercise:
-            self.view.bringSubviewToFront(self.viewExercise)
+            self.tabsContainerView.bringSubviewToFront(self.viewExercise)
             containerFood.isHidden = true
             containerAdvice.isHidden = true
             containerHealth.isHidden = true
@@ -244,7 +275,7 @@ class ViewControllerMain: UIViewController{
             adviceLabel.isHidden = false
             
         case .health:
-            self.view.bringSubviewToFront(self.viewHealth)
+            self.tabsContainerView.bringSubviewToFront(self.viewHealth)
             containerFood.isHidden = true
             containerAdvice.isHidden = true
             containerHealth.isHidden = false
@@ -260,7 +291,7 @@ class ViewControllerMain: UIViewController{
             adviceLabel.isHidden = false
             
         case .advice:
-            view.bringSubviewToFront(viewAdvice)
+            tabsContainerView.bringSubviewToFront(viewAdvice)
             containerFood.isHidden = true
             containerAdvice.isHidden = false
             containerHealth.isHidden = true
