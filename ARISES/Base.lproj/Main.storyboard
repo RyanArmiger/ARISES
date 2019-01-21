@@ -938,9 +938,6 @@
                                         <color key="value" cocoaTouchSystemColor="darkTextColor"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="xlR-5O-fuC" kind="embed" id="pwX-4H-ULf"/>
-                                </connections>
                             </containerView>
                             <view contentMode="TopLeft" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N3E-JJ-Fgc" userLabel="Food">
                                 <rect key="frame" x="5" y="310" width="265" height="252"/>
@@ -1857,17 +1854,17 @@
             <objects>
                 <viewController id="xlR-5O-fuC" customClass="ViewControllerGraph" customModule="ARISES" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="center" id="xht-JE-6FD">
-                        <rect key="frame" x="0.0" y="0.0" width="355" height="265"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hhK-5Y-w2W" customClass="ChartBaseView" customModule="SwiftCharts">
-                                <rect key="frame" x="59" y="30" width="237" height="270"/>
+                                <rect key="frame" x="79" y="50" width="217" height="652"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <gestureRecognizers/>
                                 <viewLayoutGuide key="safeArea" id="ZDj-f8-gqg"/>
                             </view>
                             <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ux8-yy-1UR" customClass="ChartBGView" customModule="ARISES" customModuleProvider="target">
-                                <rect key="frame" x="57" y="40" width="241" height="218"/>
+                                <rect key="frame" x="77" y="60" width="221" height="600"/>
                                 <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
@@ -1885,7 +1882,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZEV-bY-Kyk">
-                                <rect key="frame" x="292" y="42" width="60" height="208"/>
+                                <rect key="frame" x="292" y="62" width="80" height="590"/>
                                 <subviews>
                                     <view opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Cm-ZE-NMX" customClass="CustomView" customModule="ARISES" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="20" height="210"/>
@@ -1948,7 +1945,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ag7-z6-FpG">
-                                <rect key="frame" x="4" y="42" width="59" height="208"/>
+                                <rect key="frame" x="4" y="62" width="79" height="590"/>
                                 <subviews>
                                     <view alpha="0.29999999999999999" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x0W-Sa-IPF" customClass="CustomView" customModule="ARISES" customModuleProvider="target">
                                         <rect key="frame" x="20" y="0.0" width="20" height="210"/>
@@ -2010,7 +2007,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mM/L" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sl2-m7-8Gi">
-                                <rect key="frame" x="241" y="80" width="39" height="18"/>
+                                <rect key="frame" x="261" y="482" width="39" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -2023,7 +2020,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H6f-sj-yes">
-                                <rect key="frame" x="219" y="47" width="20" height="51"/>
+                                <rect key="frame" x="239" y="67" width="20" height="433"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="mSs-66-hVC"/>
                                 </constraints>
@@ -2031,7 +2028,7 @@
                                 <state key="normal" title="Button" image="hypo"/>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Fg-oh-rg7">
-                                <rect key="frame" x="59" y="15" width="237" height="17"/>
+                                <rect key="frame" x="79" y="35" width="217" height="17"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -2042,7 +2039,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <imageView userInteractionEnabled="NO" alpha="0.30000001192092896" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeHolderBasal" translatesAutoresizingMaskIntoConstraints="NO" id="sO0-rE-GzH">
-                                <rect key="frame" x="79" y="140" width="206" height="70"/>
+                                <rect key="frame" x="99" y="542" width="186" height="70"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
