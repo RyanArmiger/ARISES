@@ -39,6 +39,8 @@ class ViewControllerExercise: UIViewController, UIPickerViewDelegate, UIPickerVi
     ///Instantiation of a date picker for choosing duration of exercise
     private var exerciseDurationPicker = UIDatePicker()
     
+    private var exerciseTimestamp: Date?
+    
     ///Tracks date set by graph and hides data entry fields when not on current day using didSet
     private var currentDay = Date(){
         didSet{
@@ -191,6 +193,7 @@ class ViewControllerExercise: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     @objc private func doneWithTimePicker(){
+        exerciseTimestamp = exerciseTimePicker.date
         exerciseTimeField.text = ModelController().formatDateToHHmm(date: exerciseTimePicker.date)
         self.view.endEditing(true)
     }
@@ -260,7 +263,17 @@ class ViewControllerExercise: UIViewController, UIPickerViewDelegate, UIPickerVi
         let currentExercise = loggedExercise[indexPath.row]
         
         cell.loggedExerciseName.text = currentExercise.name
-        cell.loggedExerciseTime.text = currentExercise.time
+        
+        if let exerciseTime = currentExercise.time {
+            let dateFormatter = DateFormatter()
+            let exerciseTimeString = dateFormatter.string(from: exerciseTime)
+            cell.loggedExerciseTime.text = exerciseTimeString
+        }
+        else {
+            print("ERROR: CurrentExercise time is nil")
+            cell.loggedExerciseTime.text = "ERROR"
+        }
+        
         cell.loggedExerciseDuration.text = currentExercise.duration
         
         if ModelController().itemInFavouritesExercise(item: currentExercise){
@@ -311,10 +324,13 @@ class ViewControllerExercise: UIViewController, UIPickerViewDelegate, UIPickerVi
     ///Calls ModelController function addExercise with contents of data entry fields, if they are all filled
     @IBAction private func addExercise(_ sender: Any) {
         if ((exerciseNameField.text != "") && (exerciseTimeField.text != "") && (exerciseDurationField.text != "") && (exerciseIntensityField.text != "")){
-
+            
+            guard let exerciseTime = exerciseTimestamp else {
+                return
+            }
             ModelController().addExercise(
                 name: exerciseNameField.text!,
-                time: exerciseTimeField.text!,
+                time: exerciseTime,
                 date: currentDay,
                 intensity: exerciseIntensityField.text!,
                 duration: exerciseDurationField.text!)

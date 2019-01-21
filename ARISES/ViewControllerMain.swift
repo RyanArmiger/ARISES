@@ -85,6 +85,7 @@ class ViewControllerMain: UIViewController{
     private var insulinTimePicker = UIDatePicker()
     ///Stores whether keyboard is open, to smooth transitions between tabs
     private var keyboardOpen = false
+    private var insulinTimestamp: Date?
     
     // Variables for rounding and shadow extension
     private var shadowLayer: CAShapeLayer!
@@ -139,7 +140,53 @@ class ViewControllerMain: UIViewController{
         nc.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
         nc.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+//        readCSV()
+//        startTimer()
+        
     }
+    
+//   private weak var timer: Timer?
+//
+//    private func startTimer() {
+//        timer?.invalidate()   // just in case you had existing `Timer`, `invalidate` it before we lose our reference to it
+//        timer = Timer.scheduledTimer(withTimeInterval: 300.0, repeats: true) { [weak self] _ in
+//            //ModelController().addGlucose(value: glucoseValue, time: String, date:      )
+//            print("Timer goes tick")
+//        }
+//    }
+//
+//    private func stopTimer() {
+//        timer?.invalidate()
+//    }
+//
+//    deinit {
+//        stopTimer()
+//    }
+//
+//    private func readCSV()  {
+//        guard let csvPath = Bundle.main.path(forResource: "ABC4001_CGM_6m_I", ofType: "csv") else { return }
+//
+//        do {
+//            let csvData = try String(contentsOfFile: csvPath, encoding: String.Encoding.utf8)
+//            let csv = csvData.csvRows()
+//            let csvLength = csv.count
+//            for row in csv[1..<csvLength] {
+////                let row = csv[index]
+//                print("date: \(row[0]), glucose: \(row[1])")
+////                print("glucose: \(row[1])")
+//                guard let glucoseValue = Double(row[1]) else {
+//                    return
+//                }
+//                let dateFormatter = DateFormatter()
+//                guard let glucoseDate = dateFormatter.date(from: row[0]) else {
+//                    return
+//                }
+//
+//            }
+//        } catch{
+//            print("ERROR: \(error)")
+//        }
+//    }
     
     //MARK: - Update Day
     ///Updates the currentDay variable with a date provided via notification from ViewControllerGraph
@@ -304,12 +351,14 @@ class ViewControllerMain: UIViewController{
                 //add insulin if not nil
                 if (self.insulinTextField.text != ""){
                     if self.insulinTimeField.text != ""{
-                        ModelController().addInslin(units: Double((self.insulinTextField.text)!)!, time: self.insulinTimeField.text!, date: Date())
+                        guard let insulinTime = self.insulinTimestamp else {
+                            return
+                        }
+                        ModelController().addInslin(units: Double((self.insulinTextField.text)!)!, time: insulinTime, date: Date())
                         self.insulinTextField.text = ""
                     }
                     else{
-                        let currentTime = ModelController().formatDateToHHmm(date: Date())
-                        ModelController().addInslin(units: Double((self.insulinTextField.text)!)!, time: currentTime, date: Date())
+                        ModelController().addInslin(units: Double((self.insulinTextField.text)!)!, time: Date(), date: Date())
                         
                         self.insulinTextField.text = ""
                         self.insulinTimeField.text = ""
@@ -337,7 +386,7 @@ class ViewControllerMain: UIViewController{
         insulinTimePicker.datePickerMode = .time
     }
     @objc private func doneWithPicker(){
-        
+        insulinTimestamp = insulinTimePicker.date
         insulinTimeField.text = ModelController().formatDateToHHmm(date: insulinTimePicker.date)
         self.view.endEditing(true)
     }

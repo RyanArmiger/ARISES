@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18B75" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Day" representedClassName=".Day" syncable="YES" codeGenerationType="category">
-        <attribute name="date" attributeType="String" syncable="YES"/>
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="exercise" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Exercise" inverseName="day" inverseEntity="Exercise" syncable="YES"/>
         <relationship name="favourite" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Favourites" inverseName="days" inverseEntity="Favourites" syncable="YES"/>
         <relationship name="glucose" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Glucose" inverseName="day" inverseEntity="Glucose" syncable="YES"/>
@@ -14,7 +14,7 @@
         <attribute name="duration" attributeType="String" syncable="YES"/>
         <attribute name="intensity" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
-        <attribute name="time" attributeType="String" syncable="YES"/>
+        <attribute name="time" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="day" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="exercise" inverseEntity="Day" syncable="YES"/>
         <relationship name="favourite" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Favourites" inverseName="exercise" inverseEntity="Favourites" syncable="YES"/>
     </entity>
@@ -24,7 +24,7 @@
         <relationship name="meals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Meals" inverseName="favourite" inverseEntity="Meals" syncable="YES"/>
     </entity>
     <entity name="Glucose" representedClassName=".Glucose" syncable="YES" codeGenerationType="category">
-        <attribute name="time" attributeType="String" syncable="YES"/>
+        <attribute name="time" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="value" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="day" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="glucose" inverseEntity="Day" syncable="YES"/>
     </entity>
@@ -34,7 +34,7 @@
         <relationship name="day" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="illness" inverseEntity="Day" syncable="YES"/>
     </entity>
     <entity name="Insulin" representedClassName=".Insulin" syncable="YES" codeGenerationType="category">
-        <attribute name="time" attributeType="String" syncable="YES"/>
+        <attribute name="time" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="units" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="day" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="insulin" inverseEntity="Day" syncable="YES"/>
     </entity>
@@ -43,7 +43,7 @@
         <attribute name="fat" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="protein" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="time" attributeType="String" syncable="YES"/>
+        <attribute name="time" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="day" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="meals" inverseEntity="Day" syncable="YES"/>
         <relationship name="favourite" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Favourites" inverseName="meals" inverseEntity="Favourites" syncable="YES"/>
     </entity>

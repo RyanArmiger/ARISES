@@ -13,19 +13,20 @@ import CoreData
 Provides fuctions to safely add and fetch objects from the persistent relational database 'Core Data'
  */
 class ModelController {
-    
+
     //TODO: - Abstract functions to apply to food, exercise and days etc.
 
     //MARK: - Basic date formatting functions
     //Returns strings
     
-    /// - parameter date: Date, date to be formatted and returned as a string
-    /// - returns: String of input date in user's locale "short" date format, with time component removed e.g. 20/06/2018
-    func formatDateToDay(date: Date) -> String{
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .none
-        return dateFormatter.string(from: date)
+    /// - parameter date: Date, date to be formatted as start of day
+    /// - returns: Date corresponding to beginning of day provided 
+    func formatDateToDay(date: Date) -> Date{
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateStyle = .short
+//        dateFormatter.timeStyle = .none
+//        return dateFormatter.string(from: date)
+        return Calendar.current.startOfDay(for: date)
     }
     /// - parameter date: Date, date to be formatted to HHmm and returned as a string
     /// - returns: String of input date's time component in HH:mm format e.g. 11:35
@@ -61,17 +62,17 @@ class ModelController {
      Checks for an existing Day log or creates one
      - parameter day: Date of day log to be found (type Date)
      - returns: Day object with date (not time) corresponding to input date, or a newly created Day object for that date
-    */
-    func findOrMakeDay(day: Date) -> Day{
-        let day = formatDateToDay(date: day)
+     */
+    func findOrMakeDay(day: Date) -> Day {
+        //        let day = formatDateToDay(date: day)
+        let day = Calendar.current.startOfDay(for: Date())
         let dateFetch: NSFetchRequest<Day> = Day.fetchRequest()
-        dateFetch.predicate = NSPredicate(format: "date == %@", day)
+        dateFetch.predicate = NSPredicate(format: "date == %@", day as CVarArg)
         let checkForDay = try? PersistenceService.context.fetch(dateFetch)
-        if checkForDay != nil{
-            if checkForDay?.count != 0{
+        if checkForDay != nil {
+            if checkForDay?.isEmpty == false {
                 return (checkForDay!.first!)
-            }
-            else{
+            } else {
                 let newDay = Day(context: PersistenceService.context)
                 newDay.date = day
                 PersistenceService.saveContext()
@@ -82,6 +83,7 @@ class ModelController {
         return checkForDay![0]
         //Should never happen
     }
+    
     
     //MARK: - Data object setting (add/toggle)
     
@@ -96,7 +98,7 @@ class ModelController {
      - parameter protein: Int32, Total protein (grams) of meal to add.
      - Note: Posts a notification "FoodAdded" which is picked up by viewControllerGraph and IndicatorControllerFood to update views.
      */
-    func addMeal(name: String, time: String, date: Date, carbs: Int32, fat: Int32, protein: Int32){
+    func addMeal(name: String, time: Date, date: Date, carbs: Int32, fat: Int32, protein: Int32){
         print("meal added")
         let currentDay = findOrMakeDay(day: date)
         let newMeal = Meals(context: PersistenceService.context)
@@ -122,7 +124,7 @@ class ModelController {
      - parameter duration: String, duration of exercise to add
      - note: Posts a notification "ExerciseAdded" which is picked up by viewControllerGraph to update views
      */
-    func addExercise(name: String, time: String, date: Date, intensity: String, duration: String){
+    func addExercise(name: String, time: Date, date: Date, intensity: String, duration: String){
         
         let currentDay = findOrMakeDay(day: date)
         let newExercise = Exercise(context: PersistenceService.context)
@@ -143,7 +145,7 @@ class ModelController {
      - parameter time: String, Time of glucose log
      - parameter date: Date, Date of glucose log to add
      */
-    func addGlucose(value: Double, time: String, date: Date){
+    func addGlucose(value: Double, time: Date, date: Date){
         
         let currentDay = findOrMakeDay(day: date)
         let newGlucose = Glucose(context: PersistenceService.context)
@@ -161,7 +163,7 @@ class ModelController {
      - parameter date: Date, Date of insulin injected
      - note: Posts a notification "InsulinAdded" which is picked up by viewControllerGraph to update views
      */
-    func addInslin(units: Double, time: String, date: Date){
+    func addInslin(units: Double, time: Date, date: Date){
         
         let currentDay = findOrMakeDay(day: date)
         let newInsulin = Insulin(context: PersistenceService.context)
@@ -372,8 +374,8 @@ class ModelController {
      */
     func fetchMeals(day: Date) -> [Meals]{
         let fetchRequest: NSFetchRequest<Meals> = Meals.fetchRequest()
-        let dayToShow = ModelController().formatDateToDay(date: day)
-        fetchRequest.predicate = NSPredicate(format: "day.date == %@", dayToShow)
+        let dayToShow = Calendar.current.startOfDay(for: day)
+        fetchRequest.predicate = NSPredicate(format: "day.date == %@", dayToShow as CVarArg)
         let sectionSortDescriptor = NSSortDescriptor(key: "time", ascending: true)
         let sortDescriptors = [sectionSortDescriptor]
         fetchRequest.sortDescriptors = sortDescriptors
@@ -394,8 +396,8 @@ class ModelController {
      */
     func fetchGlucose(day: Date) -> [Glucose]{
         let fetchRequest: NSFetchRequest<Glucose> = Glucose.fetchRequest()
-        let dayToShow = formatDateToDay(date: day)
-        fetchRequest.predicate = NSPredicate(format: "day.date == %@", dayToShow)
+        let dayToShow = Calendar.current.startOfDay(for: day)
+        fetchRequest.predicate = NSPredicate(format: "day.date == %@", dayToShow as CVarArg)
         //Sorts by short time - currently not correctly
         let sectionSortDescriptor = NSSortDescriptor(key: "time", ascending: true)
         let sortDescriptors = [sectionSortDescriptor]
@@ -417,8 +419,8 @@ class ModelController {
      */
     func fetchInsulin(day: Date) -> [Insulin]{
         let fetchRequest: NSFetchRequest<Insulin> = Insulin.fetchRequest()
-        let dayToShow = formatDateToDay(date: day)
-        fetchRequest.predicate = NSPredicate(format: "day.date == %@", dayToShow)
+        let dayToShow = Calendar.current.startOfDay(for: day)
+        fetchRequest.predicate = NSPredicate(format: "day.date == %@", dayToShow as CVarArg)
         let sectionSortDescriptor = NSSortDescriptor(key: "time", ascending: true)
         let sortDescriptors = [sectionSortDescriptor]
         fetchRequest.sortDescriptors = sortDescriptors
@@ -439,8 +441,8 @@ class ModelController {
      */
     func fetchExercise(day: Date) -> [Exercise]{
         let fetchRequest: NSFetchRequest<Exercise> = Exercise.fetchRequest()
-        let dayToShow = formatDateToDay(date: day)
-        fetchRequest.predicate = NSPredicate(format: "day.date == %@", dayToShow)
+        let dayToShow = Calendar.current.startOfDay(for: day)
+        fetchRequest.predicate = NSPredicate(format: "day.date == %@", dayToShow as CVarArg)
         let sectionSortDescriptor = NSSortDescriptor(key: "time", ascending: true)
         let sortDescriptors = [sectionSortDescriptor]
         fetchRequest.sortDescriptors = sortDescriptors

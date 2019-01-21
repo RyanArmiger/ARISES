@@ -32,6 +32,8 @@ class ViewControllerFood: UIViewController, UIPickerViewDelegate, UITableViewDat
     //MARK: - Properties
     ///Instantiation of a date picker for choosing time of meal
     private var foodTimePicker = UIDatePicker()
+    
+    private var foodTimestamp: Date?
     ///Tracks date set by graph and hides data entry fields when not on current day using didSet
     private var currentDay = Date(){
         didSet{
@@ -168,6 +170,7 @@ class ViewControllerFood: UIViewController, UIPickerViewDelegate, UITableViewDat
     }
     
     @objc private func doneWithPicker(){
+        foodTimestamp = foodTimePicker.date
         foodTimeField.text = ModelController().formatDateToHHmm(date: foodTimePicker.date)
         self.view.endEditing(true)
     }
@@ -219,7 +222,9 @@ class ViewControllerFood: UIViewController, UIPickerViewDelegate, UITableViewDat
         let currentMeal = loggedMeals[indexPath.row]
         
         cell.loggedFoodName.text = currentMeal.name
-        cell.loggedFoodTime.text = currentMeal.time
+        
+        let dateFormatter = DateFormatter()
+        cell.loggedFoodTime.text = dateFormatter.string(from: currentMeal.time!)
         cell.loggedFoodCarbs.text = "\(currentMeal.carbs)g"
         cell.loggedFoodProtein.text = "\(currentMeal.protein)g"
         cell.loggedFoodFat.text = "\(currentMeal.fat)g"
@@ -300,7 +305,7 @@ class ViewControllerFood: UIViewController, UIPickerViewDelegate, UITableViewDat
         if ((foodNameTextField.text != "") && (foodTimeField.text != "") && (carbsTextField.text != "") && (proteinTextField.text != "") && (fatTextField.text != "")){
             ModelController().addMeal(
                     name: foodNameTextField.text!,
-                    time: foodTimeField.text!,
+                    time: foodTimestamp!,
                     date: currentDay,
                     carbs: Int32((Double(carbsTextField.text!)?.rounded())!),
                     fat: Int32((Double(fatTextField.text!)?.rounded())!),

@@ -22,6 +22,9 @@
 		3718B86220AC9A60006F1A47 /* ViewControllerHealth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3718B86120AC9A60006F1A47 /* ViewControllerHealth.swift */; };
 		3718B86420AC9A75006F1A47 /* ViewControllerGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3718B86320AC9A75006F1A47 /* ViewControllerGraph.swift */; };
 		3718B86620AC9CE3006F1A47 /* ViewControllerMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3718B86520AC9CE3006F1A47 /* ViewControllerMain.swift */; };
+		372141E621F52DD800B8627F /* ABC4001_CGM_6m_I.csv in Resources */ = {isa = PBXBuildFile; fileRef = 372141E421F52DD800B8627F /* ABC4001_CGM_6m_I.csv */; };
+		372141E721F52DD800B8627F /* ABC4001_log_final_I.csv in Resources */ = {isa = PBXBuildFile; fileRef = 372141E521F52DD800B8627F /* ABC4001_log_final_I.csv */; };
+		372141EA21F5319100B8627F /* CSVreader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372141E921F5319100B8627F /* CSVreader.swift */; };
 		375587C6209E086C00594532 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375587C5209E086C00594532 /* AppDelegate.swift */; };
 		375587CB209E086C00594532 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375587C9209E086C00594532 /* Main.storyboard */; };
 		375587CD209E086D00594532 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 375587CC209E086D00594532 /* Assets.xcassets */; };
@@ -66,6 +69,9 @@
 		3718B86120AC9A60006F1A47 /* ViewControllerHealth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerHealth.swift; sourceTree = "<group>"; };
 		3718B86320AC9A75006F1A47 /* ViewControllerGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerGraph.swift; sourceTree = "<group>"; };
 		3718B86520AC9CE3006F1A47 /* ViewControllerMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerMain.swift; sourceTree = "<group>"; };
+		372141E421F52DD800B8627F /* ABC4001_CGM_6m_I.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ABC4001_CGM_6m_I.csv; sourceTree = "<group>"; };
+		372141E521F52DD800B8627F /* ABC4001_log_final_I.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ABC4001_log_final_I.csv; sourceTree = "<group>"; };
+		372141E921F5319100B8627F /* CSVreader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVreader.swift; sourceTree = "<group>"; };
 		375587C2209E086C00594532 /* ARISES.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARISES.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		375587C5209E086C00594532 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		375587CA209E086C00594532 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -105,6 +111,7 @@
 		3718079E20B81F4F00D7C81A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				372141E821F52DDF00B8627F /* Test Data */,
 				371807A220B8500F00D7C81A /* ModelController.swift */,
 				37B568B920B485600014F735 /* ARISES.xcdatamodeld */,
 				370F921620BD637B0081C570 /* Insulin.swift */,
@@ -127,6 +134,15 @@
 				3718B86320AC9A75006F1A47 /* ViewControllerGraph.swift */,
 			);
 			path = Display;
+			sourceTree = "<group>";
+		};
+		372141E821F52DDF00B8627F /* Test Data */ = {
+			isa = PBXGroup;
+			children = (
+				372141E421F52DD800B8627F /* ABC4001_CGM_6m_I.csv */,
+				372141E521F52DD800B8627F /* ABC4001_log_final_I.csv */,
+			);
+			path = "Test Data";
 			sourceTree = "<group>";
 		};
 		375587B9209E086C00594532 = {
@@ -162,6 +178,7 @@
 				3718B85F20AC9A42006F1A47 /* ViewControllerExercise.swift */,
 				3718B86120AC9A60006F1A47 /* ViewControllerHealth.swift */,
 				3718B86520AC9CE3006F1A47 /* ViewControllerMain.swift */,
+				372141E921F5319100B8627F /* CSVreader.swift */,
 				378658AD20AC675D007C13B2 /* ViewControllerTableViewCell.swift */,
 				375587D1209E086D00594532 /* Info.plist */,
 			);
@@ -274,6 +291,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				375587D0209E086D00594532 /* LaunchScreen.storyboard in Resources */,
+				372141E721F52DD800B8627F /* ABC4001_log_final_I.csv in Resources */,
+				372141E621F52DD800B8627F /* ABC4001_CGM_6m_I.csv in Resources */,
 				BBF1205720D02736002ACBC7 /* Settings.bundle in Resources */,
 				375587CD209E086D00594532 /* Assets.xcassets in Resources */,
 				375587CB209E086C00594532 /* Main.storyboard in Resources */,
@@ -318,6 +337,7 @@
 				375587C6209E086C00594532 /* AppDelegate.swift in Sources */,
 				371807A320B8500F00D7C81A /* ModelController.swift in Sources */,
 				3718079520B818ED00D7C81A /* Exercise.swift in Sources */,
+				372141EA21F5319100B8627F /* CSVreader.swift in Sources */,
 				37A9ACE720B45062001B16BB /* CustomView.swift in Sources */,
 				37B3716220B47EF20048A942 /* PersistenceService.swift in Sources */,
 				3718079D20B81EB300D7C81A /* Day.swift in Sources */,

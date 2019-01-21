@@ -189,10 +189,10 @@ class ViewControllerGraph: UIViewController {
         if glucoseLogs.count == 0{
             for i in (glucoseLogs.count)...(rawData.count - 1){
                 let date = dateFormatter.date(from: rawData[i])
-                let timeString = timeFormatter.string(from: date!)
+//                let timeString = timeFormatter.string(from: date!)
                 let dayString = dayFormatter.string(from: date!)
                 let day = dayFormatter.date(from: dayString)
-                ModelController().addGlucose(value: rawValues[i], time: timeString, date: day!)
+                ModelController().addGlucose(value: rawValues[i], time: date!, date: day!)
             }
         }else {
             print("Already loaded data in")
@@ -256,8 +256,9 @@ class ViewControllerGraph: UIViewController {
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .none
 
-        let dayToSet = notification.object as! String
-        today = dateFormatter.date(from: dayToSet)!
+        let dayToSet = notification.object as! Date
+//        today = dateFormatter.date(from: dayToSet)!
+        today = dayToSet
 
         updateDay()
         updateViews()
@@ -449,12 +450,13 @@ class ViewControllerGraph: UIViewController {
         }
         
         //struct points for plotting on main graph
-        let keyDay = dayFormatter.string(from: day)
+//        let keyDay = day
         for item in todayArray{
             if(item.value != 0){
-                let combinedDate = keyDay + " " + item.time!
+                let dateFormatter = DateFormatter()
+                let combinedDate = item.time
                 valueArray.append(ChartAxisValueDouble(item.value))
-                dateArray.append(ChartAxisValueDate(date: dateFormatter.date(from: combinedDate)!, formatter: dateFormatter))
+                dateArray.append(ChartAxisValueDate(date: combinedDate!, formatter: dateFormatter))
                 points.append(ChartPoint(x: dateArray[dateArray.endIndex - 1], y: valueArray[valueArray.endIndex - 1]))
             }
         }
@@ -489,18 +491,21 @@ class ViewControllerGraph: UIViewController {
         
         // position of activity POPUPs on the graph:
         for meal in todayFoodArray{
-            let combinedDate = keyDay + " " + meal.time!
-            extraPoints.append(ChartPoint(x: ChartAxisValueDate(date: dateFormatter.date(from: combinedDate)!, formatter: dateFormatter), y: ChartAxisValueInt(Int(meal.carbs))))
+            let dateFormatter = DateFormatter()
+            let combinedDate = meal.time!
+            extraPoints.append(ChartPoint(x: ChartAxisValueDate(date: combinedDate, formatter: dateFormatter), y: ChartAxisValueInt(Int(meal.carbs))))
         }
         
         for exercise in todayExerciseArray{
-            let combinedDate = keyDay + " " + exercise.time!
-            extraPoints.append(ChartPoint(x: ChartAxisValueDate(date: dateFormatter.date(from: combinedDate)!, formatter: dateFormatter), y: ChartAxisValueDouble(5.0)))
+            let dateFormatter = DateFormatter()
+            let combinedDate = exercise.time!
+            extraPoints.append(ChartPoint(x: ChartAxisValueDate(date: combinedDate, formatter: dateFormatter), y: ChartAxisValueDouble(5.0)))
         }
         
         for insulin in todayInsulinArray{
-            let combinedDate = keyDay + " " + insulin.time!
-            extraPoints.append(ChartPoint(x: ChartAxisValueDate(date: dateFormatter.date(from: combinedDate)!, formatter: dateFormatter), y: ChartAxisValueDouble(195.0)))
+            let dateFormatter = DateFormatter()
+            let combinedDate = insulin.time!
+            extraPoints.append(ChartPoint(x: ChartAxisValueDate(date: combinedDate, formatter: dateFormatter), y: ChartAxisValueDouble(195.0)))
         }
 		
 		//sort pop-ups after events added by ascending time.
@@ -599,8 +604,6 @@ class ViewControllerGraph: UIViewController {
             let circleView = ChartPointEllipseView(center: chartPointModel.screenLoc, diameter: 12)
             circleView.animDuration = 1.0
             circleView.fillColor = #colorLiteral(red: 0.9764705882, green: 0.6235294118, blue: 0.2196078431, alpha: 1)
-//            circleView.borderColor = UIColor.clear
-            circleView.borderColor = UIColor.clear
             circleView.borderColor = UIColor.clear
             circleView.borderWidth = 0.9
             circleView.isUserInteractionEnabled = true
@@ -615,25 +618,25 @@ class ViewControllerGraph: UIViewController {
             let insulins = ModelController().fetchInsulin(day: day)
             let xVal = chartPointModel.chartPoint.x.scalar
             let time = Date.init(timeIntervalSince1970: xVal)
-            let timeDate = timeFormatter.string(from: time)
+//            let timeDate = timeFormatter.string(from: time)
             
             //searches through activities and align popup with data point in terms of time for the day
             for meal in meals{
-                if(meal.time! == timeDate){
+                if(meal.time! == time){
                     circleView.data = "ðŸŽ"
                     text = "C:\(meal.carbs) P:\(meal.protein) F:\(meal.fat)"
                     circleView.fillColor = #colorLiteral(red: 0.9764705882, green: 0.6235294118, blue: 0.2196078431, alpha: 1)
                 }
             }
             for exercise in exercises{
-                if(exercise.time == timeDate){
+                if(exercise.time == time){
                     circleView.data = "ðŸ¤¾â€â™€ï¸"
                     text = "\(exercise.name!): \(exercise.duration!)"
                     circleView.fillColor = #colorLiteral(red: 0, green: 0.6383251441, blue: 1, alpha: 1)
                 }
             }
             for insulin in insulins{
-                if(insulin.time == timeDate){
+                if(insulin.time == time){
                     circleView.data = "ðŸ’‰"
                     text = "Insulin: \(insulin.units) units"
                     circleView.fillColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)

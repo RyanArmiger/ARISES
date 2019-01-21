@@ -348,8 +348,12 @@ class ViewControllerHealth: UIViewController, UITableViewDataSource, UITableView
         
         let currentDay = loggedDays[indexPath.row]
         
-        cell.dateInLog.text = currentDay.date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy"
         
+//        dateFormatter.string(from: currentDay.date!)
+
+        cell.dateInLog.text = dateFormatter.string(from: currentDay.date!)
         //Sets favourited item star colour
         if ModelController().itemInFavouritesDay(item: currentDay){
             cell.favouriteHealthButton.tintColor = #colorLiteral(red: 0.3921568627, green: 0.737254902, blue: 0.4392156863, alpha: 1)
@@ -421,18 +425,18 @@ class ViewControllerHealth: UIViewController, UITableViewDataSource, UITableView
             if(daysToShow == "seven"){
                 let loggedDays = ModelController().fetchDay()
                 self.loggedDays = loggedDays.filter({ (Day) -> Bool in
-                    dateFormatter.date(from: Day.date!)! > Calendar.current.date(byAdding: .day, value: -7, to: Date())!
+                    Day.date! > Calendar.current.date(byAdding: .day, value: -7, to: Date())!
                 })
             }
             else if(daysToShow == "thirty"){
                 let loggedDays = ModelController().fetchDay()
                 self.loggedDays = loggedDays.filter({ (Day) -> Bool in
-                    dateFormatter.date(from: Day.date!)! > Calendar.current.date(byAdding: .day, value: -30, to: Date())!              })
+                    Day.date! > Calendar.current.date(byAdding: .day, value: -30, to: Date())!              })
             }
             else if(daysToShow == "sixty"){
                 let loggedDays = ModelController().fetchDay()
                 self.loggedDays = loggedDays.filter({ (Day) -> Bool in
-                    dateFormatter.date(from: Day.date!)! > Calendar.current.date(byAdding: .day, value: -60, to: Date())!
+                    Day.date! > Calendar.current.date(byAdding: .day, value: -60, to: Date())!
                 })
             }
         }
