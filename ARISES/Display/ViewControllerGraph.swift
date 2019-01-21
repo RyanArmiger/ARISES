@@ -374,15 +374,16 @@ class ViewControllerGraph: UIViewController {
     *	Change of dates gets passed in to update chart.
     */
     private func initChart(){
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
         let dayFormatter = DateFormatter()
         dayFormatter.dateFormat = "dd/MM/yyyy"
-        let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "HH:mm"
+//        let timeFormatter = DateFormatter()
+//        timeFormatter.dateFormat = "HH:mm"
         let hourFormatter = DateFormatter()
         hourFormatter.dateFormat = "H"
-        
+        let dateFormatter = DateFormatter()
+
         //set function to today() when live code
         let day = today
         var dateArray = [ChartAxisValueDate]()
@@ -453,7 +454,6 @@ class ViewControllerGraph: UIViewController {
 //        let keyDay = day
         for item in todayArray{
             if(item.value != 0){
-                let dateFormatter = DateFormatter()
                 let combinedDate = item.time
                 valueArray.append(ChartAxisValueDouble(item.value))
                 dateArray.append(ChartAxisValueDate(date: combinedDate!, formatter: dateFormatter))
@@ -491,19 +491,16 @@ class ViewControllerGraph: UIViewController {
         
         // position of activity POPUPs on the graph:
         for meal in todayFoodArray{
-            let dateFormatter = DateFormatter()
             let combinedDate = meal.time!
             extraPoints.append(ChartPoint(x: ChartAxisValueDate(date: combinedDate, formatter: dateFormatter), y: ChartAxisValueInt(Int(meal.carbs))))
         }
         
         for exercise in todayExerciseArray{
-            let dateFormatter = DateFormatter()
             let combinedDate = exercise.time!
             extraPoints.append(ChartPoint(x: ChartAxisValueDate(date: combinedDate, formatter: dateFormatter), y: ChartAxisValueDouble(5.0)))
         }
         
         for insulin in todayInsulinArray{
-            let dateFormatter = DateFormatter()
             let combinedDate = insulin.time!
             extraPoints.append(ChartPoint(x: ChartAxisValueDate(date: combinedDate, formatter: dateFormatter), y: ChartAxisValueDouble(195.0)))
         }
@@ -604,7 +601,7 @@ class ViewControllerGraph: UIViewController {
             let circleView = ChartPointEllipseView(center: chartPointModel.screenLoc, diameter: 12)
             circleView.animDuration = 1.0
             circleView.fillColor = #colorLiteral(red: 0.9764705882, green: 0.6235294118, blue: 0.2196078431, alpha: 1)
-            circleView.borderColor = UIColor.clear
+//            circleView.borderColor = UIColor.clear
             circleView.borderWidth = 0.9
             circleView.isUserInteractionEnabled = true
             let w: CGFloat = 80            //TODO: Change w and h depending on text size

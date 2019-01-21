@@ -84,7 +84,7 @@ class ViewControllerMain: UIViewController{
     ///Instantiates Date Picker for insulin time selection
     private var insulinTimePicker = UIDatePicker()
     ///Stores whether keyboard is open, to smooth transitions between tabs
-    private var keyboardOpen = false
+//    private var keyboardOpen = false
     private var insulinTimestamp: Date?
     
     // Variables for rounding and shadow extension
@@ -137,9 +137,9 @@ class ViewControllerMain: UIViewController{
         
 
         //Observers to determine keyboard state
-        nc.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
-        nc.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+//        nc.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+//
+//        nc.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil)
 //        readCSV()
 //        startTimer()
         
@@ -195,12 +195,12 @@ class ViewControllerMain: UIViewController{
     }
     
     //MARK: - Functions for tracking when keyboard open
-    @objc private func keyboardWillShow(sender: NSNotification) {
-        keyboardOpen = true
-    }
-    @objc private func keyboardWillHide(sender: NSNotification) {
-        keyboardOpen = false
-    }
+//    @objc private func keyboardWillShow(sender: NSNotification) {
+////        keyboardOpen = true
+//    }
+//    @objc private func keyboardWillHide(sender: NSNotification) {
+////        keyboardOpen = false
+//    }
     
     //MARK: - View re-positioning
     /**
@@ -288,27 +288,29 @@ class ViewControllerMain: UIViewController{
     ///Sets state to .food, updating the view to display the food domain. If keyboard is open when set (only possible from Exercise domain), it is dismissed and state change is delayed to smooth the transition
     @IBAction private func foodButton(_ sender: UIButton) {
         //If keyboard is open and tab is swapped, dismiss it and then change state smoothly
-        if keyboardOpen == true{
-            view.endEditing(true)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                self.state = .food
-            }
-        }
-        else{
-            self.state = .food
-        }
+//        if keyboardOpen == true{
+        view.endEditing(true)
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+//                self.state = .food
+//            }
+//        }
+//        else{
+        self.state = .food
+//        }
     }
     ///Sets state to .exercise, updating the view to display the exercise domain. If keyboard is open when set (only possible from Food domain), it is dismissed and state change is delayed to smooth the transition
     @IBAction private func exerciseButton(_ sender: UIButton) {
-        if keyboardOpen == true{
-            view.endEditing(true)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                self.state = .exercise
-            }
-        }
-        else{
-            self.state = .exercise
-        }
+//        if keyboardOpen == true{
+//            view.endEditing(true)
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+        view.endEditing(true)
+
+        self.state = .exercise
+//            }
+//        }
+//        else{
+//            self.state = .exercise
+//        }
     }
     ///Sets state to .advice, updating the view to display the advice domain
     @IBAction private func adviceButton(_ sender: UIButton) {
@@ -435,7 +437,7 @@ extension UIView {
     }
     
     @IBInspectable
-    var borderColorInsp: UIColor? {
+    var borderColor: UIColor? {
         get {
             if let color = layer.borderColor {
                 return UIColor(cgColor: color)

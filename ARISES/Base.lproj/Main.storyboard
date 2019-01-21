@@ -26,8 +26,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Food" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GUC-83-C6W">
-                                <rect key="frame" x="27" y="8" width="46" height="26"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GUC-83-C6W">
+                                <rect key="frame" x="27" y="13" width="46" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -934,9 +934,6 @@
                                     <constraint firstAttribute="width" secondItem="mVn-yI-jti" secondAttribute="height" multiplier="75:56" id="2BP-W1-i4T"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="30"/>
-                                    </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
                                         <color key="value" cocoaTouchSystemColor="darkTextColor"/>
                                     </userDefinedRuntimeAttribute>
@@ -2087,22 +2084,22 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                         <connections>
-                            <outletCollection property="gestureRecognizers" destination="aTZ-Pb-k2J" appends="YES" id="haX-t9-imW"/>
                             <outletCollection property="gestureRecognizers" destination="N4Q-XD-b3a" appends="YES" id="JZO-Lt-CRT"/>
+                            <outletCollection property="gestureRecognizers" destination="aTZ-Pb-k2J" appends="YES" id="h5d-lo-A57"/>
                         </connections>
                     </view>
                     <connections>
                         <outlet property="Basal" destination="sO0-rE-GzH" id="hZB-uO-krb"/>
                         <outlet property="chartView" destination="hhK-5Y-w2W" id="GA6-zY-V6M"/>
                         <outlet property="currentGlucose" destination="Z6U-cI-lXW" id="gkd-jY-r3j"/>
-                        <outlet property="leftGestureRecognizer" destination="N4Q-XD-b3a" id="ghS-PO-EA0"/>
+                        <outlet property="leftGestureRecognizer" destination="N4Q-XD-b3a" id="qB1-Zl-en2"/>
                         <outlet property="leftSideViewContainer" destination="Ag7-z6-FpG" id="290-Ch-qEJ"/>
                         <outlet property="leftView1" destination="mED-L5-pEA" id="H3Z-IR-je4"/>
                         <outlet property="leftView2" destination="x0W-Sa-IPF" id="C7q-Og-nsz"/>
                         <outlet property="leftView3" destination="dhv-Ev-dHs" id="hsC-zW-AkM"/>
                         <outlet property="pickerTextField" destination="5Fg-oh-rg7" id="nqg-LS-4SA"/>
-                        <outlet property="rightGestureRecognizer" destination="aTZ-Pb-k2J" id="8Ip-uX-Uwo"/>
-                        <outlet property="rightSideViewContainer" destination="ZEV-bY-Kyk" id="RGH-hF-rGs"/>
+                        <outlet property="rightGestureRecognizer" destination="aTZ-Pb-k2J" id="jHo-EB-Hxl"/>
+                        <outlet property="rightSideViewContainer" destination="ZEV-bY-Kyk" id="0Nx-85-2oZ"/>
                         <outlet property="rightView" destination="8Cm-ZE-NMX" id="pgw-bz-cvp"/>
                         <outlet property="rightView2" destination="Qa2-Ya-7Ex" id="KCK-L7-xXX"/>
                         <outlet property="rightView3" destination="1F5-oK-ud4" id="K8h-h4-VzI"/>
@@ -2111,12 +2108,12 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EFG-cG-APi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <swipeGestureRecognizer direction="right" id="aTZ-Pb-k2J" userLabel="RightGestureRecognizer">
                     <connections>
-                        <action selector="rightGesture:" destination="xlR-5O-fuC" id="U1B-L0-ZqE"/>
+                        <action selector="rightGesture:" destination="xlR-5O-fuC" id="E7R-BW-lcl"/>
                     </connections>
                 </swipeGestureRecognizer>
                 <swipeGestureRecognizer direction="left" id="N4Q-XD-b3a" userLabel="LeftGestureRecognizer">
                     <connections>
-                        <action selector="leftGesture:" destination="xlR-5O-fuC" id="LEq-en-Tbe"/>
+                        <action selector="leftGesture:" destination="xlR-5O-fuC" id="E05-hf-Dwk"/>
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
