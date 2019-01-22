@@ -145,6 +145,8 @@ class ViewControllerMain: UIViewController{
 //        readCSV()
 //        startTimer()
         
+//        readCSV()
+        
     }
 //
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
@@ -194,30 +196,38 @@ class ViewControllerMain: UIViewController{
 //        stopTimer()
 //    }
 //
-//    private func readCSV()  {
-//        guard let csvPath = Bundle.main.path(forResource: "ABC4001_CGM_6m_I", ofType: "csv") else { return }
-//
-//        do {
-//            let csvData = try String(contentsOfFile: csvPath, encoding: String.Encoding.utf8)
-//            let csv = csvData.csvRows()
-//            let csvLength = csv.count
-//            for row in csv[1..<csvLength] {
-////                let row = csv[index]
+    private func readCSV()  {
+        guard let csvPath = Bundle.main.path(forResource: "ABC4001_CGM_6m_I", ofType: "csv") else { return }
+
+        do {
+            let csvData = try String(contentsOfFile: csvPath, encoding: String.Encoding.utf8)
+            let csv = csvData.csvRows()
+            let csvLength = csv.count
+            print(csv.count)
+            for row in csv[1..<csvLength] {
+//                let row = csv[index]
 //                print("date: \(row[0]), glucose: \(row[1])")
-////                print("glucose: \(row[1])")
-//                guard let glucoseValue = Double(row[1]) else {
-//                    return
-//                }
-//                let dateFormatter = DateFormatter()
-//                guard let glucoseDate = dateFormatter.date(from: row[0]) else {
-//                    return
-//                }
-//
-//            }
-//        } catch{
-//            print("ERROR: \(error)")
-//        }
-//    }
+//                print("glucose: \(row[1])")
+                guard let glucoseValue = Double(row[1]) else {
+                    print("Whaaaa")
+                    return
+                }
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+                guard let glucoseDate = dateFormatter.date(from: row[0]) else {
+//                    print("Whaaaa 2 \(dateFormatter.date(from: row[0]))")
+                    print("Whaaa 2")
+                    return
+                }
+                let glucoseStartDate = Calendar.current.startOfDay(for: glucoseDate)
+                print(glucoseStartDate)
+//                print("GlucoseValue: \(glucoseValue), GlucoseDate: \(glucoseDate), GlucoseStart: \(glucoseStartDate)")
+                ModelController().addGlucose(value: glucoseValue, time: glucoseDate, date: glucoseStartDate)
+            }
+        } catch{
+            print("ERROR: \(error)")
+        }
+    }
     
     //MARK: - Update Day
     ///Updates the currentDay variable with a date provided via notification from ViewControllerGraph

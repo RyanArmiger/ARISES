@@ -65,16 +65,18 @@ class ModelController {
      */
     func findOrMakeDay(day: Date) -> Day {
         //        let day = formatDateToDay(date: day)
-        let day = Calendar.current.startOfDay(for: Date())
+        let dayStart = Calendar.current.startOfDay(for: day)
         let dateFetch: NSFetchRequest<Day> = Day.fetchRequest()
-        dateFetch.predicate = NSPredicate(format: "date == %@", day as CVarArg)
+        dateFetch.predicate = NSPredicate(format: "date == %@", dayStart as CVarArg)
         let checkForDay = try? PersistenceService.context.fetch(dateFetch)
         if checkForDay != nil {
             if checkForDay?.isEmpty == false {
+//                print("NotNewDate: \(checkForDay!.first!)")
                 return (checkForDay!.first!)
             } else {
                 let newDay = Day(context: PersistenceService.context)
-                newDay.date = day
+                newDay.date = dayStart
+//                print("NewDay: \(newDay.date)")
                 PersistenceService.saveContext()
                 return newDay
             }

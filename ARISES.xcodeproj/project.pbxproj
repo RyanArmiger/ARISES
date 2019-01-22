@@ -31,8 +31,7 @@
 		375587D0209E086D00594532 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375587CE209E086D00594532 /* LaunchScreen.storyboard */; };
 		378658AE20AC675D007C13B2 /* ViewControllerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378658AD20AC675D007C13B2 /* ViewControllerTableViewCell.swift */; };
 		379AC90820D962100032C46B /* .jazzy.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 379AC90720D962100032C46B /* .jazzy.yaml */; };
-		37A9ACE520B45025001B16BB /* ChartBGView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A9ACE420B45025001B16BB /* ChartBGView.swift */; };
-		37A9ACE720B45062001B16BB /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A9ACE620B45062001B16BB /* CustomView.swift */; };
+		37A8629821F7A3E500D4E8AB /* ChartXAxisFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A8629721F7A3E500D4E8AB /* ChartXAxisFormatter.swift */; };
 		37B3716220B47EF20048A942 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B3716120B47EF20048A942 /* PersistenceService.swift */; };
 		37B568BB20B485600014F735 /* ARISES.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 37B568B920B485600014F735 /* ARISES.xcdatamodeld */; };
 		37CFC5D120BEDD250051FDFC /* IndicatorControllerFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CFC5D020BEDD250051FDFC /* IndicatorControllerFood.swift */; };
@@ -81,8 +80,7 @@
 		378658AD20AC675D007C13B2 /* ViewControllerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTableViewCell.swift; sourceTree = "<group>"; };
 		379AC90520D95C340032C46B /* libSwiftCharts.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSwiftCharts.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		379AC90720D962100032C46B /* .jazzy.yaml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .jazzy.yaml; sourceTree = "<group>"; };
-		37A9ACE420B45025001B16BB /* ChartBGView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartBGView.swift; sourceTree = "<group>"; };
-		37A9ACE620B45062001B16BB /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		37A8629721F7A3E500D4E8AB /* ChartXAxisFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartXAxisFormatter.swift; sourceTree = "<group>"; };
 		37B3716120B47EF20048A942 /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
 		37B568BA20B485600014F735 /* ARISES.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ARISES.xcdatamodel; sourceTree = "<group>"; };
 		37CC65E320D94E03003E5826 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -129,8 +127,7 @@
 		3718079F20B8200B00D7C81A /* Display */ = {
 			isa = PBXGroup;
 			children = (
-				37A9ACE420B45025001B16BB /* ChartBGView.swift */,
-				37A9ACE620B45062001B16BB /* CustomView.swift */,
+				37A8629721F7A3E500D4E8AB /* ChartXAxisFormatter.swift */,
 				3718B86320AC9A75006F1A47 /* ViewControllerGraph.swift */,
 			);
 			path = Display;
@@ -332,13 +329,11 @@
 				3718B85E20AC9A2A006F1A47 /* ViewControllerAdvice.swift in Sources */,
 				3712A23A20C566DD006DB63C /* Illness.swift in Sources */,
 				3718B86020AC9A42006F1A47 /* ViewControllerExercise.swift in Sources */,
-				37A9ACE520B45025001B16BB /* ChartBGView.swift in Sources */,
 				3718B86620AC9CE3006F1A47 /* ViewControllerMain.swift in Sources */,
 				375587C6209E086C00594532 /* AppDelegate.swift in Sources */,
 				371807A320B8500F00D7C81A /* ModelController.swift in Sources */,
 				3718079520B818ED00D7C81A /* Exercise.swift in Sources */,
 				372141EA21F5319100B8627F /* CSVreader.swift in Sources */,
-				37A9ACE720B45062001B16BB /* CustomView.swift in Sources */,
 				37B3716220B47EF20048A942 /* PersistenceService.swift in Sources */,
 				3718079D20B81EB300D7C81A /* Day.swift in Sources */,
 				3718B85C20AC99B6006F1A47 /* ViewControllerFood.swift in Sources */,
@@ -352,6 +347,7 @@
 				3718079B20B81E2100D7C81A /* Meals.swift in Sources */,
 				37B568BB20B485600014F735 /* ARISES.xcdatamodeld in Sources */,
 				3712A23C20C566FF006DB63C /* Stress.swift in Sources */,
+				37A8629821F7A3E500D4E8AB /* ChartXAxisFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -213,7 +213,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IzQ-wP-kDe">
-                                                    <rect key="frame" x="75" y="12" width="144" height="21"/>
+                                                    <rect key="frame" x="75" y="12" width="143" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -1852,16 +1852,47 @@
             </objects>
             <point key="canvasLocation" x="3220" y="561.76911544227892"/>
         </scene>
-        <!--View Controller-->
+        <!--View Controller Graph-->
         <scene sceneID="W7e-Sg-Zge">
             <objects>
-                <viewController id="Pb7-4b-e94" sceneMemberID="viewController">
+                <viewController id="Pb7-4b-e94" customClass="ViewControllerGraph" customModule="ARISES" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="W7S-AG-VBf">
                         <rect key="frame" x="0.0" y="0.0" width="355" height="265"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x5L-Hv-RKP" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="0.0" width="355" height="265"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="41M-nE-us9">
+                                <rect key="frame" x="15" y="15" width="325" height="40"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="x5L-Hv-RKP" firstAttribute="top" secondItem="2Tc-pB-2LP" secondAttribute="top" id="073-03-Vtq"/>
+                            <constraint firstItem="2Tc-pB-2LP" firstAttribute="trailing" secondItem="x5L-Hv-RKP" secondAttribute="trailing" id="AY5-RN-Grq"/>
+                            <constraint firstItem="2Tc-pB-2LP" firstAttribute="trailing" secondItem="41M-nE-us9" secondAttribute="trailing" constant="15" id="F4l-yR-O1N"/>
+                            <constraint firstItem="41M-nE-us9" firstAttribute="top" secondItem="2Tc-pB-2LP" secondAttribute="top" constant="15" id="Y3e-bn-JB3"/>
+                            <constraint firstItem="41M-nE-us9" firstAttribute="height" secondItem="x5L-Hv-RKP" secondAttribute="height" multiplier="0.15" id="hbu-jN-YWg"/>
+                            <constraint firstItem="2Tc-pB-2LP" firstAttribute="bottom" secondItem="x5L-Hv-RKP" secondAttribute="bottom" id="iei-nw-DHp"/>
+                            <constraint firstItem="41M-nE-us9" firstAttribute="leading" secondItem="2Tc-pB-2LP" secondAttribute="leading" constant="15" id="npE-ku-tof"/>
+                            <constraint firstItem="x5L-Hv-RKP" firstAttribute="leading" secondItem="2Tc-pB-2LP" secondAttribute="leading" id="yfd-ql-lyQ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="2Tc-pB-2LP"/>
                     </view>
+                    <connections>
+                        <outlet property="chartView" destination="x5L-Hv-RKP" id="VB9-vD-zxO"/>
+                        <outlet property="pickerTextField" destination="41M-nE-us9" id="1Al-Dw-dgZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="edo-MZ-buv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
