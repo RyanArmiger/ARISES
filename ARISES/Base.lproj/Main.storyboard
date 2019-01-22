@@ -791,7 +791,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ohj-Ee-wqC">
                                         <rect key="frame" x="146.5" y="0.0" width="65.5" height="31"/>
                                         <attributedString key="attributedText">
-                                            <fragment content="Unwell:">
+                                            <fragment content="Illness:">
                                                 <attributes>
                                                     <font key="NSFont" size="17" name=".AppleSystemUIFont"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="15" tighteningFactorForTruncation="0.0"/>
@@ -913,6 +913,9 @@
                                         <color key="value" cocoaTouchSystemColor="darkTextColor"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="Pb7-4b-e94" kind="embed" id="7Ib-Ru-w5V"/>
+                                </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A0C-wa-oq3">
                                 <rect key="frame" x="0.0" y="303" width="375" height="364"/>
@@ -1713,8 +1716,8 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRK-l0-FFL">
-                                <rect key="frame" x="0.0" y="0.0" width="266" height="63"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="0.0" y="0.0" width="301" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -1818,7 +1821,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F59-J6-1oB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3220.8000000000002" y="349.47526236881561"/>
+            <point key="canvasLocation" x="3220" y="349.47526236881561"/>
         </scene>
         <!--View Controller Advice Indicator-->
         <scene sceneID="VzJ-A0-Efg">
@@ -1848,6 +1851,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="33g-Do-Oi0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3220" y="561.76911544227892"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="W7e-Sg-Zge">
+            <objects>
+                <viewController id="Pb7-4b-e94" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W7S-AG-VBf">
+                        <rect key="frame" x="0.0" y="0.0" width="355" height="265"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="2Tc-pB-2LP"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="edo-MZ-buv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2473" y="-501"/>
         </scene>
         <!--View Controller Graph-->
         <scene sceneID="aFk-ic-Wt2">
@@ -2114,7 +2132,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2493.5999999999999" y="-552.77361319340332"/>
+            <point key="canvasLocation" x="3015" y="-992"/>
         </scene>
     </scenes>
     <resources>
