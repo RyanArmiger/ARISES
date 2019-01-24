@@ -1,7 +1,7 @@
 //
 //  ViewControllerGraph.swift
 //  ARISES
-//  This file deals with everything graph related. Base chart library (Podfile): https://github.com/i-schuetz/SwiftCharts.git
+//  This file deals with everything graph related. Base chart library (Podfile):
 //  Created by Ryan Armiger on 16/05/2018.
 //  Copyright Â© 2018 Ryan Armiger. All rights reserved.
 //
@@ -48,10 +48,12 @@ class ViewControllerGraph: UIViewController {
 //        nc.addObserver(self, selector: #selector(dataUpdated), name: Notification.Name("FoodAdded"), object: nil)
 //        nc.addObserver(self, selector: #selector(dataUpdated), name: Notification.Name("ExerciseAdded"), object: nil)
 //        nc.addObserver(self, selector: #selector(dataUpdated), name: Notification.Name("InsulinAdded"), object: nil)
+        //        nc.addObserver(self, selector: #selector(dataUpdated), name: Notification.Name("InsulinAdded"), object: nil)
+        nc.addObserver(self, selector: #selector(updateGraph), name: Notification.Name("GlucoseAdded"), object: nil)
         nc.addObserver(self, selector: #selector(setDay(notification:)), name: Notification.Name("setDay"), object: nil)
         createDatePicker()
         
-        glucoseArr = ModelController().fetchGlucose(day: today)
+//        glucoseArr = ModelController().fetchGlucose(day: today)
         //        print(glucoseArr?.count)
         updateGraph()
 
@@ -71,7 +73,7 @@ class ViewControllerGraph: UIViewController {
         today = dayToSet
         formatWeekday(date: today)
         updateDay()
-        glucoseArr = ModelController().fetchGlucose(day: today)
+//        glucoseArr = ModelController().fetchGlucose(day: today)
         updateGraph()
     }
 	
@@ -118,14 +120,18 @@ class ViewControllerGraph: UIViewController {
         today = Calendar.current.startOfDay(for: picker.date)
         updateDay()
         picker.date = Date()
-        glucoseArr = ModelController().fetchGlucose(day: today)
+//        glucoseArr = ModelController().fetchGlucose(day: today)
         updateGraph()
     }
     
+    @objc
     private func updateGraph() {
+        glucoseArr = ModelController().fetchGlucose(day: today)
         guard glucoseArr != [] else {
+            chartView.isHidden = true
             return
         }
+        chartView.isHidden = false
         guard let arr = glucoseArr else {
             return
         }
@@ -149,7 +155,7 @@ class ViewControllerGraph: UIViewController {
             }
         }
         
-        let line1 = LineChartDataSet(values: lineChartEntry, label: "BG level in mmol/l")
+        let line1 = LineChartDataSet(values: lineChartEntry, label: "BG mmol/l")
         line1.colors = [NSUIColor.blue]
         line1.drawCirclesEnabled = true
         line1.drawCircleHoleEnabled = false
@@ -160,6 +166,8 @@ class ViewControllerGraph: UIViewController {
         data.addDataSet(line1)
         data.setDrawValues(false)
         chartView.xAxis.valueFormatter = xValuesNumberFormatter
+        chartView.xAxis.labelPosition = XAxis.LabelPosition.bottom
+        chartView.legend.enabled = false
         //        let customYAxis = CustomYAxisRenderer(viewPortHandler: chartView.viewPortHandler, yAxis: chartView.getAxis(.left), transformer: chartView.getTransformer(forAxis: .left))
         //        chartView.leftYAxisRenderer = customYAxis
         //        chartView.leftAxis.drawGridLinesEnabled = true

@@ -156,6 +156,9 @@ class ModelController {
         currentDay.addToGlucose(newGlucose)
         PersistenceService.saveContext()
 
+        let nc = NotificationCenter.default
+        nc.post(name: Notification.Name("GlucoseAdded"), object: nil)
+
     }
     
     /**

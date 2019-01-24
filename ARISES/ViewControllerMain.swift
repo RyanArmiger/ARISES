@@ -101,6 +101,9 @@ class ViewControllerMain: UIViewController{
             updateViews()
         }
     }
+    // Variable to track which value to add to database every 5 minutes
+    private var loadCounter: Int = 0
+    private var loadDate: Date?
     
     //MARK: - Override viewDidLoad
     /**viewDidLoad override to set initial state of:
@@ -137,7 +140,7 @@ class ViewControllerMain: UIViewController{
         //Observer to update currentDay variable to match graph's day
         nc.addObserver(self, selector: #selector(updateDay(notification:)), name: Notification.Name("dayChanged"), object: nil)
         
-
+        loadDate = Date()
         //Observers to determine keyboard state
 //        nc.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil)
 //
@@ -145,9 +148,53 @@ class ViewControllerMain: UIViewController{
 //        readCSV()
 //        startTimer()
         
-//        readCSV()
-        
+//
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+    }
+    
+    func updateSimulationData() {
+        DispatchQueue.main.async { [weak self] in
+            // 3
+            guard let strongSelf = self else {
+                return
+            }
+            guard let _ = strongSelf.loadDate else {
+                print("ERROR: loadDate is nil")
+                return
+            }
+            //FIND A BETTER WAY
+//            print("loadDate: \(strongSelf.loadDate) Date \(Date())")
+//            print("is <:  \(strongSelf.loadDate! < Date())" )
+            while strongSelf.loadDate! < Date() {
+                guard let row = strongSelf.readCSV(row: strongSelf.loadCounter) else {
+                    print("ERROR: readCSV failed to return a non-nil value")
+                    return
+                }
+                guard let glucoseValue = Double(row[1]) else {
+                    print("ERROR: GlucoseValue is nil")
+                    return
+                }
+                //            let dateFormatter = DateFormatter()
+                //            dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+                //            guard let glucoseDate = loadDate else {
+                ////                    print("Whaaaa 2 \(dateFormatter.date(from: row[0]))")
+                //                print("ERROR: GlucoseDate formatted to nil")
+                //                return
+                //            }
+                let glucoseStartDate = Calendar.current.startOfDay(for: strongSelf.loadDate!)
+                //            print(glucoseStartDate)
+                //                print("GlucoseValue: \(glucoseValue), GlucoseDate: \(glucoseDate), GlucoseStart: \(glucoseStartDate)")
+                ModelController().addGlucose(value: glucoseValue, time: strongSelf.loadDate!, date: glucoseStartDate)
+                strongSelf.loadCounter = strongSelf.loadCounter + 1
+                strongSelf.loadDate = strongSelf.loadDate!.addingTimeInterval(300)
+                
+            }
+        }
+    }
+    
 //
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
         switch UIDevice.current.orientation{
@@ -178,13 +225,36 @@ class ViewControllerMain: UIViewController{
             tabsContainerView.isHidden = false
         }
     }
+    
 //   private weak var timer: Timer?
 //
 //    private func startTimer() {
 //        timer?.invalidate()   // just in case you had existing `Timer`, `invalidate` it before we lose our reference to it
 //        timer = Timer.scheduledTimer(withTimeInterval: 300.0, repeats: true) { [weak self] _ in
-//            //ModelController().addGlucose(value: glucoseValue, time: String, date:      )
+//            guard let strongSelf = self else {
+//                return
+//            }
+//            guard let row = strongSelf.readCSV(row: strongSelf.loadCounter) else {
+//                return
+//            }
+//            guard let glucoseValue = Double(row[1]) else {
+//                print("ERROR: GlucoseValue is nil")
+//                return
+//            }
+//            let dateFormatter = DateFormatter()
+//            dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+//            guard let glucoseDate = strongSelf.loadDate else {
+////                    print("Whaaaa 2 \(dateFormatter.date(from: row[0]))")
+//                print("ERROR: GlucoseDate formatted to nil")
+//                return
+//            }
+//            let glucoseStartDate = Calendar.current.startOfDay(for: glucoseDate)
+////            print(glucoseStartDate)
+////                print("GlucoseValue: \(glucoseValue), GlucoseDate: \(glucoseDate), GlucoseStart: \(glucoseStartDate)")
+//            ModelController().addGlucose(value: glucoseValue, time: glucoseDate, date: glucoseStartDate)
 //            print("Timer goes tick")
+//            strongSelf.loadCounter = strongSelf.loadCounter + 1
+//            strongSelf.loadDate = strongSelf.loadDate?.addingTimeInterval(300)
 //        }
 //    }
 //
@@ -195,37 +265,39 @@ class ViewControllerMain: UIViewController{
 //    deinit {
 //        stopTimer()
 //    }
-//
-    private func readCSV()  {
-        guard let csvPath = Bundle.main.path(forResource: "ABC4001_CGM_6m_I", ofType: "csv") else { return }
+
+    private func readCSV(row: Int) -> [String]? {
+        guard let csvPath = Bundle.main.path(forResource: "ABC4001_CGM_6m_I", ofType: "csv") else { return nil }
 
         do {
             let csvData = try String(contentsOfFile: csvPath, encoding: String.Encoding.utf8)
             let csv = csvData.csvRows()
-            let csvLength = csv.count
-            print(csv.count)
-            for row in csv[1..<csvLength] {
-//                let row = csv[index]
-//                print("date: \(row[0]), glucose: \(row[1])")
-//                print("glucose: \(row[1])")
-                guard let glucoseValue = Double(row[1]) else {
-                    print("Whaaaa")
-                    return
-                }
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
-                guard let glucoseDate = dateFormatter.date(from: row[0]) else {
-//                    print("Whaaaa 2 \(dateFormatter.date(from: row[0]))")
-                    print("Whaaa 2")
-                    return
-                }
-                let glucoseStartDate = Calendar.current.startOfDay(for: glucoseDate)
-                print(glucoseStartDate)
-//                print("GlucoseValue: \(glucoseValue), GlucoseDate: \(glucoseDate), GlucoseStart: \(glucoseStartDate)")
-                ModelController().addGlucose(value: glucoseValue, time: glucoseDate, date: glucoseStartDate)
-            }
+//            let csvLength = csv.count
+            return csv[row]
+//            print(csv.count)
+//            for row in csv[1..<csvLength] {
+////                let row = csv[index]
+////                print("date: \(row[0]), glucose: \(row[1])")
+////                print("glucose: \(row[1])")
+//                guard let glucoseValue = Double(row[1]) else {
+//                    print("Whaaaa")
+//                    return
+//                }
+//                let dateFormatter = DateFormatter()
+//                dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+//                guard let glucoseDate = dateFormatter.date(from: row[0]) else {
+////                    print("Whaaaa 2 \(dateFormatter.date(from: row[0]))")
+//                    print("Whaaa 2")
+//                    return
+//                }
+//                let glucoseStartDate = Calendar.current.startOfDay(for: glucoseDate)
+//                print(glucoseStartDate)
+////                print("GlucoseValue: \(glucoseValue), GlucoseDate: \(glucoseDate), GlucoseStart: \(glucoseStartDate)")
+//                ModelController().addGlucose(value: glucoseValue, time: glucoseDate, date: glucoseStartDate)
+//            }
         } catch{
             print("ERROR: \(error)")
+            return nil
         }
     }
     
@@ -355,6 +427,7 @@ class ViewControllerMain: UIViewController{
     }
     ///Sets state to .advice, updating the view to display the advice domain
     @IBAction private func adviceButton(_ sender: UIButton) {
+        updateSimulationData()
         self.state = .advice
     }
     
