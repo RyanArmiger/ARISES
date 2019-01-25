@@ -161,6 +161,25 @@ class ModelController {
 
     }
     
+
+    func addGlucoseArr(value: [Double], time: Date, date: Date){
+        print("adding arr")
+        var runningTime = time
+        let currentDay = findOrMakeDay(day: date)
+        for val in value{
+            let newGlucose = Glucose(context: PersistenceService.context)
+            newGlucose.value = val
+            newGlucose.time = runningTime
+            currentDay.addToGlucose(newGlucose)
+            runningTime = runningTime.addingTimeInterval(300)
+        }
+        PersistenceService.saveContext()
+        let nc = NotificationCenter.default
+        nc.post(name: Notification.Name("GlucoseAdded"), object: nil)
+        
+    }
+    
+    
     /**
      Adds a new insulin log to core data
      - parameter units: Double, Insulin units injected

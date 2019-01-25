@@ -155,41 +155,89 @@ class ViewControllerMain: UIViewController{
         super.viewDidAppear(true)
     }
     
-    func updateSimulationData() {
-        DispatchQueue.main.async { [weak self] in
-            // 3
-            guard let strongSelf = self else {
+    private func updateSimulationData() {
+        // THIS IS TERRIBLE CODE RIGHT NOW.
+        // Better way to do it, if this code is important, is to pre-load the amount based on time passed
+        // Then create a new function in model controller to add all without saving and giving notification until end
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let self = self else {
                 return
             }
-            guard let _ = strongSelf.loadDate else {
-                print("ERROR: loadDate is nil")
+            DispatchQueue.main.async { [weak self] in
+                // 3
+                guard let strongSelf = self else {
+                    return
+                }
+                guard let _ = strongSelf.loadDate else {
+                    print("ERROR: loadDate is nil")
+                    return
+                }
+                let glucoseStartDate = Calendar.current.startOfDay(for: strongSelf.loadDate!)
+                //FIND A BETTER WAY
+    //            print("loadDate: \(strongSelf.loadDate) Date \(Date())")
+    //            print("is <:  \(strongSelf.loadDate! < Date())" )
+                while strongSelf.loadDate! < Date() {
+                    guard let row = strongSelf.readCSV(row: strongSelf.loadCounter) else {
+                        print("ERROR: readCSV failed to return a non-nil value")
+                        return
+                    }
+                    guard let glucoseValue = Double(row[1]) else {
+                        print("ERROR: GlucoseValue is nil")
+                        return
+                    }
+                    //            let dateFormatter = DateFormatter()
+                    //            dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+                    //            guard let glucoseDate = loadDate else {
+                    ////                    print("Whaaaa 2 \(dateFormatter.date(from: row[0]))")
+                    //                print("ERROR: GlucoseDate formatted to nil")
+                    //                return
+                    //            }
+                    //            print(glucoseStartDate)
+                    //                print("GlucoseValue: \(glucoseValue), GlucoseDate: \(glucoseDate), GlucoseStart: \(glucoseStartDate)")
+                    ModelController().addGlucose(value: glucoseValue, time: strongSelf.loadDate!, date: glucoseStartDate)
+                    strongSelf.loadCounter = strongSelf.loadCounter + 1
+                    strongSelf.loadDate = strongSelf.loadDate!.addingTimeInterval(300)
+                    
+                }
+            }
+        }
+    }
+    
+    private func updateSimulationData2() {
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let self = self else {
                 return
             }
-            //FIND A BETTER WAY
-//            print("loadDate: \(strongSelf.loadDate) Date \(Date())")
-//            print("is <:  \(strongSelf.loadDate! < Date())" )
-            while strongSelf.loadDate! < Date() {
-                guard let row = strongSelf.readCSV(row: strongSelf.loadCounter) else {
+            DispatchQueue.main.async { [weak self] in
+                // 3
+                guard let strongSelf = self else {
+                    return
+                }
+                guard let _ = strongSelf.loadDate else {
+                    print("ERROR: loadDate is nil")
+                    return
+                }
+                let difference = Date().timeIntervalSince(strongSelf.loadDate!)
+                print("TimeDifference: ", difference)
+                let numPassed = difference / 300
+                guard numPassed > 1 else {
+                    return
+                }
+                let glucoseStartDate = Calendar.current.startOfDay(for: strongSelf.loadDate!)
+                guard let row = strongSelf.readAllCSV(row: strongSelf.loadCounter) else {
                     print("ERROR: readCSV failed to return a non-nil value")
                     return
                 }
-                guard let glucoseValue = Double(row[1]) else {
-                    print("ERROR: GlucoseValue is nil")
-                    return
+                var glucoseVal = [Double]()
+                for tuple in row[strongSelf.loadCounter..<(strongSelf.loadCounter+Int(floor(numPassed)))] {
+                    glucoseVal.append(Double(tuple[1])!)
                 }
-                //            let dateFormatter = DateFormatter()
-                //            dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
-                //            guard let glucoseDate = loadDate else {
-                ////                    print("Whaaaa 2 \(dateFormatter.date(from: row[0]))")
-                //                print("ERROR: GlucoseDate formatted to nil")
-                //                return
-                //            }
-                let glucoseStartDate = Calendar.current.startOfDay(for: strongSelf.loadDate!)
-                //            print(glucoseStartDate)
-                //                print("GlucoseValue: \(glucoseValue), GlucoseDate: \(glucoseDate), GlucoseStart: \(glucoseStartDate)")
-                ModelController().addGlucose(value: glucoseValue, time: strongSelf.loadDate!, date: glucoseStartDate)
-                strongSelf.loadCounter = strongSelf.loadCounter + 1
-                strongSelf.loadDate = strongSelf.loadDate!.addingTimeInterval(300)
+
+                ModelController().addGlucoseArr(value: glucoseVal, time: strongSelf.loadDate!, date: glucoseStartDate)
+                strongSelf.loadCounter = strongSelf.loadCounter + Int(floor(numPassed))
+                
+                let timeAdd = 300 * floor(numPassed)
+                strongSelf.loadDate = strongSelf.loadDate!.addingTimeInterval(timeAdd)
                 
             }
         }
@@ -300,6 +348,42 @@ class ViewControllerMain: UIViewController{
             return nil
         }
     }
+    
+    private func readAllCSV(row: Int) -> [[String]]? {
+        guard let csvPath = Bundle.main.path(forResource: "ABC4001_CGM_6m_I", ofType: "csv") else { return nil }
+        
+        do {
+            let csvData = try String(contentsOfFile: csvPath, encoding: String.Encoding.utf8)
+            let csv = csvData.csvRows()
+            //            let csvLength = csv.count
+            return csv
+            //            print(csv.count)
+            //            for row in csv[1..<csvLength] {
+            ////                let row = csv[index]
+            ////                print("date: \(row[0]), glucose: \(row[1])")
+            ////                print("glucose: \(row[1])")
+            //                guard let glucoseValue = Double(row[1]) else {
+            //                    print("Whaaaa")
+            //                    return
+            //                }
+            //                let dateFormatter = DateFormatter()
+            //                dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
+            //                guard let glucoseDate = dateFormatter.date(from: row[0]) else {
+            ////                    print("Whaaaa 2 \(dateFormatter.date(from: row[0]))")
+            //                    print("Whaaa 2")
+            //                    return
+            //                }
+            //                let glucoseStartDate = Calendar.current.startOfDay(for: glucoseDate)
+            //                print(glucoseStartDate)
+            ////                print("GlucoseValue: \(glucoseValue), GlucoseDate: \(glucoseDate), GlucoseStart: \(glucoseStartDate)")
+            //                ModelController().addGlucose(value: glucoseValue, time: glucoseDate, date: glucoseStartDate)
+            //            }
+        } catch{
+            print("ERROR: \(error)")
+            return nil
+        }
+    }
+    
     
     //MARK: - Update Day
     ///Updates the currentDay variable with a date provided via notification from ViewControllerGraph
@@ -427,7 +511,7 @@ class ViewControllerMain: UIViewController{
     }
     ///Sets state to .advice, updating the view to display the advice domain
     @IBAction private func adviceButton(_ sender: UIButton) {
-        updateSimulationData()
+        updateSimulationData2()
         self.state = .advice
     }
     
