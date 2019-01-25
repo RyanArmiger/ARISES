@@ -218,7 +218,7 @@ class ViewControllerMain: UIViewController{
                     return
                 }
                 let difference = Date().timeIntervalSince(strongSelf.loadDate!)
-                print("TimeDifference: ", difference)
+//                print("TimeDifference: ", difference)
                 let numPassed = difference / 300
                 guard numPassed > 1 else {
                     return
@@ -242,6 +242,48 @@ class ViewControllerMain: UIViewController{
             }
         }
     }
+    
+    private func updateSimulationData3() {
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+
+            // 3
+            guard let strongSelf = self else {
+                return
+            }
+            guard let _ = strongSelf.loadDate else {
+                print("ERROR: loadDate is nil")
+                return
+            }
+            let difference = Date().timeIntervalSince(strongSelf.loadDate!)
+            //                print("TimeDifference: ", difference)
+            let numPassed = difference / 300
+            guard numPassed > 1 else {
+                return
+            }
+            let glucoseStartDate = Calendar.current.startOfDay(for: strongSelf.loadDate!)
+            guard let row = strongSelf.readAllCSV(row: strongSelf.loadCounter) else {
+                print("ERROR: readCSV failed to return a non-nil value")
+                return
+            }
+            var glucoseVal = [Double]()
+            for tuple in row[strongSelf.loadCounter..<(strongSelf.loadCounter+Int(floor(numPassed)))] {
+                glucoseVal.append(Double(tuple[1])!)
+            }
+            
+            ModelController().addGlucoseArr(value: glucoseVal, time: strongSelf.loadDate!, date: glucoseStartDate)
+            strongSelf.loadCounter = strongSelf.loadCounter + Int(floor(numPassed))
+            
+            let timeAdd = 300 * floor(numPassed)
+            strongSelf.loadDate = strongSelf.loadDate!.addingTimeInterval(timeAdd)
+            
+            DispatchQueue.main.async {
+                let nc = NotificationCenter.default
+                nc.post(name: Notification.Name("GlucoseAdded"), object: nil)
+            }
+        }
+    
+    }
+    
     
 //
     override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
@@ -511,7 +553,7 @@ class ViewControllerMain: UIViewController{
     }
     ///Sets state to .advice, updating the view to display the advice domain
     @IBAction private func adviceButton(_ sender: UIButton) {
-        updateSimulationData2()
+        updateSimulationData3()
         self.state = .advice
     }
     

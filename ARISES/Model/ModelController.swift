@@ -173,10 +173,7 @@ class ModelController {
             currentDay.addToGlucose(newGlucose)
             runningTime = runningTime.addingTimeInterval(300)
         }
-        PersistenceService.saveContext()
-        let nc = NotificationCenter.default
-        nc.post(name: Notification.Name("GlucoseAdded"), object: nil)
-        
+        PersistenceService.saveContext()        
     }
     
     
