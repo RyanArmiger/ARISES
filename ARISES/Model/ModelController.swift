@@ -163,7 +163,7 @@ class ModelController {
     
 
     func addGlucoseArr(value: [Double], time: Date, date: Date){
-        print("adding arr")
+//        print("adding arr")
         var runningTime = time
         let currentDay = findOrMakeDay(day: date)
         for val in value{

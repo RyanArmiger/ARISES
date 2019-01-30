@@ -269,7 +269,7 @@ class ViewControllerMain: UIViewController{
             for tuple in row[strongSelf.loadCounter..<(strongSelf.loadCounter+Int(floor(numPassed)))] {
                 glucoseVal.append(Double(tuple[1])!)
             }
-            
+//            print(glucoseVal.count)
             ModelController().addGlucoseArr(value: glucoseVal, time: strongSelf.loadDate!, date: glucoseStartDate)
             strongSelf.loadCounter = strongSelf.loadCounter + Int(floor(numPassed))
             
