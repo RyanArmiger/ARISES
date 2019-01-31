@@ -180,7 +180,7 @@ class ModelController {
         currentDay.addToGlucose(newGlucose)
         PersistenceService.saveContext()
         //        nc.post(name: Notification.Name("newGlucoseValue"), object: nil)
-        NotificationCenter.default.post(name: Notification.Name("newGlucoseValue"), object: newGlucose)
+        NotificationCenter.default.post(name: Notification.Name("GlucoseAdded"), object: nil)
     }
 
 //    func addGlucoseArr(value: [Double], time: Date, date: Date){

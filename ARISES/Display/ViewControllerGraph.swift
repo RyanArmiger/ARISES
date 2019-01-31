@@ -45,16 +45,14 @@ class ViewControllerGraph: UIViewController {
         
         /// Declares Notifications
         let nc = NotificationCenter.default
-//        nc.addObserver(self, selector: #selector(dataUpdated), name: Notification.Name("FoodAdded"), object: nil)
-//        nc.addObserver(self, selector: #selector(dataUpdated), name: Notification.Name("ExerciseAdded"), object: nil)
-//        nc.addObserver(self, selector: #selector(dataUpdated), name: Notification.Name("InsulinAdded"), object: nil)
-        //        nc.addObserver(self, selector: #selector(dataUpdated), name: Notification.Name("InsulinAdded"), object: nil)
+//        nc.addObserver(self, selector: #selector(updateGraph), name: Notification.Name("newGlucoseValue"), object: nil)
         nc.addObserver(self, selector: #selector(updateGraph), name: Notification.Name("GlucoseAdded"), object: nil)
         nc.addObserver(self, selector: #selector(setDay(notification:)), name: Notification.Name("setDay"), object: nil)
         createDatePicker()
         
 //        glucoseArr = ModelController().fetchGlucose(day: today)
         //        print(glucoseArr?.count)
+        
         updateGraph()
 
     }

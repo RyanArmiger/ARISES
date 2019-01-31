@@ -57,7 +57,7 @@ class SettingsController: UIViewController, UITextFieldDelegate {
         return true
     }
     @IBAction func dismissView(_ sender: Any) {
-        _ = self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: {})
     }
     
 }

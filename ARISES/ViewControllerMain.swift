@@ -274,29 +274,7 @@ class ViewControllerMain: UIViewController{
         do {
             let csvData = try String(contentsOfFile: csvPath, encoding: String.Encoding.utf8)
             let csv = csvData.csvRows()
-//            let csvLength = csv.count
             return csv[row]
-//            print(csv.count)
-//            for row in csv[1..<csvLength] {
-////                let row = csv[index]
-////                print("date: \(row[0]), glucose: \(row[1])")
-////                print("glucose: \(row[1])")
-//                guard let glucoseValue = Double(row[1]) else {
-//                    print("Whaaaa")
-//                    return
-//                }
-//                let dateFormatter = DateFormatter()
-//                dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
-//                guard let glucoseDate = dateFormatter.date(from: row[0]) else {
-////                    print("Whaaaa 2 \(dateFormatter.date(from: row[0]))")
-//                    print("Whaaa 2")
-//                    return
-//                }
-//                let glucoseStartDate = Calendar.current.startOfDay(for: glucoseDate)
-//                print(glucoseStartDate)
-////                print("GlucoseValue: \(glucoseValue), GlucoseDate: \(glucoseDate), GlucoseStart: \(glucoseStartDate)")
-//                ModelController().addGlucose(value: glucoseValue, time: glucoseDate, date: glucoseStartDate)
-//            }
         } catch{
             print("ERROR: \(error)")
             return nil
@@ -309,29 +287,7 @@ class ViewControllerMain: UIViewController{
         do {
             let csvData = try String(contentsOfFile: csvPath, encoding: String.Encoding.utf8)
             let csv = csvData.csvRows()
-            //            let csvLength = csv.count
             return csv
-            //            print(csv.count)
-            //            for row in csv[1..<csvLength] {
-            ////                let row = csv[index]
-            ////                print("date: \(row[0]), glucose: \(row[1])")
-            ////                print("glucose: \(row[1])")
-            //                guard let glucoseValue = Double(row[1]) else {
-            //                    print("Whaaaa")
-            //                    return
-            //                }
-            //                let dateFormatter = DateFormatter()
-            //                dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
-            //                guard let glucoseDate = dateFormatter.date(from: row[0]) else {
-            ////                    print("Whaaaa 2 \(dateFormatter.date(from: row[0]))")
-            //                    print("Whaaa 2")
-            //                    return
-            //                }
-            //                let glucoseStartDate = Calendar.current.startOfDay(for: glucoseDate)
-            //                print(glucoseStartDate)
-            ////                print("GlucoseValue: \(glucoseValue), GlucoseDate: \(glucoseDate), GlucoseStart: \(glucoseStartDate)")
-            //                ModelController().addGlucose(value: glucoseValue, time: glucoseDate, date: glucoseStartDate)
-            //            }
         } catch{
             print("ERROR: \(error)")
             return nil
