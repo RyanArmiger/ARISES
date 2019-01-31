@@ -141,41 +141,62 @@ class ModelController {
         nc.post(name: Notification.Name("ExerciseAdded"), object: nil)
     }
     
+//    /**
+//     Adds a new glucose log to core data
+//     - parameter value: Double, Value of glucose in mM/L
+//     - parameter time: String, Time of glucose log
+//     - parameter date: Date, Date of glucose log to add
+//     */
+//    func addGlucose(value: Double, time: Date, date: Date){
+//
+//        let currentDay = findOrMakeDay(day: date)
+//        let newGlucose = Glucose(context: PersistenceService.context)
+//        newGlucose.value = value
+//        newGlucose.time = time
+//        currentDay.addToGlucose(newGlucose)
+//        PersistenceService.saveContext()
+//
+//        let nc = NotificationCenter.default
+//        nc.post(name: Notification.Name("GlucoseAdded"), object: nil)
+//
+//    }
+//
     /**
      Adds a new glucose log to core data
-     - parameter value: Double, Value of glucose in mM/L
+     
+     - parameter value: Double, Value of glucose in mM/L or mg/dL depending on setting
      - parameter time: String, Time of glucose log
      - parameter date: Date, Date of glucose log to add
      */
-    func addGlucose(value: Double, time: Date, date: Date){
+    func addGlucose(value: Double, time: Date, trend: Int32, date: Date) {
         
         let currentDay = findOrMakeDay(day: date)
-        let newGlucose = Glucose(context: PersistenceService.context)
+        let newGlucose = GlucoseMO(context: PersistenceService.context)
         newGlucose.value = value
         newGlucose.time = time
+        newGlucose.trend = trend
+//        newGlucose.mealIOB = Float(0.9)
+//        newGlucose.correctionIOB = Float(0.2)
         currentDay.addToGlucose(newGlucose)
         PersistenceService.saveContext()
-
-        let nc = NotificationCenter.default
-        nc.post(name: Notification.Name("GlucoseAdded"), object: nil)
-
+        //        nc.post(name: Notification.Name("newGlucoseValue"), object: nil)
+        NotificationCenter.default.post(name: Notification.Name("newGlucoseValue"), object: newGlucose)
     }
-    
 
-    func addGlucoseArr(value: [Double], time: Date, date: Date){
-//        print("adding arr")
-        var runningTime = time
-        let currentDay = findOrMakeDay(day: date)
-        for val in value{
-            let newGlucose = Glucose(context: PersistenceService.context)
-            newGlucose.value = val
-            newGlucose.time = runningTime
-            currentDay.addToGlucose(newGlucose)
-            runningTime = runningTime.addingTimeInterval(300)
-        }
-        PersistenceService.saveContext()        
-    }
-    
+//    func addGlucoseArr(value: [Double], time: Date, date: Date){
+////        print("adding arr")
+//        var runningTime = time
+//        let currentDay = findOrMakeDay(day: date)
+//        for val in value{
+//            let newGlucose = GlucoseMO(context: PersistenceService.context)
+//            newGlucose.value = val
+//            newGlucose.time = runningTime
+//            currentDay.addToGlucose(newGlucose)
+//            runningTime = runningTime.addingTimeInterval(300)
+//        }
+//        PersistenceService.saveContext()
+//    }
+//
     
     /**
      Adds a new insulin log to core data
@@ -415,8 +436,8 @@ class ModelController {
      - parameter day: Date, date of day object whose glucose logs are to be fetched
      - returns: Array of Glucose objects sorted by time or an empty array if no Glucose objects exist
      */
-    func fetchGlucose(day: Date) -> [Glucose]{
-        let fetchRequest: NSFetchRequest<Glucose> = Glucose.fetchRequest()
+    func fetchGlucose(day: Date) -> [GlucoseMO]{
+        let fetchRequest: NSFetchRequest<GlucoseMO> = GlucoseMO.fetchRequest()
         let dayToShow = Calendar.current.startOfDay(for: day)
         fetchRequest.predicate = NSPredicate(format: "day.date == %@", dayToShow as CVarArg)
         //Sorts by short time - currently not correctly

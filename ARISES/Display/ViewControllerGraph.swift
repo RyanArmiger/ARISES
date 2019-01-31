@@ -22,7 +22,7 @@ class ViewControllerGraph: UIViewController {
     
 //    private var dataLoaded: Bool = false
 //    private var didLayout: Bool = false
-    private var glucoseArr: [Glucose]?
+    private var glucoseArr: [GlucoseMO]?
 
  
     

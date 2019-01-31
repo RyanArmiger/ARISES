@@ -4,7 +4,7 @@
         <attribute name="date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="exercise" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Exercise" inverseName="day" inverseEntity="Exercise" syncable="YES"/>
         <relationship name="favourite" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Favourites" inverseName="days" inverseEntity="Favourites" syncable="YES"/>
-        <relationship name="glucose" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Glucose" inverseName="day" inverseEntity="Glucose" syncable="YES"/>
+        <relationship name="glucose" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GlucoseMO" inverseName="day" inverseEntity="GlucoseMO" syncable="YES"/>
         <relationship name="illness" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Illness" inverseName="day" inverseEntity="Illness" syncable="YES"/>
         <relationship name="insulin" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Insulin" inverseName="day" inverseEntity="Insulin" syncable="YES"/>
         <relationship name="meals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Meals" inverseName="day" inverseEntity="Meals" syncable="YES"/>
@@ -23,8 +23,9 @@
         <relationship name="exercise" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Exercise" inverseName="favourite" inverseEntity="Exercise" syncable="YES"/>
         <relationship name="meals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Meals" inverseName="favourite" inverseEntity="Meals" syncable="YES"/>
     </entity>
-    <entity name="Glucose" representedClassName=".Glucose" syncable="YES" codeGenerationType="category">
+    <entity name="GlucoseMO" representedClassName=".GlucoseMO" syncable="YES" codeGenerationType="category">
         <attribute name="time" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="trend" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="value" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="day" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="glucose" inverseEntity="Day" syncable="YES"/>
     </entity>
@@ -56,7 +57,7 @@
         <element name="Day" positionX="-153" positionY="11" width="128" height="163"/>
         <element name="Exercise" positionX="97" positionY="-115" width="128" height="133"/>
         <element name="Favourites" positionX="-153" positionY="-232" width="128" height="88"/>
-        <element name="Glucose" positionX="97" positionY="207" width="128" height="88"/>
+        <element name="GlucoseMO" positionX="97" positionY="207" width="128" height="103"/>
         <element name="Illness" positionX="99" positionY="551" width="128" height="88"/>
         <element name="Insulin" positionX="97" positionY="326" width="128" height="88"/>
         <element name="Meals" positionX="97" positionY="32" width="128" height="148"/>

@@ -12,7 +12,7 @@ import CoreData
 
 
 ///  Glucose NSManagedObject category/extension file: Contains a computed property `tag` to mark if a log is in the hypo/hyper range. - Note: The following auto-generated properties are managed within ARISES.xcdatamodeld: fetchRequest(), time, value, day
-class Glucose: NSManagedObject {
+class GlucoseMO: NSManagedObject {
     //MARK: - Computer Properties
     ///Returns an optional string. "hypo" if below 4.0, "hyper" if above 10.0 *Note the case of the strings*
     var tag: String? {

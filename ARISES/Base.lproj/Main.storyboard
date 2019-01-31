@@ -118,6 +118,59 @@
             </objects>
             <point key="canvasLocation" x="1652" y="-200.14992503748127"/>
         </scene>
+        <!--Settings Controller-->
+        <scene sceneID="Mg4-KF-tso">
+            <objects>
+                <viewController id="sEt-9P-Hz8" customClass="SettingsController" customModule="ARISES" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qrL-d6-2UL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Serial number" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AlA-nd-uYl">
+                                <rect key="frame" x="15" y="318.5" width="247.5" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="sEt-9P-Hz8" id="Aei-SW-9CV"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PRZ-sa-feN">
+                                <rect key="frame" x="270.5" y="319.5" width="89.5" height="28"/>
+                                <color key="backgroundColor" red="0.73776894810000004" green="0.84177047009999995" blue="0.937656343" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                <state key="normal" title="Connect">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="dismissView:" destination="sEt-9P-Hz8" eventType="touchUpInside" id="uq7-il-vIU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="AlA-nd-uYl" firstAttribute="width" secondItem="qrL-d6-2UL" secondAttribute="width" multiplier="0.66" id="2RW-3D-RaA"/>
+                            <constraint firstItem="LIr-62-hDT" firstAttribute="trailing" secondItem="PRZ-sa-feN" secondAttribute="trailing" constant="15" id="2mN-QH-4Sr"/>
+                            <constraint firstItem="PRZ-sa-feN" firstAttribute="leading" secondItem="AlA-nd-uYl" secondAttribute="trailing" constant="8" symbolic="YES" id="PfD-nb-a6Z"/>
+                            <constraint firstItem="AlA-nd-uYl" firstAttribute="leading" secondItem="LIr-62-hDT" secondAttribute="leading" constant="15" id="blH-U8-nMZ"/>
+                            <constraint firstItem="PRZ-sa-feN" firstAttribute="centerY" secondItem="qrL-d6-2UL" secondAttribute="centerY" id="hDJ-yx-W7C"/>
+                            <constraint firstItem="AlA-nd-uYl" firstAttribute="centerY" secondItem="qrL-d6-2UL" secondAttribute="centerY" id="nyB-fg-WeH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LIr-62-hDT"/>
+                    </view>
+                    <connections>
+                        <outlet property="transmitterIDField" destination="AlA-nd-uYl" id="NLd-XY-A8J"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w6g-dS-ZKM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="947" y="-332"/>
+        </scene>
         <!--View Controller Food-->
         <scene sceneID="gAU-61-v8Y">
             <objects>
@@ -1224,7 +1277,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="settingsPopup:" destination="Mwq-xa-FnX" eventType="touchUpInside" id="IBg-ag-WL5"/>
+                                    <segue destination="sEt-9P-Hz8" kind="show" id="4WV-Ya-ezT"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="   Time" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bmM-Bp-qEv">

@@ -33,7 +33,7 @@ class Day: NSManagedObject {
         var temp = Double(0)
         var tempHigh = Double(0)
         
-        for index in (self.glucose?.allObjects)! as! [Glucose]{
+        for index in (self.glucose?.allObjects)! as! [GlucoseMO]{
             temp = temp + index.value
             if index.value < tempLow{
                 tempLow = index.value
@@ -106,7 +106,7 @@ class Day: NSManagedObject {
         var trackHypo = false
         var trackHyper = false
         var tagArray: [String] = []
-        for index in (self.glucose?.allObjects)! as! [Glucose]{
+        for index in (self.glucose?.allObjects)! as! [GlucoseMO]{
             if index.tag == "hypo"{
                 trackHypo = true
             }

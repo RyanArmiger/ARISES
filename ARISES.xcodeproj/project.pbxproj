@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		18BAA0D1968514F524648FEA /* libPods-ARISES.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93597E8CC10506F00FC893FB /* libPods-ARISES.a */; };
-		370F921520BD61C90081C570 /* Glucose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370F921420BD61C90081C570 /* Glucose.swift */; };
+		370F921520BD61C90081C570 /* GlucoseMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370F921420BD61C90081C570 /* GlucoseMO.swift */; };
 		370F921720BD637B0081C570 /* Insulin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370F921620BD637B0081C570 /* Insulin.swift */; };
 		3712A23A20C566DD006DB63C /* Illness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712A23920C566DD006DB63C /* Illness.swift */; };
 		3712A23C20C566FF006DB63C /* Stress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3712A23B20C566FF006DB63C /* Stress.swift */; };
@@ -30,14 +30,59 @@
 		375587CD209E086D00594532 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 375587CC209E086D00594532 /* Assets.xcassets */; };
 		375587D0209E086D00594532 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375587CE209E086D00594532 /* LaunchScreen.storyboard */; };
 		378658AE20AC675D007C13B2 /* ViewControllerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378658AD20AC675D007C13B2 /* ViewControllerTableViewCell.swift */; };
-		379AC90820D962100032C46B /* .jazzy.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 379AC90720D962100032C46B /* .jazzy.yaml */; };
+		379651942202645700B8EB09 /* HKUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379651622202645700B8EB09 /* HKUnit.swift */; };
+		379651952202645700B8EB09 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379651632202645700B8EB09 /* Data.swift */; };
+		379651962202645700B8EB09 /* TransmitterTimeRxMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379651672202645700B8EB09 /* TransmitterTimeRxMessage.swift */; };
+		379651972202645700B8EB09 /* TransmitterVersionTxMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379651682202645700B8EB09 /* TransmitterVersionTxMessage.swift */; };
+		379651982202645700B8EB09 /* TransmitterMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379651692202645700B8EB09 /* TransmitterMessage.swift */; };
+		379651992202645700B8EB09 /* AuthRequestTxMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3796516A2202645700B8EB09 /* AuthRequestTxMessage.swift */; };
+		3796519A2202645700B8EB09 /* AuthChallengeTxMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3796516B2202645700B8EB09 /* AuthChallengeTxMessage.swift */; };
+		3796519B2202645700B8EB09 /* BatteryStatusTxMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3796516C2202645700B8EB09 /* BatteryStatusTxMessage.swift */; };
+		3796519C2202645700B8EB09 /* CalibrateGlucoseTxMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3796516D2202645700B8EB09 /* CalibrateGlucoseTxMessage.swift */; };
+		3796519D2202645700B8EB09 /* GlucoseBackfillMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3796516E2202645700B8EB09 /* GlucoseBackfillMessage.swift */; };
+		3796519E2202645700B8EB09 /* SessionStopTxMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3796516F2202645700B8EB09 /* SessionStopTxMessage.swift */; };
+		3796519F2202645700B8EB09 /* GlucoseRxMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379651702202645700B8EB09 /* GlucoseRxMessage.swift */; };
+		379651A02202645700B8EB09 /* BondRequestTxMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379651712202645700B8EB09 /* BondRequestTxMessage.swift */; };
+		379651A12202645700B8EB09 /* SessionStartRxMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379651722202645700B8EB09 /* SessionStartRxMessage.swift */; };
+		379651A22202645700B8EB09 /* CalibrationDataTxMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379651732202645700B8EB09 /* CalibrationDataTxMessage.swift */; };
+		379651A32202645700B8EB09 /* GlucoseHistoryTxMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379651742202645700B8EB09 /* GlucoseHistoryTxMessage.swift */; };
+		379651A42202645700B8EB09 /* SessionStartTxMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379651752202645700B8EB09 /* SessionStartTxMessage.swift */; };
+		379651A52202645700B8EB09 /* CalibrationDataRxMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379651762202645700B8EB09 /* CalibrationDataRxMessage.swift */; };
+		379651A62202645700B8EB09 /* SessionStopRxMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379651772202645700B8EB09 /* SessionStopRxMessage.swift */; };
+		379651A72202645700B8EB09 /* GlucoseTxMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379651782202645700B8EB09 /* GlucoseTxMessage.swift */; };
+		379651A82202645700B8EB09 /* ResetMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379651792202645700B8EB09 /* ResetMessage.swift */; };
+		379651A92202645700B8EB09 /* AuthRequestRxMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3796517A2202645700B8EB09 /* AuthRequestRxMessage.swift */; };
+		379651AA2202645700B8EB09 /* TransmitterVersionRxMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3796517B2202645700B8EB09 /* TransmitterVersionRxMessage.swift */; };
+		379651AB2202645700B8EB09 /* TransmitterTimeTxMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3796517C2202645700B8EB09 /* TransmitterTimeTxMessage.swift */; };
+		379651AC2202645700B8EB09 /* KeepAliveTxMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3796517D2202645700B8EB09 /* KeepAliveTxMessage.swift */; };
+		379651AD2202645700B8EB09 /* FirmwareVersionTxMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3796517E2202645700B8EB09 /* FirmwareVersionTxMessage.swift */; };
+		379651AE2202645700B8EB09 /* AuthChallengeRxMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3796517F2202645700B8EB09 /* AuthChallengeRxMessage.swift */; };
+		379651AF2202645700B8EB09 /* CalibrateGlucoseRxMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379651802202645700B8EB09 /* CalibrateGlucoseRxMessage.swift */; };
+		379651B02202645700B8EB09 /* DisconnectTxMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379651812202645700B8EB09 /* DisconnectTxMessage.swift */; };
+		379651B12202645700B8EB09 /* AESCrypt.m in Sources */ = {isa = PBXBuildFile; fileRef = 379651822202645700B8EB09 /* AESCrypt.m */; };
+		379651B22202645700B8EB09 /* BluetoothManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379651832202645700B8EB09 /* BluetoothManager.swift */; };
+		379651B32202645700B8EB09 /* Opcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379651842202645700B8EB09 /* Opcode.swift */; };
+		379651B42202645700B8EB09 /* TransmitterStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379651852202645700B8EB09 /* TransmitterStatus.swift */; };
+		379651B52202645700B8EB09 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379651862202645700B8EB09 /* Command.swift */; };
+		379651B62202645700B8EB09 /* Transmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379651872202645700B8EB09 /* Transmitter.swift */; };
+		379651B72202645700B8EB09 /* CBPeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379651892202645700B8EB09 /* CBPeripheral.swift */; };
+		379651B82202645700B8EB09 /* BluetoothServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3796518A2202645700B8EB09 /* BluetoothServices.swift */; };
+		379651B92202645700B8EB09 /* CalibrationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3796518B2202645700B8EB09 /* CalibrationState.swift */; };
+		379651BA2202645700B8EB09 /* Calibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3796518C2202645700B8EB09 /* Calibration.swift */; };
+		379651BB2202645700B8EB09 /* NSData+CRC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3796518E2202645700B8EB09 /* NSData+CRC.swift */; };
+		379651BC2202645700B8EB09 /* PeripheralManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3796518F2202645700B8EB09 /* PeripheralManagerError.swift */; };
+		379651BD2202645700B8EB09 /* PeripheralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379651902202645700B8EB09 /* PeripheralManager.swift */; };
+		379651BE2202645700B8EB09 /* OSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379651912202645700B8EB09 /* OSLog.swift */; };
+		379651BF2202645700B8EB09 /* PeripheralManager+G5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379651922202645700B8EB09 /* PeripheralManager+G5.swift */; };
+		379651C02202645700B8EB09 /* Glucose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379651932202645700B8EB09 /* Glucose.swift */; };
+		379651C22202654E00B8EB09 /* NSUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379651C12202654E00B8EB09 /* NSUserDefaults.swift */; };
+		379651C4220267D300B8EB09 /* CommandQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379651C3220267D300B8EB09 /* CommandQueue.swift */; };
 		37A8629821F7A3E500D4E8AB /* ChartXAxisFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A8629721F7A3E500D4E8AB /* ChartXAxisFormatter.swift */; };
 		37B3716220B47EF20048A942 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B3716120B47EF20048A942 /* PersistenceService.swift */; };
 		37B568BB20B485600014F735 /* ARISES.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 37B568B920B485600014F735 /* ARISES.xcdatamodeld */; };
 		37CFC5D120BEDD250051FDFC /* IndicatorControllerFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CFC5D020BEDD250051FDFC /* IndicatorControllerFood.swift */; };
+		37FEE41A22026FFB00FF4679 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FEE41922026FFB00FF4679 /* SettingsController.swift */; };
 		BB0C55C520BC66E9003F46CE /* Favourites.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0C55BE20BC66E9003F46CE /* Favourites.swift */; };
-		BBF1205720D02736002ACBC7 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BBF1205620D02736002ACBC7 /* Settings.bundle */; };
-		BBF1205920D029B2002ACBC7 /* SettingsBundleHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF1205820D029B2002ACBC7 /* SettingsBundleHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -54,7 +99,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		370F921420BD61C90081C570 /* Glucose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Glucose.swift; sourceTree = "<group>"; };
+		370F921420BD61C90081C570 /* GlucoseMO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlucoseMO.swift; sourceTree = "<group>"; };
 		370F921620BD637B0081C570 /* Insulin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Insulin.swift; sourceTree = "<group>"; };
 		3712A23920C566DD006DB63C /* Illness.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Illness.swift; sourceTree = "<group>"; };
 		3712A23B20C566FF006DB63C /* Stress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stress.swift; sourceTree = "<group>"; };
@@ -78,19 +123,66 @@
 		375587CF209E086D00594532 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		375587D1209E086D00594532 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		378658AD20AC675D007C13B2 /* ViewControllerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTableViewCell.swift; sourceTree = "<group>"; };
+		379651622202645700B8EB09 /* HKUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HKUnit.swift; sourceTree = "<group>"; };
+		379651632202645700B8EB09 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		379651652202645700B8EB09 /* CGMBLEKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGMBLEKit.h; sourceTree = "<group>"; };
+		379651672202645700B8EB09 /* TransmitterTimeRxMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransmitterTimeRxMessage.swift; sourceTree = "<group>"; };
+		379651682202645700B8EB09 /* TransmitterVersionTxMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransmitterVersionTxMessage.swift; sourceTree = "<group>"; };
+		379651692202645700B8EB09 /* TransmitterMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransmitterMessage.swift; sourceTree = "<group>"; };
+		3796516A2202645700B8EB09 /* AuthRequestTxMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRequestTxMessage.swift; sourceTree = "<group>"; };
+		3796516B2202645700B8EB09 /* AuthChallengeTxMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthChallengeTxMessage.swift; sourceTree = "<group>"; };
+		3796516C2202645700B8EB09 /* BatteryStatusTxMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatteryStatusTxMessage.swift; sourceTree = "<group>"; };
+		3796516D2202645700B8EB09 /* CalibrateGlucoseTxMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalibrateGlucoseTxMessage.swift; sourceTree = "<group>"; };
+		3796516E2202645700B8EB09 /* GlucoseBackfillMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlucoseBackfillMessage.swift; sourceTree = "<group>"; };
+		3796516F2202645700B8EB09 /* SessionStopTxMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionStopTxMessage.swift; sourceTree = "<group>"; };
+		379651702202645700B8EB09 /* GlucoseRxMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlucoseRxMessage.swift; sourceTree = "<group>"; };
+		379651712202645700B8EB09 /* BondRequestTxMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BondRequestTxMessage.swift; sourceTree = "<group>"; };
+		379651722202645700B8EB09 /* SessionStartRxMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionStartRxMessage.swift; sourceTree = "<group>"; };
+		379651732202645700B8EB09 /* CalibrationDataTxMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalibrationDataTxMessage.swift; sourceTree = "<group>"; };
+		379651742202645700B8EB09 /* GlucoseHistoryTxMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlucoseHistoryTxMessage.swift; sourceTree = "<group>"; };
+		379651752202645700B8EB09 /* SessionStartTxMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionStartTxMessage.swift; sourceTree = "<group>"; };
+		379651762202645700B8EB09 /* CalibrationDataRxMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalibrationDataRxMessage.swift; sourceTree = "<group>"; };
+		379651772202645700B8EB09 /* SessionStopRxMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionStopRxMessage.swift; sourceTree = "<group>"; };
+		379651782202645700B8EB09 /* GlucoseTxMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlucoseTxMessage.swift; sourceTree = "<group>"; };
+		379651792202645700B8EB09 /* ResetMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetMessage.swift; sourceTree = "<group>"; };
+		3796517A2202645700B8EB09 /* AuthRequestRxMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthRequestRxMessage.swift; sourceTree = "<group>"; };
+		3796517B2202645700B8EB09 /* TransmitterVersionRxMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransmitterVersionRxMessage.swift; sourceTree = "<group>"; };
+		3796517C2202645700B8EB09 /* TransmitterTimeTxMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransmitterTimeTxMessage.swift; sourceTree = "<group>"; };
+		3796517D2202645700B8EB09 /* KeepAliveTxMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeepAliveTxMessage.swift; sourceTree = "<group>"; };
+		3796517E2202645700B8EB09 /* FirmwareVersionTxMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirmwareVersionTxMessage.swift; sourceTree = "<group>"; };
+		3796517F2202645700B8EB09 /* AuthChallengeRxMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthChallengeRxMessage.swift; sourceTree = "<group>"; };
+		379651802202645700B8EB09 /* CalibrateGlucoseRxMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalibrateGlucoseRxMessage.swift; sourceTree = "<group>"; };
+		379651812202645700B8EB09 /* DisconnectTxMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisconnectTxMessage.swift; sourceTree = "<group>"; };
+		379651822202645700B8EB09 /* AESCrypt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AESCrypt.m; sourceTree = "<group>"; };
+		379651832202645700B8EB09 /* BluetoothManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothManager.swift; sourceTree = "<group>"; };
+		379651842202645700B8EB09 /* Opcode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Opcode.swift; sourceTree = "<group>"; };
+		379651852202645700B8EB09 /* TransmitterStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransmitterStatus.swift; sourceTree = "<group>"; };
+		379651862202645700B8EB09 /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		379651872202645700B8EB09 /* Transmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transmitter.swift; sourceTree = "<group>"; };
+		379651882202645700B8EB09 /* ARISES-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ARISES-Bridging-Header.h"; sourceTree = "<group>"; };
+		379651892202645700B8EB09 /* CBPeripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CBPeripheral.swift; sourceTree = "<group>"; };
+		3796518A2202645700B8EB09 /* BluetoothServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BluetoothServices.swift; sourceTree = "<group>"; };
+		3796518B2202645700B8EB09 /* CalibrationState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalibrationState.swift; sourceTree = "<group>"; };
+		3796518C2202645700B8EB09 /* Calibration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calibration.swift; sourceTree = "<group>"; };
+		3796518D2202645700B8EB09 /* AESCrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AESCrypt.h; sourceTree = "<group>"; };
+		3796518E2202645700B8EB09 /* NSData+CRC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSData+CRC.swift"; sourceTree = "<group>"; };
+		3796518F2202645700B8EB09 /* PeripheralManagerError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralManagerError.swift; sourceTree = "<group>"; };
+		379651902202645700B8EB09 /* PeripheralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralManager.swift; sourceTree = "<group>"; };
+		379651912202645700B8EB09 /* OSLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
+		379651922202645700B8EB09 /* PeripheralManager+G5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PeripheralManager+G5.swift"; sourceTree = "<group>"; };
+		379651932202645700B8EB09 /* Glucose.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Glucose.swift; sourceTree = "<group>"; };
+		379651C12202654E00B8EB09 /* NSUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUserDefaults.swift; sourceTree = "<group>"; };
+		379651C3220267D300B8EB09 /* CommandQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandQueue.swift; sourceTree = "<group>"; };
 		379AC90520D95C340032C46B /* libSwiftCharts.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSwiftCharts.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		379AC90720D962100032C46B /* .jazzy.yaml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .jazzy.yaml; sourceTree = "<group>"; };
 		37A8629721F7A3E500D4E8AB /* ChartXAxisFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartXAxisFormatter.swift; sourceTree = "<group>"; };
 		37B3716120B47EF20048A942 /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
 		37B568BA20B485600014F735 /* ARISES.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ARISES.xcdatamodel; sourceTree = "<group>"; };
-		37CC65E320D94E03003E5826 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		37CFC5B820BED6DF0051FDFC /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		37CFC5D020BEDD250051FDFC /* IndicatorControllerFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorControllerFood.swift; sourceTree = "<group>"; };
+		37FEE41922026FFB00FF4679 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		863CAE274477E894C42E1381 /* Pods-ARISES.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARISES.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARISES/Pods-ARISES.debug.xcconfig"; sourceTree = "<group>"; };
 		93597E8CC10506F00FC893FB /* libPods-ARISES.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ARISES.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB0C55BE20BC66E9003F46CE /* Favourites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Favourites.swift; sourceTree = "<group>"; };
-		BBF1205620D02736002ACBC7 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		BBF1205820D029B2002ACBC7 /* SettingsBundleHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBundleHelper.swift; sourceTree = "<group>"; };
 		E37BF63307A2A5AF11BA9831 /* Pods-ARISES.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARISES.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARISES/Pods-ARISES.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,7 +205,7 @@
 				371807A220B8500F00D7C81A /* ModelController.swift */,
 				37B568B920B485600014F735 /* ARISES.xcdatamodeld */,
 				370F921620BD637B0081C570 /* Insulin.swift */,
-				370F921420BD61C90081C570 /* Glucose.swift */,
+				370F921420BD61C90081C570 /* GlucoseMO.swift */,
 				3718079C20B81EB300D7C81A /* Day.swift */,
 				BB0C55BE20BC66E9003F46CE /* Favourites.swift */,
 				3718079A20B81E2100D7C81A /* Meals.swift */,
@@ -145,8 +237,8 @@
 		375587B9209E086C00594532 = {
 			isa = PBXGroup;
 			children = (
-				379AC90720D962100032C46B /* .jazzy.yaml */,
-				37CC65E320D94E03003E5826 /* README.md */,
+				379651642202645700B8EB09 /* CGMBLEKit */,
+				379651612202645700B8EB09 /* Common */,
 				375587C4209E086C00594532 /* ARISES */,
 				375587C3209E086C00594532 /* Products */,
 				5D25042C28CD398D98F1751D /* Pods */,
@@ -169,6 +261,7 @@
 				3718079F20B8200B00D7C81A /* Display */,
 				3718079E20B81F4F00D7C81A /* Model */,
 				37CFC5CF20BEDCFB0051FDFC /* Indicators */,
+				37FEE41922026FFB00FF4679 /* SettingsController.swift */,
 				375587C9209E086C00594532 /* Main.storyboard */,
 				3718B85B20AC99B6006F1A47 /* ViewControllerFood.swift */,
 				3718B85D20AC9A2A006F1A47 /* ViewControllerAdvice.swift */,
@@ -185,14 +278,84 @@
 		375587D7209E08DB00594532 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				BBF1205620D02736002ACBC7 /* Settings.bundle */,
+				379651C3220267D300B8EB09 /* CommandQueue.swift */,
+				379651C12202654E00B8EB09 /* NSUserDefaults.swift */,
 				375587C5209E086C00594532 /* AppDelegate.swift */,
 				37B3716120B47EF20048A942 /* PersistenceService.swift */,
 				375587CE209E086D00594532 /* LaunchScreen.storyboard */,
 				375587CC209E086D00594532 /* Assets.xcassets */,
-				BBF1205820D029B2002ACBC7 /* SettingsBundleHelper.swift */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		379651612202645700B8EB09 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				379651622202645700B8EB09 /* HKUnit.swift */,
+				379651632202645700B8EB09 /* Data.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		379651642202645700B8EB09 /* CGMBLEKit */ = {
+			isa = PBXGroup;
+			children = (
+				3796518D2202645700B8EB09 /* AESCrypt.h */,
+				379651822202645700B8EB09 /* AESCrypt.m */,
+				379651882202645700B8EB09 /* ARISES-Bridging-Header.h */,
+				379651832202645700B8EB09 /* BluetoothManager.swift */,
+				3796518A2202645700B8EB09 /* BluetoothServices.swift */,
+				3796518C2202645700B8EB09 /* Calibration.swift */,
+				3796518B2202645700B8EB09 /* CalibrationState.swift */,
+				379651892202645700B8EB09 /* CBPeripheral.swift */,
+				379651652202645700B8EB09 /* CGMBLEKit.h */,
+				379651862202645700B8EB09 /* Command.swift */,
+				379651932202645700B8EB09 /* Glucose.swift */,
+				379651662202645700B8EB09 /* Messages */,
+				3796518E2202645700B8EB09 /* NSData+CRC.swift */,
+				379651842202645700B8EB09 /* Opcode.swift */,
+				379651912202645700B8EB09 /* OSLog.swift */,
+				379651902202645700B8EB09 /* PeripheralManager.swift */,
+				379651922202645700B8EB09 /* PeripheralManager+G5.swift */,
+				3796518F2202645700B8EB09 /* PeripheralManagerError.swift */,
+				379651872202645700B8EB09 /* Transmitter.swift */,
+				379651852202645700B8EB09 /* TransmitterStatus.swift */,
+			);
+			path = CGMBLEKit;
+			sourceTree = "<group>";
+		};
+		379651662202645700B8EB09 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				379651672202645700B8EB09 /* TransmitterTimeRxMessage.swift */,
+				379651682202645700B8EB09 /* TransmitterVersionTxMessage.swift */,
+				379651692202645700B8EB09 /* TransmitterMessage.swift */,
+				3796516A2202645700B8EB09 /* AuthRequestTxMessage.swift */,
+				3796516B2202645700B8EB09 /* AuthChallengeTxMessage.swift */,
+				3796516C2202645700B8EB09 /* BatteryStatusTxMessage.swift */,
+				3796516D2202645700B8EB09 /* CalibrateGlucoseTxMessage.swift */,
+				3796516E2202645700B8EB09 /* GlucoseBackfillMessage.swift */,
+				3796516F2202645700B8EB09 /* SessionStopTxMessage.swift */,
+				379651702202645700B8EB09 /* GlucoseRxMessage.swift */,
+				379651712202645700B8EB09 /* BondRequestTxMessage.swift */,
+				379651722202645700B8EB09 /* SessionStartRxMessage.swift */,
+				379651732202645700B8EB09 /* CalibrationDataTxMessage.swift */,
+				379651742202645700B8EB09 /* GlucoseHistoryTxMessage.swift */,
+				379651752202645700B8EB09 /* SessionStartTxMessage.swift */,
+				379651762202645700B8EB09 /* CalibrationDataRxMessage.swift */,
+				379651772202645700B8EB09 /* SessionStopRxMessage.swift */,
+				379651782202645700B8EB09 /* GlucoseTxMessage.swift */,
+				379651792202645700B8EB09 /* ResetMessage.swift */,
+				3796517A2202645700B8EB09 /* AuthRequestRxMessage.swift */,
+				3796517B2202645700B8EB09 /* TransmitterVersionRxMessage.swift */,
+				3796517C2202645700B8EB09 /* TransmitterTimeTxMessage.swift */,
+				3796517D2202645700B8EB09 /* KeepAliveTxMessage.swift */,
+				3796517E2202645700B8EB09 /* FirmwareVersionTxMessage.swift */,
+				3796517F2202645700B8EB09 /* AuthChallengeRxMessage.swift */,
+				379651802202645700B8EB09 /* CalibrateGlucoseRxMessage.swift */,
+				379651812202645700B8EB09 /* DisconnectTxMessage.swift */,
+			);
+			path = Messages;
 			sourceTree = "<group>";
 		};
 		37CFC5CF20BEDCFB0051FDFC /* Indicators */ = {
@@ -260,6 +423,9 @@
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 0;
 							};
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 						};
 					};
 				};
@@ -290,10 +456,8 @@
 				375587D0209E086D00594532 /* LaunchScreen.storyboard in Resources */,
 				372141E721F52DD800B8627F /* ABC4001_log_final_I.csv in Resources */,
 				372141E621F52DD800B8627F /* ABC4001_CGM_6m_I.csv in Resources */,
-				BBF1205720D02736002ACBC7 /* Settings.bundle in Resources */,
 				375587CD209E086D00594532 /* Assets.xcassets in Resources */,
 				375587CB209E086C00594532 /* Main.storyboard in Resources */,
-				379AC90820D962100032C46B /* .jazzy.yaml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,29 +489,76 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				370F921520BD61C90081C570 /* Glucose.swift in Sources */,
+				370F921520BD61C90081C570 /* GlucoseMO.swift in Sources */,
 				3718B85E20AC9A2A006F1A47 /* ViewControllerAdvice.swift in Sources */,
+				379651BC2202645700B8EB09 /* PeripheralManagerError.swift in Sources */,
+				379651AB2202645700B8EB09 /* TransmitterTimeTxMessage.swift in Sources */,
+				379651A52202645700B8EB09 /* CalibrationDataRxMessage.swift in Sources */,
+				379651B82202645700B8EB09 /* BluetoothServices.swift in Sources */,
 				3712A23A20C566DD006DB63C /* Illness.swift in Sources */,
+				379651A32202645700B8EB09 /* GlucoseHistoryTxMessage.swift in Sources */,
+				379651B62202645700B8EB09 /* Transmitter.swift in Sources */,
+				379651A82202645700B8EB09 /* ResetMessage.swift in Sources */,
+				3796519C2202645700B8EB09 /* CalibrateGlucoseTxMessage.swift in Sources */,
 				3718B86020AC9A42006F1A47 /* ViewControllerExercise.swift in Sources */,
 				3718B86620AC9CE3006F1A47 /* ViewControllerMain.swift in Sources */,
+				379651B02202645700B8EB09 /* DisconnectTxMessage.swift in Sources */,
+				3796519D2202645700B8EB09 /* GlucoseBackfillMessage.swift in Sources */,
+				379651A12202645700B8EB09 /* SessionStartRxMessage.swift in Sources */,
+				379651A92202645700B8EB09 /* AuthRequestRxMessage.swift in Sources */,
 				375587C6209E086C00594532 /* AppDelegate.swift in Sources */,
 				371807A320B8500F00D7C81A /* ModelController.swift in Sources */,
+				379651952202645700B8EB09 /* Data.swift in Sources */,
+				379651AC2202645700B8EB09 /* KeepAliveTxMessage.swift in Sources */,
+				379651BF2202645700B8EB09 /* PeripheralManager+G5.swift in Sources */,
+				379651B22202645700B8EB09 /* BluetoothManager.swift in Sources */,
 				3718079520B818ED00D7C81A /* Exercise.swift in Sources */,
 				372141EA21F5319100B8627F /* CSVreader.swift in Sources */,
+				379651982202645700B8EB09 /* TransmitterMessage.swift in Sources */,
 				37B3716220B47EF20048A942 /* PersistenceService.swift in Sources */,
+				379651C22202654E00B8EB09 /* NSUserDefaults.swift in Sources */,
+				379651C02202645700B8EB09 /* Glucose.swift in Sources */,
+				379651AE2202645700B8EB09 /* AuthChallengeRxMessage.swift in Sources */,
+				3796519F2202645700B8EB09 /* GlucoseRxMessage.swift in Sources */,
 				3718079D20B81EB300D7C81A /* Day.swift in Sources */,
+				379651A22202645700B8EB09 /* CalibrationDataTxMessage.swift in Sources */,
+				379651992202645700B8EB09 /* AuthRequestTxMessage.swift in Sources */,
 				3718B85C20AC99B6006F1A47 /* ViewControllerFood.swift in Sources */,
 				3718B86420AC9A75006F1A47 /* ViewControllerGraph.swift in Sources */,
+				379651A62202645700B8EB09 /* SessionStopRxMessage.swift in Sources */,
+				379651B42202645700B8EB09 /* TransmitterStatus.swift in Sources */,
+				3796519A2202645700B8EB09 /* AuthChallengeTxMessage.swift in Sources */,
 				37CFC5D120BEDD250051FDFC /* IndicatorControllerFood.swift in Sources */,
-				BBF1205920D029B2002ACBC7 /* SettingsBundleHelper.swift in Sources */,
 				BB0C55C520BC66E9003F46CE /* Favourites.swift in Sources */,
+				3796519B2202645700B8EB09 /* BatteryStatusTxMessage.swift in Sources */,
+				379651942202645700B8EB09 /* HKUnit.swift in Sources */,
+				379651AF2202645700B8EB09 /* CalibrateGlucoseRxMessage.swift in Sources */,
 				378658AE20AC675D007C13B2 /* ViewControllerTableViewCell.swift in Sources */,
+				379651B52202645700B8EB09 /* Command.swift in Sources */,
+				3796519E2202645700B8EB09 /* SessionStopTxMessage.swift in Sources */,
+				379651AA2202645700B8EB09 /* TransmitterVersionRxMessage.swift in Sources */,
+				379651A42202645700B8EB09 /* SessionStartTxMessage.swift in Sources */,
+				379651B12202645700B8EB09 /* AESCrypt.m in Sources */,
 				370F921720BD637B0081C570 /* Insulin.swift in Sources */,
 				3718B86220AC9A60006F1A47 /* ViewControllerHealth.swift in Sources */,
+				379651BE2202645700B8EB09 /* OSLog.swift in Sources */,
+				379651972202645700B8EB09 /* TransmitterVersionTxMessage.swift in Sources */,
+				379651B32202645700B8EB09 /* Opcode.swift in Sources */,
+				379651962202645700B8EB09 /* TransmitterTimeRxMessage.swift in Sources */,
+				379651B72202645700B8EB09 /* CBPeripheral.swift in Sources */,
 				3718079B20B81E2100D7C81A /* Meals.swift in Sources */,
+				379651C4220267D300B8EB09 /* CommandQueue.swift in Sources */,
 				37B568BB20B485600014F735 /* ARISES.xcdatamodeld in Sources */,
+				379651B92202645700B8EB09 /* CalibrationState.swift in Sources */,
+				379651BB2202645700B8EB09 /* NSData+CRC.swift in Sources */,
+				379651BD2202645700B8EB09 /* PeripheralManager.swift in Sources */,
 				3712A23C20C566FF006DB63C /* Stress.swift in Sources */,
 				37A8629821F7A3E500D4E8AB /* ChartXAxisFormatter.swift in Sources */,
+				379651BA2202645700B8EB09 /* Calibration.swift in Sources */,
+				37FEE41A22026FFB00FF4679 /* SettingsController.swift in Sources */,
+				379651AD2202645700B8EB09 /* FirmwareVersionTxMessage.swift in Sources */,
+				379651A72202645700B8EB09 /* GlucoseTxMessage.swift in Sources */,
+				379651A02202645700B8EB09 /* BondRequestTxMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,6 +715,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ARISES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "CGMBLEKit/ARISES-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -526,6 +738,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ARISES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "CGMBLEKit/ARISES-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
