@@ -32,6 +32,7 @@ class ViewControllerMain: UIViewController{
     //MARK: - Outlets
     // Views with status indicators
     
+    @IBOutlet weak private var graphContainerView: UIView!
     @IBOutlet weak private var tabsContainerView: UIView!
     @IBOutlet weak private var viewHealth: UIView!
     @IBOutlet weak private var viewFood: UIView!
@@ -60,6 +61,9 @@ class ViewControllerMain: UIViewController{
     @IBOutlet weak private var insulinTextField: UITextField!
     @IBOutlet weak private var glucoseClockOutlet: UIButton!
     @IBOutlet weak private var insulinTimeField: UITextField!
+    
+    
+    @IBOutlet weak var showTabsContainerButton: UIButton!
     
     //MARK: - Properties
     ///Tracks date set by graph and hides insulin entry fields when not on current day
@@ -93,6 +97,9 @@ class ViewControllerMain: UIViewController{
     private var shadowLayer: CAShapeLayer!
     private var cornerRadius: CGFloat = 25.0
     private var fillColor: UIColor = .blue
+    
+    private var currentGraphConstraint: NSLayoutConstraint?
+    
     ///Variable to track state of views
     private var state: MainViewState = .uninitialised
     {
@@ -115,6 +122,8 @@ class ViewControllerMain: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.state = .food
+        
+        
         
         glucoseButtonOutlet.tintColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)
         glucoseButtonOutlet.isHidden = false
@@ -141,20 +150,17 @@ class ViewControllerMain: UIViewController{
         nc.addObserver(self, selector: #selector(updateDay(notification:)), name: Notification.Name("dayChanged"), object: nil)
         
         loadDate = Date()
-        //Observers to determine keyboard state
-//        nc.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-//
-//        nc.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-//        readCSV()
-//        startTimer()
         
-//
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+//        Update graph height from UserDefault value
+        let graphMult: CGFloat = CGFloat((UserDefaults.standard.graphLayout as NSString).floatValue)
+        replaceConstraint(graphMultiplier: graphMult)
+        showTabsContainerButton.isHidden = true
+    }
+
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-    }
-//    
 //    private func updateSimulationData3() {
 //        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
 //
@@ -197,117 +203,70 @@ class ViewControllerMain: UIViewController{
 //    }
     
     
-//
-    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
-        switch UIDevice.current.orientation{
-        case .portrait: break
+    
+//    override func didRotate(from fromInterfaceOrientation: UIInterfaceOrientation) {
+//        switch UIDevice.current.orientation{
+//        case .portrait: break
+//        case .portraitUpsideDown: break
+//        case .landscapeLeft: break
+////            tabsContainerView.isHidden = true
+//        case .landscapeRight: break
+////            tabsContainerView.isHidden = true
+//        default:
 //            tabsContainerView.isHidden = false
-        case .portraitUpsideDown: break
-//            tabsContainerView.isHidden = false
-        case .landscapeLeft:
-            tabsContainerView.isHidden = true
-        case .landscapeRight:
-            tabsContainerView.isHidden = true
-        default:
-            tabsContainerView.isHidden = false
-        }
-    }
+//        }
+//    }
     
     override func willRotate(to toInterfaceOrientation: UIInterfaceOrientation, duration: TimeInterval) {
         switch UIDevice.current.orientation{
         case .portrait:
-            tabsContainerView.isHidden = false
-        case .portraitUpsideDown:
-            tabsContainerView.isHidden = false
-        case .landscapeLeft: break
-//            tabsContainerView.isHidden = true
-        case .landscapeRight: break
-//            tabsContainerView.isHidden = true
+//            tabsContainerView.isHidden = false
+            let graphMult: CGFloat = CGFloat((UserDefaults.standard.graphLayout as NSString).floatValue)
+            replaceConstraint(graphMultiplier: graphMult)
+            
+        case .portraitUpsideDown: break
+        case .landscapeLeft:
+            replaceConstraint(graphMultiplier: 0.95)
+
+        case .landscapeRight:
+            replaceConstraint(graphMultiplier: 0.95)
+
         default:
             tabsContainerView.isHidden = false
         }
     }
     
-//   private weak var timer: Timer?
+    /// Adjusts constraint on graph height using value from UserDefaults. Value is a multiplier which is a percentage of the screen view E.g Default 0.33
+    private func replaceConstraint(graphMultiplier: CGFloat){
+        if currentGraphConstraint != nil {
+            self.view.removeConstraint(currentGraphConstraint!)
+        }
+        let newConstraint: NSLayoutConstraint = NSLayoutConstraint(item: graphContainerView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.height, multiplier: graphMultiplier, constant: 0)
+        currentGraphConstraint = newConstraint
+        self.view.addConstraint(currentGraphConstraint!)
+    }
+
+    
+    
+//    private func readAllCSV(row: Int) -> [[String]]? {
+//        guard let csvPath = Bundle.main.path(forResource: "ABC4001_CGM_6m_I", ofType: "csv") else { return nil }
 //
-//    private func startTimer() {
-//        timer?.invalidate()   // just in case you had existing `Timer`, `invalidate` it before we lose our reference to it
-//        timer = Timer.scheduledTimer(withTimeInterval: 300.0, repeats: true) { [weak self] _ in
-//            guard let strongSelf = self else {
-//                return
-//            }
-//            guard let row = strongSelf.readCSV(row: strongSelf.loadCounter) else {
-//                return
-//            }
-//            guard let glucoseValue = Double(row[1]) else {
-//                print("ERROR: GlucoseValue is nil")
-//                return
-//            }
-//            let dateFormatter = DateFormatter()
-//            dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
-//            guard let glucoseDate = strongSelf.loadDate else {
-////                    print("Whaaaa 2 \(dateFormatter.date(from: row[0]))")
-//                print("ERROR: GlucoseDate formatted to nil")
-//                return
-//            }
-//            let glucoseStartDate = Calendar.current.startOfDay(for: glucoseDate)
-////            print(glucoseStartDate)
-////                print("GlucoseValue: \(glucoseValue), GlucoseDate: \(glucoseDate), GlucoseStart: \(glucoseStartDate)")
-//            ModelController().addGlucose(value: glucoseValue, time: glucoseDate, date: glucoseStartDate)
-//            print("Timer goes tick")
-//            strongSelf.loadCounter = strongSelf.loadCounter + 1
-//            strongSelf.loadDate = strongSelf.loadDate?.addingTimeInterval(300)
+//        do {
+//            let csvData = try String(contentsOfFile: csvPath, encoding: String.Encoding.utf8)
+//            let csv = csvData.csvRows()
+//            return csv
+//        } catch{
+//            print("ERROR: \(error)")
+//            return nil
 //        }
 //    }
 //
-//    private func stopTimer() {
-//        timer?.invalidate()
-//    }
-//
-//    deinit {
-//        stopTimer()
-//    }
-
-    private func readCSV(row: Int) -> [String]? {
-        guard let csvPath = Bundle.main.path(forResource: "ABC4001_CGM_6m_I", ofType: "csv") else { return nil }
-
-        do {
-            let csvData = try String(contentsOfFile: csvPath, encoding: String.Encoding.utf8)
-            let csv = csvData.csvRows()
-            return csv[row]
-        } catch{
-            print("ERROR: \(error)")
-            return nil
-        }
-    }
-    
-    private func readAllCSV(row: Int) -> [[String]]? {
-        guard let csvPath = Bundle.main.path(forResource: "ABC4001_CGM_6m_I", ofType: "csv") else { return nil }
-        
-        do {
-            let csvData = try String(contentsOfFile: csvPath, encoding: String.Encoding.utf8)
-            let csv = csvData.csvRows()
-            return csv
-        } catch{
-            print("ERROR: \(error)")
-            return nil
-        }
-    }
-    
     
     //MARK: - Update Day
     ///Updates the currentDay variable with a date provided via notification from ViewControllerGraph
     @objc private func updateDay(notification: Notification) {
         currentDay = notification.object as! Date
     }
-    
-    //MARK: - Functions for tracking when keyboard open
-//    @objc private func keyboardWillShow(sender: NSNotification) {
-////        keyboardOpen = true
-//    }
-//    @objc private func keyboardWillHide(sender: NSNotification) {
-////        keyboardOpen = false
-//    }
     
     //MARK: - View re-positioning
     /**
@@ -382,9 +341,44 @@ class ViewControllerMain: UIViewController{
             exerciseLabel.isHidden = false
             adviceLabel.isHidden = true
             
+            
         case .uninitialised:
             print("uninitialised view state")
         }
+    }
+    
+    
+    @IBAction func handlePan(recognizer:UIPanGestureRecognizer) {
+        let loc = recognizer.location(in: self.view)
+        var percHeight: CGFloat = ( loc.y - 0.1 * self.view.bounds.height ) / self.view.bounds.height
+        if percHeight < 0.25 {
+//            replaceConstraint(graphMultiplier: 0.5)
+            percHeight = 0.25
+        }
+        if percHeight > 0.62 {
+//        self.replaceConstraint(graphMultiplier: 0.93)
+//            showTabsContainerButton.isHidden = false
+////            graphLayoutTab.isHidden = false
+            percHeight = 0.62
+        }
+        else {
+            replaceConstraint(graphMultiplier: percHeight)
+            showTabsContainerButton.isHidden = true
+//            graphLayoutTab.isHidden = true
+        }
+        
+        if recognizer.state == .ended  {
+            // Save the view's  position.
+            UserDefaults.standard.graphLayout = "\(percHeight)"
+        }
+        
+    }
+    
+    //I think a better way would be an edge pan gesture recogniser.
+    @IBAction func showTabsContainer(_ sender: Any) {
+        let percHeight: CGFloat = 0.33
+            replaceConstraint(graphMultiplier: percHeight)
+        UserDefaults.standard.graphLayout = "\(percHeight)"
     }
     
     //MARK: - Buttons to open each domain
@@ -394,34 +388,17 @@ class ViewControllerMain: UIViewController{
     }
     ///Sets state to .food, updating the view to display the food domain. If keyboard is open when set (only possible from Exercise domain), it is dismissed and state change is delayed to smooth the transition
     @IBAction private func foodButton(_ sender: UIButton) {
-        //If keyboard is open and tab is swapped, dismiss it and then change state smoothly
-//        if keyboardOpen == true{
         view.endEditing(true)
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-//                self.state = .food
-//            }
-//        }
-//        else{
         self.state = .food
-//        }
     }
     ///Sets state to .exercise, updating the view to display the exercise domain. If keyboard is open when set (only possible from Food domain), it is dismissed and state change is delayed to smooth the transition
     @IBAction private func exerciseButton(_ sender: UIButton) {
-//        if keyboardOpen == true{
-//            view.endEditing(true)
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
         view.endEditing(true)
-
         self.state = .exercise
-//            }
-//        }
-//        else{
-//            self.state = .exercise
-//        }
+
     }
     ///Sets state to .advice, updating the view to display the advice domain
     @IBAction private func adviceButton(_ sender: UIButton) {
-//        updateSimulationData3()
         self.state = .advice
     }
     
@@ -503,12 +480,6 @@ class ViewControllerMain: UIViewController{
     
     @objc private func doneWithKeypad(){
         view.endEditing(true)
-    }
-    
-    //MARK: - Settings
-    ///Opens phone settings
-    @IBAction func settingsPopup(_ sender: Any) {
-        UIApplication.shared.open(URL(string:UIApplication.openSettingsURLString)!)
     }
 }
 

@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.portrait.union(UIInterfaceOrientationMask.portraitUpsideDown)
+        return UIInterfaceOrientationMask.allButUpsideDown
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

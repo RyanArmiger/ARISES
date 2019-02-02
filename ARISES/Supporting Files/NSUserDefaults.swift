@@ -26,4 +26,12 @@ extension UserDefaults {
             set(newValue, forKey: "glucoseUnits")
         }
     }
+    var graphLayout: String {
+        get {
+            return string(forKey: "graphLayout") ?? "0.33"
+        }
+        set {
+            set(newValue, forKey: "graphLayout")
+        }
+    }
 }

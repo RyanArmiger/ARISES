@@ -12,7 +12,7 @@ import UIKit
 class SettingsController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet private weak var transmitterIDField: UITextField!
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.hideKeyboardWhenTappedAround()
