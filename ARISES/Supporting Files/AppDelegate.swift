@@ -40,6 +40,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
     }
     
+    
+//    static let EMPATICA_API_KEY = "e317ade3900a4804ba6050da0bd581ae"
+
+    
     var unit: HKUnit?
     
     var transmitter: Transmitter?
@@ -59,6 +63,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         today = Calendar.current.startOfDay(for: Date())
+
+//        DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {
+//
+//            EmpaticaAPI.authenticate(withAPIKey: AppDelegate.EMPATICA_API_KEY) { (status, message) in
+//                if status {
+//
+//                    // "Authenticated" here you can start discovering devices
+//                }
+//            }
+//        }
         
         return true
     }
@@ -78,6 +92,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if let transmitter = transmitter, !transmitter.stayConnected {
             transmitter.stopScanning()
         }
+        
+        EmpaticaAPI.prepareForBackground()
+
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -88,6 +105,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         UIApplication.shared.applicationIconBadgeNumber = 0
         transmitter?.resumeScanning()
+        
+        EmpaticaAPI.prepareForResume()
         
     }
     

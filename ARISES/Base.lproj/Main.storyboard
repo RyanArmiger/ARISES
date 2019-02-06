@@ -118,6 +118,34 @@
             </objects>
             <point key="canvasLocation" x="1652" y="-200.14992503748127"/>
         </scene>
+        <!--Empatica View Controller-->
+        <scene sceneID="Bqv-66-Ehl">
+            <objects>
+                <tableViewController storyboardIdentifier="empaticaTable" id="e9H-7Z-S7O" customClass="EmpaticaViewController" customModule="ARISES" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oL1-RH-8eC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="hzm-9Q-iQJ">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hzm-9Q-iQJ" id="YNk-tI-7t3">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="e9H-7Z-S7O" id="rco-Gt-FQa"/>
+                            <outlet property="delegate" destination="e9H-7Z-S7O" id="RYv-7b-7NH"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wue-g1-Fpj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="196" y="-332"/>
+        </scene>
         <!--Settings Controller-->
         <scene sceneID="Mg4-KF-tso">
             <objects>
@@ -126,8 +154,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Serial number" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AlA-nd-uYl">
-                                <rect key="frame" x="15" y="318.5" width="247.5" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Transmitter SN" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AlA-nd-uYl">
+                                <rect key="frame" x="15" y="136" width="247.5" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -136,7 +164,26 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PRZ-sa-feN">
-                                <rect key="frame" x="270.5" y="319.5" width="89.5" height="28"/>
+                                <rect key="frame" x="270.5" y="137" width="89.5" height="28"/>
+                                <color key="backgroundColor" red="0.73776894810000004" green="0.84177047009999995" blue="0.937656343" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                <state key="normal" title="Connect">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Empatica API key" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rcl-mq-8Jf">
+                                <rect key="frame" x="15" y="213" width="247.5" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJ1-PP-wI1">
+                                <rect key="frame" x="270.5" y="214" width="89.5" height="28"/>
                                 <color key="backgroundColor" red="0.73776894810000004" green="0.84177047009999995" blue="0.937656343" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <state key="normal" title="Connect">
@@ -148,28 +195,77 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="dismissView:" destination="sEt-9P-Hz8" eventType="touchUpInside" id="uq7-il-vIU"/>
+                                    <action selector="empaticaConnectButton:" destination="sEt-9P-Hz8" eventType="touchUpInside" id="OkT-yY-t8i"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nau-1J-SbN">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Settings" id="P1b-YR-Vwn">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="jFk-Kd-B7t">
+                                            <connections>
+                                                <action selector="dismissView:" destination="sEt-9P-Hz8" id="R8z-4P-5k3"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dexcom G6" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGL-2a-5Qn">
+                                <rect key="frame" x="15" y="104" width="345" height="24"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Empatica E4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYN-Wk-Jr4">
+                                <rect key="frame" x="15" y="181" width="345" height="24"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wvl-9I-hTW">
+                                <rect key="frame" x="0.0" y="258" width="375" height="409"/>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Wvl-9I-hTW" firstAttribute="top" secondItem="rcl-mq-8Jf" secondAttribute="bottom" constant="15" id="1zT-NA-F17"/>
                             <constraint firstItem="AlA-nd-uYl" firstAttribute="width" secondItem="qrL-d6-2UL" secondAttribute="width" multiplier="0.66" id="2RW-3D-RaA"/>
+                            <constraint firstItem="gYN-Wk-Jr4" firstAttribute="top" secondItem="AlA-nd-uYl" secondAttribute="bottom" constant="15" id="2iP-c6-1MK"/>
                             <constraint firstItem="LIr-62-hDT" firstAttribute="trailing" secondItem="PRZ-sa-feN" secondAttribute="trailing" constant="15" id="2mN-QH-4Sr"/>
+                            <constraint firstItem="LIr-62-hDT" firstAttribute="trailing" secondItem="Wvl-9I-hTW" secondAttribute="trailing" id="8IQ-RM-BSP"/>
+                            <constraint firstItem="LIr-62-hDT" firstAttribute="bottom" secondItem="Wvl-9I-hTW" secondAttribute="bottom" id="KgN-hC-xhR"/>
                             <constraint firstItem="PRZ-sa-feN" firstAttribute="leading" secondItem="AlA-nd-uYl" secondAttribute="trailing" constant="8" symbolic="YES" id="PfD-nb-a6Z"/>
+                            <constraint firstItem="eJ1-PP-wI1" firstAttribute="centerY" secondItem="rcl-mq-8Jf" secondAttribute="centerY" id="Q4E-l5-M0U"/>
+                            <constraint firstItem="gYN-Wk-Jr4" firstAttribute="leading" secondItem="LIr-62-hDT" secondAttribute="leading" constant="15" id="RVZ-OL-Rgl"/>
+                            <constraint firstItem="LIr-62-hDT" firstAttribute="trailing" secondItem="lGL-2a-5Qn" secondAttribute="trailing" constant="15" id="Uow-Yu-NHH"/>
+                            <constraint firstItem="Nau-1J-SbN" firstAttribute="leading" secondItem="LIr-62-hDT" secondAttribute="leading" id="Y9D-Qi-Dd4"/>
+                            <constraint firstItem="rcl-mq-8Jf" firstAttribute="top" secondItem="gYN-Wk-Jr4" secondAttribute="bottom" constant="8" symbolic="YES" id="ZW5-to-Jx9"/>
                             <constraint firstItem="AlA-nd-uYl" firstAttribute="leading" secondItem="LIr-62-hDT" secondAttribute="leading" constant="15" id="blH-U8-nMZ"/>
-                            <constraint firstItem="PRZ-sa-feN" firstAttribute="centerY" secondItem="qrL-d6-2UL" secondAttribute="centerY" id="hDJ-yx-W7C"/>
-                            <constraint firstItem="AlA-nd-uYl" firstAttribute="centerY" secondItem="qrL-d6-2UL" secondAttribute="centerY" id="nyB-fg-WeH"/>
+                            <constraint firstItem="rcl-mq-8Jf" firstAttribute="leading" secondItem="LIr-62-hDT" secondAttribute="leading" constant="15" id="bzs-Ic-Ii6"/>
+                            <constraint firstItem="AlA-nd-uYl" firstAttribute="top" secondItem="lGL-2a-5Qn" secondAttribute="bottom" constant="8" symbolic="YES" id="esi-S3-k8E"/>
+                            <constraint firstItem="eJ1-PP-wI1" firstAttribute="leading" secondItem="rcl-mq-8Jf" secondAttribute="trailing" constant="8" symbolic="YES" id="gKf-k6-0Yx"/>
+                            <constraint firstItem="LIr-62-hDT" firstAttribute="trailing" secondItem="eJ1-PP-wI1" secondAttribute="trailing" constant="15" id="gY0-3O-oFk"/>
+                            <constraint firstItem="Wvl-9I-hTW" firstAttribute="leading" secondItem="LIr-62-hDT" secondAttribute="leading" id="qtk-qM-GaX"/>
+                            <constraint firstItem="lGL-2a-5Qn" firstAttribute="leading" secondItem="LIr-62-hDT" secondAttribute="leading" constant="15" id="r5Z-gw-FXV"/>
+                            <constraint firstItem="PRZ-sa-feN" firstAttribute="centerY" secondItem="AlA-nd-uYl" secondAttribute="centerY" id="rg3-u7-smj"/>
+                            <constraint firstItem="Nau-1J-SbN" firstAttribute="top" secondItem="LIr-62-hDT" secondAttribute="top" id="s8o-7B-Qo5"/>
+                            <constraint firstItem="Nau-1J-SbN" firstAttribute="trailing" secondItem="LIr-62-hDT" secondAttribute="trailing" id="vqz-FT-bNN"/>
+                            <constraint firstItem="LIr-62-hDT" firstAttribute="trailing" secondItem="gYN-Wk-Jr4" secondAttribute="trailing" constant="15" id="y3y-6D-sYh"/>
+                            <constraint firstItem="rcl-mq-8Jf" firstAttribute="width" secondItem="qrL-d6-2UL" secondAttribute="width" multiplier="0.66" id="zEg-UO-Hvr"/>
+                            <constraint firstItem="lGL-2a-5Qn" firstAttribute="top" secondItem="Nau-1J-SbN" secondAttribute="bottom" constant="40" id="zZo-hX-cy6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LIr-62-hDT"/>
                     </view>
                     <connections>
+                        <outlet property="empaticaAPIkeyField" destination="rcl-mq-8Jf" id="W35-GR-V59"/>
+                        <outlet property="empaticaConnect" destination="eJ1-PP-wI1" id="X3F-Ks-siQ"/>
+                        <outlet property="empaticaTableContainer" destination="Wvl-9I-hTW" id="GYi-yN-LEY"/>
                         <outlet property="transmitterIDField" destination="AlA-nd-uYl" id="NLd-XY-A8J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w6g-dS-ZKM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="947" y="-332"/>
+            <point key="canvasLocation" x="946.39999999999998" y="-332.38380809595208"/>
         </scene>
         <!--View Controller Food-->
         <scene sceneID="gAU-61-v8Y">
@@ -247,7 +343,7 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6QN-ht-td4">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6QN-ht-td4">
                                 <rect key="frame" x="0.0" y="125" width="300" height="190"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>

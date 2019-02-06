@@ -34,4 +34,12 @@ extension UserDefaults {
             set(newValue, forKey: "graphLayout")
         }
     }
+    var empaticaAPIKey: String {
+        get {
+            return string(forKey: "empaticaAPIKey") ?? "e317ade3900a4804ba6050da0bd581ae" 
+        }
+        set {
+            set(newValue, forKey: "empaticaAPIKey")
+        }
+    }
 }

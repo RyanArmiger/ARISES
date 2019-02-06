@@ -25,6 +25,9 @@
 		372141E621F52DD800B8627F /* ABC4001_CGM_6m_I.csv in Resources */ = {isa = PBXBuildFile; fileRef = 372141E421F52DD800B8627F /* ABC4001_CGM_6m_I.csv */; };
 		372141E721F52DD800B8627F /* ABC4001_log_final_I.csv in Resources */ = {isa = PBXBuildFile; fileRef = 372141E521F52DD800B8627F /* ABC4001_log_final_I.csv */; };
 		372141EA21F5319100B8627F /* CSVreader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372141E921F5319100B8627F /* CSVreader.swift */; };
+		3723CA4B220B210500380050 /* EmpaticaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3723CA4A220B210500380050 /* EmpaticaViewController.swift */; };
+		3723CA4E220B23D500380050 /* E4link.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3723CA4C220B239600380050 /* E4link.framework */; };
+		3723CA54220B26D800380050 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3723CA53220B26D800380050 /* Accelerate.framework */; };
 		375587C6209E086C00594532 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375587C5209E086C00594532 /* AppDelegate.swift */; };
 		375587CB209E086C00594532 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375587C9209E086C00594532 /* Main.storyboard */; };
 		375587CD209E086D00594532 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 375587CC209E086D00594532 /* Assets.xcassets */; };
@@ -116,6 +119,10 @@
 		372141E421F52DD800B8627F /* ABC4001_CGM_6m_I.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ABC4001_CGM_6m_I.csv; sourceTree = "<group>"; };
 		372141E521F52DD800B8627F /* ABC4001_log_final_I.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ABC4001_log_final_I.csv; sourceTree = "<group>"; };
 		372141E921F5319100B8627F /* CSVreader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVreader.swift; sourceTree = "<group>"; };
+		3723CA4A220B210500380050 /* EmpaticaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmpaticaViewController.swift; sourceTree = "<group>"; };
+		3723CA4C220B239600380050 /* E4link.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = E4link.framework; path = Pods/../E4link.framework; sourceTree = "<group>"; };
+		3723CA4F220B257700380050 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		3723CA53220B26D800380050 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		375587C2209E086C00594532 /* ARISES.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARISES.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		375587C5209E086C00594532 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		375587CA209E086C00594532 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -173,7 +180,6 @@
 		379651932202645700B8EB09 /* Glucose.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Glucose.swift; sourceTree = "<group>"; };
 		379651C12202654E00B8EB09 /* NSUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUserDefaults.swift; sourceTree = "<group>"; };
 		379651C3220267D300B8EB09 /* CommandQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandQueue.swift; sourceTree = "<group>"; };
-		379AC90520D95C340032C46B /* libSwiftCharts.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSwiftCharts.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		37A8629721F7A3E500D4E8AB /* ChartXAxisFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartXAxisFormatter.swift; sourceTree = "<group>"; };
 		37B3716120B47EF20048A942 /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
 		37B568BA20B485600014F735 /* ARISES.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ARISES.xcdatamodel; sourceTree = "<group>"; };
@@ -191,7 +197,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3723CA54220B26D800380050 /* Accelerate.framework in Frameworks */,
 				18BAA0D1968514F524648FEA /* libPods-ARISES.a in Frameworks */,
+				3723CA4E220B23D500380050 /* E4link.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +269,7 @@
 				3718079F20B8200B00D7C81A /* Display */,
 				3718079E20B81F4F00D7C81A /* Model */,
 				37CFC5CF20BEDCFB0051FDFC /* Indicators */,
+				3723CA4A220B210500380050 /* EmpaticaViewController.swift */,
 				37FEE41922026FFB00FF4679 /* SettingsController.swift */,
 				375587C9209E086C00594532 /* Main.storyboard */,
 				3718B85B20AC99B6006F1A47 /* ViewControllerFood.swift */,
@@ -378,7 +387,9 @@
 		92B4A946DFA7B8979D866583 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				379AC90520D95C340032C46B /* libSwiftCharts.a */,
+				3723CA53220B26D800380050 /* Accelerate.framework */,
+				3723CA4F220B257700380050 /* CoreBluetooth.framework */,
+				3723CA4C220B239600380050 /* E4link.framework */,
 				93597E8CC10506F00FC893FB /* libPods-ARISES.a */,
 				37CFC5B820BED6DF0051FDFC /* NotificationCenter.framework */,
 			);
@@ -550,6 +561,7 @@
 				379651C4220267D300B8EB09 /* CommandQueue.swift in Sources */,
 				37B568BB20B485600014F735 /* ARISES.xcdatamodeld in Sources */,
 				379651B92202645700B8EB09 /* CalibrationState.swift in Sources */,
+				3723CA4B220B210500380050 /* EmpaticaViewController.swift in Sources */,
 				379651BB2202645700B8EB09 /* NSData+CRC.swift in Sources */,
 				379651BD2202645700B8EB09 /* PeripheralManager.swift in Sources */,
 				3712A23C20C566FF006DB63C /* Stress.swift in Sources */,
@@ -619,6 +631,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -638,6 +651,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -679,6 +693,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -691,6 +706,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -703,9 +719,14 @@
 			baseConfigurationReference = 863CAE274477E894C42E1381 /* Pods-ARISES.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3HQG9T963Q;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = ARISES/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -726,9 +747,14 @@
 			baseConfigurationReference = E37BF63307A2A5AF11BA9831 /* Pods-ARISES.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3HQG9T963Q;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = ARISES/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
