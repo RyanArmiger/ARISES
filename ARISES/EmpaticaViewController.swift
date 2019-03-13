@@ -11,6 +11,8 @@ class EmpaticaViewController: UITableViewController {
     
     static var EMPATICA_API_KEY = "" 
     
+    private var tempCount: Int = 0
+    private var tempArray: [Float] = []
     
     private var devices: [EmpaticaDeviceManager] = []
     
@@ -26,6 +28,9 @@ class EmpaticaViewController: UITableViewController {
         
         super.viewDidLoad()
         
+        tempCount = 0
+        tempArray = []
+
         self.tableView.delegate = self
         
         self.tableView.dataSource = self
@@ -150,6 +155,16 @@ class EmpaticaViewController: UITableViewController {
             self.discover()
         }
     }
+    
+//    private func storeTemperature(timestamp: Double, temp: Float){
+//        if tempCount < 10 {
+//            tempArray.append(temp)
+//            tempCount += 1
+//        } else {
+//            tempArray.append(temp)
+//            ModelController().addTemp(timestamp: timestamp, array: tempArray)
+//        }
+//    }
 }
 
 
@@ -202,6 +217,7 @@ extension EmpaticaViewController: EmpaticaDeviceDelegate {
     func didReceiveTemperature(_ temp: Float, withTimestamp timestamp: Double, fromDevice device: EmpaticaDeviceManager!) {
         
         print("\(device.serialNumber!) TEMP { \(temp) }")
+//        self.storeTemperature(timestamp: timestamp, temp: temp)
     }
     
     func didReceiveAccelerationX(_ x: Int8, y: Int8, z: Int8, withTimestamp timestamp: Double, fromDevice device: EmpaticaDeviceManager!) {

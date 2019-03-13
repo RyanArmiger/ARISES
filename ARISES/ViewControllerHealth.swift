@@ -18,8 +18,7 @@ class ViewControllerHealth: UIViewController, UITableViewDataSource, UITableView
     //Stress and Illness entry
     @IBOutlet weak var stressSwitch: UISwitch!
     @IBOutlet weak var illnessSwitch: UISwitch!
-    @IBOutlet weak var illnessLabel: UILabel!
-    @IBOutlet weak var stressLabel: UILabel!
+
     //Favouriting
     @IBOutlet weak var favouritesButton: UIButton!
     //Daily log
@@ -145,14 +144,14 @@ class ViewControllerHealth: UIViewController, UITableViewDataSource, UITableView
         didSet{
             
             if currentDay != Calendar.current.startOfDay(for: Date()) {
-                stressLabel.isHidden = true
-                illnessLabel.isHidden = true
+//                stressLabel.isHidden = true
+//                illnessLabel.isHidden = true
                 stressSwitch.isHidden = true
                 illnessSwitch.isHidden = true
             }
             else{
-                stressLabel.isHidden = false
-                illnessLabel.isHidden = false
+//                stressLabel.isHidden = false
+//                illnessLabel.isHidden = false
                 stressSwitch.isHidden = false
                 illnessSwitch.isHidden = false
             }

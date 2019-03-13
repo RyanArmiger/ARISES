@@ -55,13 +55,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         transmitterID = UserDefaults.standard.transmitterID
+//
+//        if UserDefaults.standard.glucoseUnits == "millimolesPerLiter"{
+//            self.unit = HKUnit.millimolesPerLiter
+//        } else {
+//            self.unit = HKUnit.milligramsPerDeciliter
+//        }
         
-        if UserDefaults.standard.glucoseUnits == "millimolesPerLiter"{
-            self.unit = HKUnit.millimolesPerLiter
-        } else {
-            self.unit = HKUnit.milligramsPerDeciliter
-        }
-        
+//        self.unit = HKUnit.milligramsPerDeciliter
+
+        self.unit = HKUnit.millimolesPerLiter
+
         today = Calendar.current.startOfDay(for: Date())
 
 //        DispatchQueue.global(qos: DispatchQoS.QoSClass.background).async {

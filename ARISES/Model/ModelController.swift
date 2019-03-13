@@ -161,6 +161,7 @@ class ModelController {
 //
 //    }
 //
+    
     /**
      Adds a new glucose log to core data
      
@@ -169,7 +170,11 @@ class ModelController {
      - parameter date: Date, Date of glucose log to add
      */
     func addGlucose(value: Double, time: Date, trend: Int32, date: Date) {
-        
+        guard value < 25 else {
+            //Need to change this depending on units
+            print("Glucose value too high: \(value)")
+            return
+        }
         let currentDay = findOrMakeDay(day: date)
         let newGlucose = GlucoseMO(context: PersistenceService.context)
         newGlucose.value = value
@@ -197,6 +202,17 @@ class ModelController {
 //        PersistenceService.saveContext()
 //    }
 //
+ 
+//    func addTemp(timestamp: Double, array: [Float]){
+//        let currentDay = findOrMakeDay(day: date)
+//        for temp in array {
+//            let newTemp = Temperature(context: PersistenceService.context)
+//            newTemp.temperature = temp
+//            newTemp.time = time
+//            currentDay.addToTemp(newTemp)
+//        }
+//        PersistenceService.saveContext()
+//    }
     
     /**
      Adds a new insulin log to core data
@@ -205,7 +221,7 @@ class ModelController {
      - parameter date: Date, Date of insulin injected
      - note: Posts a notification "InsulinAdded" which is picked up by viewControllerGraph to update views
      */
-    func addInslin(units: Double, time: Date, date: Date){
+    func addInsulin(units: Double, time: Date, date: Date){
         
         let currentDay = findOrMakeDay(day: date)
         let newInsulin = Insulin(context: PersistenceService.context)
@@ -445,6 +461,7 @@ class ModelController {
         let sortDescriptors = [sectionSortDescriptor]
         fetchRequest.sortDescriptors = sortDescriptors
         let foundGlucose = try? PersistenceService.context.fetch(fetchRequest)
+
         if(foundGlucose == nil){
             print("Error fetching glucose")
             return []

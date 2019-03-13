@@ -95,8 +95,8 @@ class SettingsController: UIViewController, UITextFieldDelegate {
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
             
             // Instantiate View Controller
-            empaticaController = storyboard.instantiateViewController(withIdentifier: "empaticaTable") as! EmpaticaViewController
-                guard let ec = empaticaController else {
+            empaticaController = storyboard.instantiateViewController(withIdentifier: "empaticaTable") as? EmpaticaViewController
+            guard let ec = empaticaController else {
                     view.endEditing(true)
                     return
                 }
