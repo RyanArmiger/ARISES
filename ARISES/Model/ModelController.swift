@@ -186,6 +186,9 @@ class ModelController {
         PersistenceService.saveContext()
         //        nc.post(name: Notification.Name("newGlucoseValue"), object: nil)
         NotificationCenter.default.post(name: Notification.Name("GlucoseAdded"), object: nil)
+        NotificationCenter.default.post(name: Notification.Name("newGlucoseValue"), object: newGlucose)
+
+        
     }
 
 //    func addGlucoseArr(value: [Double], time: Date, date: Date){

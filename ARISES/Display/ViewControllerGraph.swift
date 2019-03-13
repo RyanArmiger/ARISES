@@ -17,6 +17,9 @@ import Foundation
 class ViewControllerGraph: UIViewController {
 
     
+    @IBOutlet weak var trendArrow: UIButton!
+    @IBOutlet weak var glucoseField: UITextField!
+    
     @IBOutlet weak var chartView: LineChartView!
     //MARK: Chart Area Variables
     
@@ -52,7 +55,9 @@ class ViewControllerGraph: UIViewController {
         
 //        glucoseArr = ModelController().fetchGlucose(day: today)
         //        print(glucoseArr?.count)
-        
+        nc.addObserver(self, selector: #selector(updateGlucoseValue(notification:)), name: Notification.Name("newGlucoseValue"), object: nil)
+        self.trendArrow.setImage(#imageLiteral(resourceName: "hyper"), for: .normal)
+
         updateGraph()
 
     }
@@ -171,6 +176,60 @@ class ViewControllerGraph: UIViewController {
         //        chartView.leftAxis.drawGridLinesEnabled = true
         chartView.data = data
         //        chartView.chartDescription?.text = "Blood glucose chart"
+    }
+    
+    /// Called when a new glucose log is added to the database. Updates labels related to that information e.g. Glucose value, IOB
+    ///
+    /// - Parameter notification: an NSGlucose log
+    @objc
+    func updateGlucoseValue(notification: Notification) {
+        guard let loggedGlucose = notification.object as? GlucoseMO else {
+            print("ERROR: Glucose value passed as notification cannot be downcast to NSGlucose")
+            glucoseField.text = ""
+            return
+        }
+        
+        
+        glucoseField.text = String(format: "%.1f", loggedGlucose.value)
+        
+//        print("GLUCOSE TREND: \(loggedGlucose.g)")
+        let glucoseTrend = self.getRotation(value: Int(loggedGlucose.trend))
+        if glucoseTrend == 1.5 * CGFloat.pi {
+            self.trendArrow.setImage(#imageLiteral(resourceName: "hyper"), for: .normal)
+        } else {
+            self.trendArrow.setImage(#imageLiteral(resourceName: "hyper"), for: .normal)
+            UIView.animate(withDuration: 2.0, animations: {
+                //            self.trendArrow.transform = CGAffineTransform(rotationAngle: self.getRotation(value: loggedGlucose.value))
+                self.trendArrow.transform = CGAffineTransform(rotationAngle: glucoseTrend)
+            })
+        }
+        
+    }
+    
+    /// Function to map a glucose value to a rotation for testing a trend arrow
+    ///
+    /// - Parameter value: blood glucose value, currently in mmol/l
+    /// - Returns: CGFloat value relating to a rotation between 0 and pi
+    private func getRotation(value: Int) -> CGFloat {
+        if value <= -90 || value >= 90 {
+            return 1.5 * CGFloat.pi
+        } else if value < 10 && value > -10 {
+            return ( 1 / 2 ) * CGFloat.pi
+        } else if value <= -10 && value > -20 {
+            return ( 3 / 4 ) * CGFloat.pi
+        } else if value <= -20 && value > -30 {
+            return CGFloat.pi
+        } else if value >= 10 && value < 20 {
+            return ( 1 / 4 ) * CGFloat.pi
+        } else if value >= 20 && value < 30 {
+            return CGFloat.pi
+        } else if value < 90 && value >= 30 {
+            return 0
+        } else if value > -90 && value <= -30 {
+            return CGFloat.pi
+        } else {
+            return 1.5 * CGFloat.pi
+        }
     }
 }
 

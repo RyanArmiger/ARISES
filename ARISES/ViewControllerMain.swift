@@ -31,6 +31,7 @@ class ViewControllerMain: UIViewController{
     
     //MARK: - Outlets
     // Views with status indicators
+
     
     @IBOutlet weak private var graphContainerView: UIView!
     @IBOutlet weak private var tabsContainerView: UIView!
@@ -481,6 +482,7 @@ class ViewControllerMain: UIViewController{
     @objc private func doneWithKeypad(){
         view.endEditing(true)
     }
+
 }
 
 //MARK: - Extensions

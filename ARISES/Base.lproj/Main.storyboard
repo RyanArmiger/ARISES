@@ -1946,12 +1946,43 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xye-YY-Gxn">
+                                <rect key="frame" x="262" y="32" width="63" height="71.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTY-Oi-w8T">
+                                        <rect key="frame" x="0.0" y="0.0" width="63" height="71.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="vTY-Oi-w8T" secondAttribute="height" multiplier="35:40" id="UNn-ch-0YB"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.3921568627" green="0.73725490199999999" blue="0.43921568630000002" alpha="0.40550085616438358" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" image="hyper"/>
+                                    </button>
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="--" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zvn-4U-78T">
+                                        <rect key="frame" x="0.0" y="11.5" width="63" height="48"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="vTY-Oi-w8T" firstAttribute="top" secondItem="xye-YY-Gxn" secondAttribute="top" id="II4-8I-MkU"/>
+                                    <constraint firstItem="vTY-Oi-w8T" firstAttribute="leading" secondItem="xye-YY-Gxn" secondAttribute="leading" id="TAt-ft-BzJ"/>
+                                    <constraint firstItem="zvn-4U-78T" firstAttribute="width" secondItem="vTY-Oi-w8T" secondAttribute="width" id="c02-AI-fli"/>
+                                    <constraint firstAttribute="bottom" secondItem="vTY-Oi-w8T" secondAttribute="bottom" id="mid-v4-T0R"/>
+                                    <constraint firstItem="zvn-4U-78T" firstAttribute="centerY" secondItem="vTY-Oi-w8T" secondAttribute="centerY" id="qJJ-vk-g0V"/>
+                                    <constraint firstItem="zvn-4U-78T" firstAttribute="centerX" secondItem="vTY-Oi-w8T" secondAttribute="centerX" id="uRS-9K-JGj"/>
+                                    <constraint firstAttribute="trailing" secondItem="vTY-Oi-w8T" secondAttribute="trailing" id="xR5-gt-HDJ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="x5L-Hv-RKP" firstAttribute="top" secondItem="41M-nE-us9" secondAttribute="bottom" id="073-03-Vtq"/>
+                            <constraint firstItem="xye-YY-Gxn" firstAttribute="trailing" secondItem="x5L-Hv-RKP" secondAttribute="trailing" multiplier="0.915" id="9py-Nd-73e"/>
                             <constraint firstItem="2Tc-pB-2LP" firstAttribute="trailing" secondItem="x5L-Hv-RKP" secondAttribute="trailing" id="AY5-RN-Grq"/>
                             <constraint firstItem="41M-nE-us9" firstAttribute="centerX" secondItem="W7S-AG-VBf" secondAttribute="centerX" id="LRB-Dr-iPg"/>
+                            <constraint firstItem="xye-YY-Gxn" firstAttribute="top" secondItem="x5L-Hv-RKP" secondAttribute="top" multiplier="1.1" id="NpT-Q2-tJu"/>
+                            <constraint firstItem="xye-YY-Gxn" firstAttribute="height" secondItem="x5L-Hv-RKP" secondAttribute="height" multiplier="0.35" id="Pa8-uA-91K"/>
                             <constraint firstItem="41M-nE-us9" firstAttribute="top" secondItem="2Tc-pB-2LP" secondAttribute="top" constant="8" id="Y3e-bn-JB3"/>
                             <constraint firstItem="2Tc-pB-2LP" firstAttribute="bottom" secondItem="x5L-Hv-RKP" secondAttribute="bottom" id="iei-nw-DHp"/>
                             <constraint firstItem="x5L-Hv-RKP" firstAttribute="leading" secondItem="2Tc-pB-2LP" secondAttribute="leading" id="yfd-ql-lyQ"/>
@@ -1960,12 +1991,14 @@
                     </view>
                     <connections>
                         <outlet property="chartView" destination="x5L-Hv-RKP" id="VB9-vD-zxO"/>
+                        <outlet property="glucoseField" destination="zvn-4U-78T" id="rv7-xZ-ZyT"/>
                         <outlet property="pickerTextField" destination="41M-nE-us9" id="1Al-Dw-dgZ"/>
+                        <outlet property="trendArrow" destination="vTY-Oi-w8T" id="7U6-0h-kAu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="edo-MZ-buv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2473" y="-501"/>
+            <point key="canvasLocation" x="2472.8000000000002" y="-501.04947526236884"/>
         </scene>
     </scenes>
     <resources>
