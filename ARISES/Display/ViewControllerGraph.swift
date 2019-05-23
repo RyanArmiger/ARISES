@@ -60,6 +60,11 @@ class ViewControllerGraph: UIViewController {
         self.trendArrow.setImage(#imageLiteral(resourceName: "hyper"), for: .normal)
 
         updateGraph()
+        
+//        formatWeekday(date: Date())
+//        today = Calendar.current.startOfDay(for: Date())
+//        updateDay()
+//        updateGraph()
 
     }
     

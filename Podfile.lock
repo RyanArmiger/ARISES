@@ -1,18 +1,26 @@
 PODS:
+  - AWSCore (2.9.8)
+  - AWSS3 (2.9.8):
+    - AWSCore (= 2.9.8)
   - Charts (3.2.1):
     - Charts/Core (= 3.2.1)
   - Charts/Core (3.2.1)
 
 DEPENDENCIES:
+  - AWSS3
   - Charts
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - AWSCore
+    - AWSS3
     - Charts
 
 SPEC CHECKSUMS:
+  AWSCore: 5da86c5afde44a87b06a2df50601bca81a8cee13
+  AWSS3: a5e12eb2495bbe49cda8b0595fa77280aacd7d3d
   Charts: f122fb70b19847fa5817d018b77d6c5a2296ab25
 
-PODFILE CHECKSUM: 2e7345c062af2d70da641a4e274497da8e8f5f5c
+PODFILE CHECKSUM: 6bb42fd911b68b766740bcbfb91dc3a5f067bf9d
 
-COCOAPODS: 1.6.0
+COCOAPODS: 1.7.0

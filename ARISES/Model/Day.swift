@@ -99,9 +99,9 @@ class Day: NSManagedObject {
     
     //MARK: - Tags e.g. Hypo/Hyper
     ///Returns an optional array of strings, containing any tags ("hypo"/"hyper") that exist in the glucose logs, an empty array if none exist, and Nil if no glucose logs exist.
-    var glucoseTags: [String]? {
+    var glucoseTags: [String] {
         guard self.glucose?.anyObject() != nil else{
-            return nil
+            return []
         }
         var trackHypo = false
         var trackHyper = false

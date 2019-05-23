@@ -1,4 +1,4 @@
-module Pods_ARISES {
+framework module Pods_ARISES {
   umbrella header "Pods-ARISES-umbrella.h"
 
   export *
