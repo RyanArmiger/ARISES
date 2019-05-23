@@ -223,7 +223,9 @@ extension EmpaticaViewController: EmpaticaDeviceDelegate {
     
     func didReceiveAccelerationX(_ x: Int8, y: Int8, z: Int8, withTimestamp timestamp: Double, fromDevice device: EmpaticaDeviceManager!) {
         
-        print("\(device.serialNumber!) ACC > {x: \(x), y: \(y), z: \(z)}")
+//        print("\(device.serialNumber!) ACC > {x: \(x), y: \(y), z: \(z)}")
+        let date = Date.init(timeIntervalSince1970: timestamp)
+        EmpaticaModelController().addAcc(x: Int16(x), y: Int16(y), z: Int16(z), timestamp: date)
     }
     
     func didReceiveTag(atTimestamp timestamp: Double, fromDevice device: EmpaticaDeviceManager!) {

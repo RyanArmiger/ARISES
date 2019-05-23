@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Acc" representedClassName=".Acc" syncable="YES" codeGenerationType="category">
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="x" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="y" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="z" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
     <entity name="BVP" representedClassName=".BVP" syncable="YES" codeGenerationType="category">
         <attribute name="bvp" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="localTime" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <entity name="Day" representedClassName=".Day" syncable="YES" codeGenerationType="category">
@@ -36,18 +41,15 @@
     </entity>
     <entity name="GSR" representedClassName=".GSR" syncable="YES" codeGenerationType="category">
         <attribute name="gsr" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="localTime" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <entity name="HR" representedClassName=".HR" syncable="YES" codeGenerationType="category">
         <attribute name="hr" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="localTime" attributeType="String" syncable="YES"/>
         <attribute name="qualityIndex" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <entity name="IBI" representedClassName=".IBI" syncable="YES" codeGenerationType="category">
         <attribute name="ibi" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="localTime" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <entity name="Illness" representedClassName=".Illness" syncable="YES" codeGenerationType="category">
@@ -75,11 +77,9 @@
         <relationship name="day" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="stress" inverseEntity="Day" syncable="YES"/>
     </entity>
     <entity name="Tag" representedClassName=".Tag" syncable="YES" codeGenerationType="category">
-        <attribute name="localTime" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <entity name="Temperature" representedClassName=".Temperature" syncable="YES" codeGenerationType="category">
-        <attribute name="localTime" attributeType="String" syncable="YES"/>
         <attribute name="temp" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
@@ -92,11 +92,12 @@
         <element name="Insulin" positionX="97" positionY="326" width="128" height="88"/>
         <element name="Meals" positionX="97" positionY="32" width="128" height="148"/>
         <element name="Stress" positionX="99" positionY="443" width="128" height="88"/>
-        <element name="Temperature" positionX="-438.234375" positionY="-107.5546875" width="128" height="88"/>
-        <element name="Tag" positionX="-443.984375" positionY="7.546875" width="128" height="73"/>
-        <element name="GSR" positionX="-439.078125" positionY="118.33984375" width="128" height="88"/>
-        <element name="HR" positionX="-443.44921875" positionY="237.125" width="128" height="103"/>
-        <element name="BVP" positionX="-294.65234375" positionY="-105.984375" width="128" height="88"/>
-        <element name="IBI" positionX="-302.640625" positionY="7.765625" width="128" height="88"/>
+        <element name="Temperature" positionX="-438.234375" positionY="-107.5546875" width="128" height="73"/>
+        <element name="Tag" positionX="-443.984375" positionY="7.546875" width="128" height="58"/>
+        <element name="GSR" positionX="-439.078125" positionY="118.33984375" width="128" height="73"/>
+        <element name="HR" positionX="-443.44921875" positionY="237.125" width="128" height="88"/>
+        <element name="BVP" positionX="-294.65234375" positionY="-105.984375" width="128" height="73"/>
+        <element name="IBI" positionX="-302.640625" positionY="7.765625" width="128" height="73"/>
+        <element name="Acc" positionX="-234" positionY="-81" width="128" height="105"/>
     </elements>
 </model>

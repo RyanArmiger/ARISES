@@ -24,7 +24,7 @@ class EmpaticaModelController {
             let newTemp = Temperature(context: PersistenceService.context)
             newTemp.temp = temp
             newTemp.timestamp = timestamp
-            newTemp.localTime = getLocalTimeString(timestamp: timestamp)
+//            newTemp.localTime = getLocalTimeString(timestamp: timestamp)
         
             PersistenceService.saveContext()
         }
@@ -35,7 +35,7 @@ class EmpaticaModelController {
 
             let newTag = Tag(context: PersistenceService.context)
             newTag.timestamp = timestamp
-            newTag.localTime = getLocalTimeString(timestamp: timestamp)
+//            newTag.localTime = getLocalTimeString(timestamp: timestamp)
             PersistenceService.saveContext()
         }
     }
@@ -47,7 +47,20 @@ class EmpaticaModelController {
             newHR.hr = hr
             newHR.qualityIndex = qualityIndex
             newHR.timestamp = timestamp
-            newHR.localTime = getLocalTimeString(timestamp: timestamp)
+//            newHR.localTime = getLocalTimeString(timestamp: timestamp)
+            PersistenceService.saveContext()
+        }
+    }
+    
+    func addAcc(x: Int16, y: Int16, z: Int16, timestamp: Date) {
+        PersistenceService.context.performAndWait {
+            
+            let newAcc = Acc(context: PersistenceService.context)
+            newAcc.x = x
+            newAcc.y = y
+            newAcc.z = z
+            newAcc.timestamp = timestamp
+            //            newHR.localTime = getLocalTimeString(timestamp: timestamp)
             PersistenceService.saveContext()
         }
     }
@@ -57,7 +70,7 @@ class EmpaticaModelController {
             let newBVP = BVP(context: PersistenceService.context)
             newBVP.bvp = bvp
             newBVP.timestamp = timestamp
-            newBVP.localTime = getLocalTimeString(timestamp: timestamp)
+//            newBVP.localTime = getLocalTimeString(timestamp: timestamp)
             PersistenceService.saveContext()
         }
     }
@@ -67,7 +80,7 @@ class EmpaticaModelController {
             let newIBI = IBI(context: PersistenceService.context)
             newIBI.ibi = ibi
             newIBI.timestamp = timestamp
-            newIBI.localTime = getLocalTimeString(timestamp: timestamp)
+//            newIBI.localTime = getLocalTimeString(timestamp: timestamp)
             PersistenceService.saveContext()
         }
     }
@@ -77,10 +90,11 @@ class EmpaticaModelController {
             let newGSR = GSR(context: PersistenceService.context)
             newGSR.gsr = gsr
             newGSR.timestamp = timestamp
-            newGSR.localTime = getLocalTimeString(timestamp: timestamp)
+//            newGSR.localTime = getLocalTimeString(timestamp: timestamp)
             PersistenceService.saveContext()
         }
 
     }
+    
     
 }
