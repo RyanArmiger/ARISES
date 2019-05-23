@@ -28,6 +28,13 @@
 		3723CA4B220B210500380050 /* EmpaticaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3723CA4A220B210500380050 /* EmpaticaViewController.swift */; };
 		3723CA4E220B23D500380050 /* E4link.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3723CA4C220B239600380050 /* E4link.framework */; };
 		3723CA54220B26D800380050 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3723CA53220B26D800380050 /* Accelerate.framework */; };
+		373B5AB4229648BD001D8F0D /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373B5AB3229648BD001D8F0D /* Temperature.swift */; };
+		373B5AB722964B75001D8F0D /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373B5AB622964B75001D8F0D /* Tag.swift */; };
+		373B5AB922964B93001D8F0D /* HR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373B5AB822964B93001D8F0D /* HR.swift */; };
+		373B5ABB22964BA3001D8F0D /* BVP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373B5ABA22964BA3001D8F0D /* BVP.swift */; };
+		373B5ABD22964BBA001D8F0D /* IBI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373B5ABC22964BBA001D8F0D /* IBI.swift */; };
+		373B5ABF22964BCB001D8F0D /* GSR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373B5ABE22964BCB001D8F0D /* GSR.swift */; };
+		373B5AC122964CD9001D8F0D /* EmpaticaModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373B5AC022964CD9001D8F0D /* EmpaticaModelController.swift */; };
 		375587C6209E086C00594532 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375587C5209E086C00594532 /* AppDelegate.swift */; };
 		375587CB209E086C00594532 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375587C9209E086C00594532 /* Main.storyboard */; };
 		375587CD209E086D00594532 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 375587CC209E086D00594532 /* Assets.xcassets */; };
@@ -123,6 +130,13 @@
 		3723CA4C220B239600380050 /* E4link.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = E4link.framework; path = Pods/../E4link.framework; sourceTree = "<group>"; };
 		3723CA4F220B257700380050 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		3723CA53220B26D800380050 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		373B5AB3229648BD001D8F0D /* Temperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
+		373B5AB622964B75001D8F0D /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		373B5AB822964B93001D8F0D /* HR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HR.swift; sourceTree = "<group>"; };
+		373B5ABA22964BA3001D8F0D /* BVP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BVP.swift; sourceTree = "<group>"; };
+		373B5ABC22964BBA001D8F0D /* IBI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBI.swift; sourceTree = "<group>"; };
+		373B5ABE22964BCB001D8F0D /* GSR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSR.swift; sourceTree = "<group>"; };
+		373B5AC022964CD9001D8F0D /* EmpaticaModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmpaticaModelController.swift; sourceTree = "<group>"; };
 		375587C2209E086C00594532 /* ARISES.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARISES.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		375587C5209E086C00594532 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		375587CA209E086C00594532 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -209,6 +223,7 @@
 		3718079E20B81F4F00D7C81A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				373B5AB5229648CB001D8F0D /* Empatica Files */,
 				372141E821F52DDF00B8627F /* Test Data */,
 				371807A220B8500F00D7C81A /* ModelController.swift */,
 				37B568B920B485600014F735 /* ARISES.xcdatamodeld */,
@@ -240,6 +255,20 @@
 				372141E521F52DD800B8627F /* ABC4001_log_final_I.csv */,
 			);
 			path = "Test Data";
+			sourceTree = "<group>";
+		};
+		373B5AB5229648CB001D8F0D /* Empatica Files */ = {
+			isa = PBXGroup;
+			children = (
+				373B5AC022964CD9001D8F0D /* EmpaticaModelController.swift */,
+				373B5AB622964B75001D8F0D /* Tag.swift */,
+				373B5AB3229648BD001D8F0D /* Temperature.swift */,
+				373B5AB822964B93001D8F0D /* HR.swift */,
+				373B5ABA22964BA3001D8F0D /* BVP.swift */,
+				373B5ABC22964BBA001D8F0D /* IBI.swift */,
+				373B5ABE22964BCB001D8F0D /* GSR.swift */,
+			);
+			path = "Empatica Files";
 			sourceTree = "<group>";
 		};
 		375587B9209E086C00594532 = {
@@ -500,8 +529,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				373B5ABD22964BBA001D8F0D /* IBI.swift in Sources */,
 				370F921520BD61C90081C570 /* GlucoseMO.swift in Sources */,
 				3718B85E20AC9A2A006F1A47 /* ViewControllerAdvice.swift in Sources */,
+				373B5AB4229648BD001D8F0D /* Temperature.swift in Sources */,
 				379651BC2202645700B8EB09 /* PeripheralManagerError.swift in Sources */,
 				379651AB2202645700B8EB09 /* TransmitterTimeTxMessage.swift in Sources */,
 				379651A52202645700B8EB09 /* CalibrationDataRxMessage.swift in Sources */,
@@ -522,6 +553,7 @@
 				379651952202645700B8EB09 /* Data.swift in Sources */,
 				379651AC2202645700B8EB09 /* KeepAliveTxMessage.swift in Sources */,
 				379651BF2202645700B8EB09 /* PeripheralManager+G5.swift in Sources */,
+				373B5AB922964B93001D8F0D /* HR.swift in Sources */,
 				379651B22202645700B8EB09 /* BluetoothManager.swift in Sources */,
 				3718079520B818ED00D7C81A /* Exercise.swift in Sources */,
 				372141EA21F5319100B8627F /* CSVreader.swift in Sources */,
@@ -536,6 +568,7 @@
 				379651992202645700B8EB09 /* AuthRequestTxMessage.swift in Sources */,
 				3718B85C20AC99B6006F1A47 /* ViewControllerFood.swift in Sources */,
 				3718B86420AC9A75006F1A47 /* ViewControllerGraph.swift in Sources */,
+				373B5AB722964B75001D8F0D /* Tag.swift in Sources */,
 				379651A62202645700B8EB09 /* SessionStopRxMessage.swift in Sources */,
 				379651B42202645700B8EB09 /* TransmitterStatus.swift in Sources */,
 				3796519A2202645700B8EB09 /* AuthChallengeTxMessage.swift in Sources */,
@@ -551,7 +584,9 @@
 				379651A42202645700B8EB09 /* SessionStartTxMessage.swift in Sources */,
 				379651B12202645700B8EB09 /* AESCrypt.m in Sources */,
 				370F921720BD637B0081C570 /* Insulin.swift in Sources */,
+				373B5ABF22964BCB001D8F0D /* GSR.swift in Sources */,
 				3718B86220AC9A60006F1A47 /* ViewControllerHealth.swift in Sources */,
+				373B5ABB22964BA3001D8F0D /* BVP.swift in Sources */,
 				379651BE2202645700B8EB09 /* OSLog.swift in Sources */,
 				379651972202645700B8EB09 /* TransmitterVersionTxMessage.swift in Sources */,
 				379651B32202645700B8EB09 /* Opcode.swift in Sources */,
@@ -565,6 +600,7 @@
 				379651BB2202645700B8EB09 /* NSData+CRC.swift in Sources */,
 				379651BD2202645700B8EB09 /* PeripheralManager.swift in Sources */,
 				3712A23C20C566FF006DB63C /* Stress.swift in Sources */,
+				373B5AC122964CD9001D8F0D /* EmpaticaModelController.swift in Sources */,
 				37A8629821F7A3E500D4E8AB /* ChartXAxisFormatter.swift in Sources */,
 				379651BA2202645700B8EB09 /* Calibration.swift in Sources */,
 				37FEE41A22026FFB00FF4679 /* SettingsController.swift in Sources */,

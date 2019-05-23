@@ -216,13 +216,9 @@ extension EmpaticaViewController: EmpaticaDeviceDelegate {
     
     func didReceiveTemperature(_ temp: Float, withTimestamp timestamp: Double, fromDevice device: EmpaticaDeviceManager!) {
         
-        let date = Date.init(timeIntervalSinceReferenceDate: timestamp)
+        let date = Date.init(timeIntervalSince1970: timestamp)
+        EmpaticaModelController().addTemp(temp: temp, timestamp: date)
 
-        print("Timestamp: ", date)
-       
-
-        print("\(device.serialNumber!) TEMP { \(temp) }")
-//        self.storeTemperature(timestamp: timestamp, temp: temp)
     }
     
     func didReceiveAccelerationX(_ x: Int8, y: Int8, z: Int8, withTimestamp timestamp: Double, fromDevice device: EmpaticaDeviceManager!) {
@@ -232,26 +228,48 @@ extension EmpaticaViewController: EmpaticaDeviceDelegate {
     
     func didReceiveTag(atTimestamp timestamp: Double, fromDevice device: EmpaticaDeviceManager!) {
         
-        print("\(device.serialNumber!) TAG received { \(timestamp) }")
+        let date = Date.init(timeIntervalSince1970: timestamp)
+        EmpaticaModelController().addTag(timestamp: date)
+        
+//        print("\(device.serialNumber!) TAG received { \(timestamp) }")
     }
     
     func didReceiveGSR(_ gsr: Float, withTimestamp timestamp: Double, fromDevice device: EmpaticaDeviceManager!) {
         
-        print("\(device.serialNumber!) GSR { \(abs(gsr)) }")
+        let date = Date.init(timeIntervalSince1970: timestamp)
+        EmpaticaModelController().addGSR(gsr: gsr, timestamp: date)
+//        print("\(device.serialNumber!) GSR { \(abs(gsr)) }")
         
         self.updateValue(device: device, string: "\(String(format: "%.2f", abs(gsr))) µS")
     }
     
     func didReceiveHR(_ hr: Float, andQualityIndex qualityIndex: Int32, withTimestamp timestamp: Double, fromDevice device: EmpaticaDeviceManager!) {
         
-        print("\(device.serialNumber!) HR { \(hr) }")
+        let date = Date.init(timeIntervalSince1970: timestamp)
+        EmpaticaModelController().addHR(hr: hr, qualityIndex: qualityIndex, timestamp: date)
+//        print("\(device.serialNumber!) HR { \(hr) }")
 
     }
     
     func didReceiveBVP(_ bvp: Float, withTimestamp timestamp: Double, fromDevice device: EmpaticaDeviceManager!) {
         
-        print("\(device.serialNumber!) BVP { \(bvp) }")
+        let date = Date.init(timeIntervalSince1970: timestamp)
+        EmpaticaModelController().addBVP(bvp: bvp, timestamp: date)
+        
+//        print("\(device.serialNumber!) BVP { \(bvp) }")
 
+    }
+    
+    func didReceiveIBI(_ ibi: Float, withTimestamp timestamp: Double, fromDevice device: EmpaticaDeviceManager!) {
+        
+        let date = Date.init(timeIntervalSince1970: timestamp)
+        EmpaticaModelController().addIBI(ibi: ibi, timestamp: date)
+//        print("\(device.serialNumber!) IBI { \(ibi) }")
+
+    }
+    
+    func didReceiveBatteryLevel(_ level: Float, withTimestamp timestamp: Double, fromDevice device: EmpaticaDeviceManager!) {
+        
     }
     
     func didUpdate( _ status: DeviceStatus, forDevice device: EmpaticaDeviceManager!) {
