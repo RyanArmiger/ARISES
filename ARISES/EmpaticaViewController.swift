@@ -216,6 +216,11 @@ extension EmpaticaViewController: EmpaticaDeviceDelegate {
     
     func didReceiveTemperature(_ temp: Float, withTimestamp timestamp: Double, fromDevice device: EmpaticaDeviceManager!) {
         
+        let date = Date.init(timeIntervalSinceReferenceDate: timestamp)
+
+        print("Timestamp: ", date)
+       
+
         print("\(device.serialNumber!) TEMP { \(temp) }")
 //        self.storeTemperature(timestamp: timestamp, temp: temp)
     }
@@ -235,6 +240,18 @@ extension EmpaticaViewController: EmpaticaDeviceDelegate {
         print("\(device.serialNumber!) GSR { \(abs(gsr)) }")
         
         self.updateValue(device: device, string: "\(String(format: "%.2f", abs(gsr))) µS")
+    }
+    
+    func didReceiveHR(_ hr: Float, andQualityIndex qualityIndex: Int32, withTimestamp timestamp: Double, fromDevice device: EmpaticaDeviceManager!) {
+        
+        print("\(device.serialNumber!) HR { \(hr) }")
+
+    }
+    
+    func didReceiveBVP(_ bvp: Float, withTimestamp timestamp: Double, fromDevice device: EmpaticaDeviceManager!) {
+        
+        print("\(device.serialNumber!) BVP { \(bvp) }")
+
     }
     
     func didUpdate( _ status: DeviceStatus, forDevice device: EmpaticaDeviceManager!) {

@@ -32,6 +32,7 @@ class ViewControllerGraph: UIViewController {
     @IBOutlet weak var pickerTextField: UITextField!
 	///DatePicker used to change and display date
     let picker = UIDatePicker()
+    
 	/// Initializes the app to today
     var today = Calendar.current.startOfDay(for: Date())
 
@@ -105,7 +106,7 @@ class ViewControllerGraph: UIViewController {
         
         formatWeekday(date: Date())
         picker.datePickerMode = .date
-        
+        picker.maximumDate = Date()
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         
@@ -113,6 +114,8 @@ class ViewControllerGraph: UIViewController {
         toolbar.setItems([done], animated: false)
         pickerTextField.inputAccessoryView = toolbar
         pickerTextField.inputView = picker
+        
+        
     }
 	
 	///	Function called after the user has finished with the DatePicker and synchronizes the date used for the chart with the viewController.

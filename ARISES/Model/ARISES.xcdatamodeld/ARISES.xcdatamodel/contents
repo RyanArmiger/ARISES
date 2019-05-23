@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18B75" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Day" representedClassName=".Day" syncable="YES" codeGenerationType="category">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="exercise" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Exercise" inverseName="day" inverseEntity="Exercise" syncable="YES"/>
@@ -53,6 +53,11 @@
         <attribute name="start" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="day" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="stress" inverseEntity="Day" syncable="YES"/>
     </entity>
+    <entity name="Temperature" representedClassName="Temperature" syncable="YES" codeGenerationType="class">
+        <attribute name="localTime" optional="YES" syncable="YES"/>
+        <attribute name="temp" optional="YES" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Day" positionX="-153" positionY="11" width="128" height="163"/>
         <element name="Exercise" positionX="97" positionY="-115" width="128" height="133"/>
@@ -62,5 +67,6 @@
         <element name="Insulin" positionX="97" positionY="326" width="128" height="88"/>
         <element name="Meals" positionX="97" positionY="32" width="128" height="148"/>
         <element name="Stress" positionX="99" positionY="443" width="128" height="88"/>
+        <element name="Temperature" positionX="-438.234375" positionY="-107.5546875" width="128" height="88"/>
     </elements>
 </model>
