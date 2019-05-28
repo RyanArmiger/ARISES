@@ -246,7 +246,7 @@ extension EmpaticaViewController: EmpaticaDeviceDelegate {
     }
     
     func didReceiveHR(_ hr: Float, andQualityIndex qualityIndex: Int32, withTimestamp timestamp: Double, fromDevice device: EmpaticaDeviceManager!) {
-        
+        print("HEART RATE FOUND: ", hr)
         let date = Date.init(timeIntervalSince1970: timestamp)
         EmpaticaModelController().addHR(hr: hr, qualityIndex: qualityIndex, timestamp: date)
 //        print("\(device.serialNumber!) HR { \(hr) }")
@@ -270,9 +270,9 @@ extension EmpaticaViewController: EmpaticaDeviceDelegate {
 
     }
     
-    func didReceiveBatteryLevel(_ level: Float, withTimestamp timestamp: Double, fromDevice device: EmpaticaDeviceManager!) {
-        
-    }
+//    func didReceiveBatteryLevel(_ level: Float, withTimestamp timestamp: Double, fromDevice device: EmpaticaDeviceManager!) {
+//
+//    }
     
     func didUpdate( _ status: DeviceStatus, forDevice device: EmpaticaDeviceManager!) {
         
@@ -283,7 +283,10 @@ extension EmpaticaViewController: EmpaticaDeviceDelegate {
         case kDeviceStatusDisconnected:
             
             print("[didUpdate] Disconnected \(device.serialNumber!).")
-            
+//            if !device.isFaulty && device.allowed {
+//
+//                self.connect(device: device)
+//            }
             self.restartDiscovery()
             
             break

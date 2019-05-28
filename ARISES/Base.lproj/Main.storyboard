@@ -724,6 +724,9 @@
                                                 <rect key="frame" x="260" y="0.0" width="31" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <state key="normal" title="📅"/>
+                                                <connections>
+                                                    <action selector="calendarButton:" destination="zCn-EJ-xVJ" eventType="touchUpInside" id="KEb-4N-dYq"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>

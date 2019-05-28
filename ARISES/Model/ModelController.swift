@@ -540,4 +540,135 @@ class ModelController {
         }
     }
 
+    
+
+    
+    func fetchModelInputs(date: Date) -> ([Float], [Float], [Float], [Int]) {
+        var glucose: [Float] = []
+        var meals: [Float] = []
+        var insulin: [Float] = []
+//        let timeIndex: [Float] = []
+        
+        let fetchRequestGluc: NSFetchRequest<GlucoseMO> = GlucoseMO.fetchRequest()
+        let fetchRequestMeals: NSFetchRequest<Meals> = Meals.fetchRequest()
+        let fetchRequestInsulin: NSFetchRequest<Insulin> = Insulin.fetchRequest()
+
+        
+        let lowerTimestap = Calendar.current.date(byAdding: .minute, value: -85, to: date) ?? Date()
+        
+        let lessThanPredicate = NSPredicate(format: "time < %@", Date() as CVarArg)
+        
+        let greaterThanPredicate = NSPredicate(format: "time > %@", lowerTimestap as CVarArg)
+        
+        let andPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [lessThanPredicate, greaterThanPredicate])
+        
+        fetchRequestGluc.predicate = andPredicate
+        fetchRequestMeals.predicate = andPredicate
+        fetchRequestInsulin.predicate = andPredicate
+        
+        let sectionSortDescriptor = NSSortDescriptor(key: "time", ascending: false)
+        //        fetchRequest.fetchLimit = 500
+        let sortDescriptors = [sectionSortDescriptor]
+        
+        fetchRequestGluc.sortDescriptors = sortDescriptors
+        fetchRequestMeals.sortDescriptors = sortDescriptors
+        fetchRequestInsulin.sortDescriptors = sortDescriptors
+
+        guard let foundGluc = try? PersistenceService.context.fetch(fetchRequestGluc) else {
+            print("Error fetching glucose in input")
+            return ([],[],[],[])
+        }
+        guard let foundMeals = try? PersistenceService.context.fetch(fetchRequestMeals) else {
+            print("Error fetching meals in input")
+            return ([],[],[],[])
+        }
+        guard let foundInsulin = try? PersistenceService.context.fetch(fetchRequestInsulin) else {
+            print("Error fetching insulin in input")
+            return ([],[],[],[])
+        }
+        
+        let timeIndexInt = Array(0...15)
+        
+        glucose = timeIndexInt.map { _ in 0 }
+        meals = timeIndexInt.map { _ in 0 }
+        insulin = timeIndexInt.map { _ in 0 }
+        
+        // Map
+        // Transform timestamp into minutes ago
+        // Replace each timestamp with nearest 5 minutes
+        // Replace timestamp with relevant index
+        // Add to that index
+        
+        foundGluc.forEach { gluc in
+            if let time = gluc.time {
+
+                let comparison = date.timeIntervalSinceReferenceDate - time.timeIntervalSinceReferenceDate
+                
+                let roundedTime = round(Double(comparison / 300)) * 5
+//                print("roundedTime: ", roundedTime)
+                let index = Int((80 - roundedTime) / 5)
+//                print("timeIndex: ", (80 - roundedTime) / 5)
+                if index >= 0 && index < 16 {
+                    // 18 is here as presumption is model uses mg/dl not mmol/l
+                    glucose[index] = Float(gluc.value * 18)
+                }
+            }
+        }
+        
+        foundInsulin.forEach { ins in
+            if let time = ins.time {
+                
+                let comparison = date.timeIntervalSinceReferenceDate - time.timeIntervalSinceReferenceDate
+                
+                let roundedTime = round(Double(comparison / 300)) * 5
+//                print("roundedTime: ", roundedTime)
+                let index = Int((80 - roundedTime) / 5)
+//                print("timeIndex: ", (80 - roundedTime) / 5)
+                if index >= 0 && index < 16 {
+                    insulin[index] += Float(ins.units)
+                }
+            }
+        }
+        
+        foundMeals.forEach { meal in
+//            print(meal)
+            if let time = meal.time {
+//                print("meal time: ", time)
+                let comparison = date.timeIntervalSinceReferenceDate - time.timeIntervalSinceReferenceDate
+                
+                let roundedTime = round(Double(comparison / 300)) * 5
+                
+//                print("roundedTime: ", roundedTime)
+                let index = Int((80 - roundedTime) / 5)
+//                print("timeIndex: ", (80 - roundedTime) / 5)
+//                print("index: ", index)
+
+                if index >= 0 && index < 16 {
+//                    print("adding meal")
+                    meals[index] += Float(meal.carbs)
+                }
+            }
+        }
+        
+        let timeIndex = timeIndexInt.map { time -> Int in
+            if let timeDate = Calendar.current.date(byAdding: .minute, value: -(time * 5), to: date) {
+//                print("timeDate: ", timeDate)
+                let startOfDay = Calendar.current.startOfDay(for: date)
+//                print("startOfDay: ", startOfDay)
+
+                let comparison = timeDate.timeIntervalSinceReferenceDate -  startOfDay.timeIntervalSinceReferenceDate
+                let comparisonMinutes = comparison / 60
+//                print("comparison: ", comparison)
+
+                return Int(round(comparisonMinutes / 5) * 5) / 5
+            }
+            return 0
+            
+        }
+        
+        // Extrapolate etc. missing glucose
+        
+        return (glucose, meals, insulin, timeIndex)
+    }
+    
 }

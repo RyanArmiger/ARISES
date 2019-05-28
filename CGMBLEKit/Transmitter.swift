@@ -344,7 +344,7 @@ struct TransmitterID {
 
 // MARK: - Helpers
 fileprivate extension PeripheralManager {
-    fileprivate func authenticate(id: TransmitterID) throws -> AuthChallengeRxMessage {
+    func authenticate(id: TransmitterID) throws -> AuthChallengeRxMessage {
         let authMessage = AuthRequestTxMessage()
 
         do {
@@ -388,7 +388,7 @@ fileprivate extension PeripheralManager {
         return challengeResponse
     }
 
-    fileprivate func requestBond() throws {
+    func requestBond() throws {
         do {
             try writeMessage(KeepAliveTxMessage(time: 25), for: .authentication)
         } catch let error {
@@ -402,7 +402,7 @@ fileprivate extension PeripheralManager {
         }
     }
 
-    fileprivate func enableNotify(shouldWaitForBond: Bool = false) throws {
+    func enableNotify(shouldWaitForBond: Bool = false) throws {
         do {
             if shouldWaitForBond {
                 try setNotifyValue(true, for: .control, timeout: 15)
@@ -414,7 +414,7 @@ fileprivate extension PeripheralManager {
         }
     }
 
-    fileprivate func readTimeMessage() throws -> TransmitterTimeRxMessage {
+    func readTimeMessage() throws -> TransmitterTimeRxMessage {
         do {
             return try writeMessage(TransmitterTimeTxMessage(), for: .control)
         } catch let error {
@@ -423,7 +423,7 @@ fileprivate extension PeripheralManager {
     }
 
     /// - Throws: TransmitterError.controlError
-    fileprivate func sendCommand(_ command: Command, activationDate: Date) throws -> TransmitterRxMessage {
+    func sendCommand(_ command: Command, activationDate: Date) throws -> TransmitterRxMessage {
         do {
             switch command {
             case .startSensor(let date):
@@ -445,7 +445,7 @@ fileprivate extension PeripheralManager {
         }
     }
 
-    fileprivate func readGlucose() throws -> GlucoseRxMessage {
+    func readGlucose() throws -> GlucoseRxMessage {
         do {
             return try writeMessage(GlucoseTxMessage(), for: .control)
         } catch let error {
@@ -453,7 +453,7 @@ fileprivate extension PeripheralManager {
         }
     }
 
-    fileprivate func readCalibrationData() throws -> CalibrationDataRxMessage {
+    func readCalibrationData() throws -> CalibrationDataRxMessage {
         do {
             return try writeMessage(CalibrationDataTxMessage(), for: .control)
         } catch let error {
@@ -461,7 +461,7 @@ fileprivate extension PeripheralManager {
         }
     }
 
-    fileprivate func disconnect() {
+    func disconnect() {
         do {
             try setNotifyValue(false, for: .control)
             try writeMessage(DisconnectTxMessage(), for: .control)
@@ -469,7 +469,7 @@ fileprivate extension PeripheralManager {
         }
     }
 
-    fileprivate func listenToControl() throws {
+    func listenToControl() throws {
         do {
             try setNotifyValue(true, for: .control)
             try setNotifyValue(true, for: .backfill)

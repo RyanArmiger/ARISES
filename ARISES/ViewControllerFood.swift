@@ -126,9 +126,11 @@ class ViewControllerFood: UIViewController, UIPickerViewDelegate, UITableViewDat
         nc.addObserver(self, selector: #selector(updateDay(notification:)), name: Notification.Name("dayChanged"), object: nil)
         
         //Observers to determine keyboard state and move view so that fields aren't obscured
-        nc.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        nc.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
+//        nc.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+//        nc.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        //Observers to determine keyboard state and move view so that fields aren't obscured
+        nc.addObserver(self, selector: #selector(handleShowKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
+        nc.addObserver(self, selector: #selector(handleHideKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
         favouritesButton.tintColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)
         updateTable()
         
@@ -141,13 +143,33 @@ class ViewControllerFood: UIViewController, UIPickerViewDelegate, UITableViewDat
         updateTable()
     }
     
-    //MARK: - Functions for moving view to prevent keyboard obscuring fields
-    /// Moves food domain view 65 points upward
-    @objc func keyboardWillShow(sender: NSNotification) {
-        self.view.frame.origin.y = -65
+//    //MARK: - Functions for moving view to prevent keyboard obscuring fields
+//    /// Moves food domain view 65 points upward
+//    @objc func keyboardWillShow(sender: NSNotification) {
+//        self.view.frame.origin.y = -65
+//    }
+//    /// Moves food domain view to original position
+//    @objc func keyboardWillHide(sender: NSNotification) {
+//        self.view.frame.origin.y = 0
+//    }
+    
+    @objc
+    private func handleShowKeyboardNotification(notification: NSNotification) {
+        guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+            return
+        }
+        let testy = proteinTextField.superview?.convert(proteinTextField.frame, to: nil)
+        
+//        print(testy)
+        if let maxY = testy?.maxY {
+            if keyboardRect.minY < maxY {
+                let adjustValue = maxY - keyboardRect.minY
+                self.view.frame.origin.y = -(adjustValue + 15)
+            }
+        }
     }
-    /// Moves food domain view to original position
-    @objc func keyboardWillHide(sender: NSNotification) {
+    @objc
+    private func handleHideKeyboardNotification(notification: NSNotification) {
         self.view.frame.origin.y = 0
     }
     

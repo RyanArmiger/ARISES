@@ -6,6 +6,7 @@ target 'ARISES' do
   use_frameworks!
   pod 'Charts'
   pod 'AWSS3'
+  pod 'TensorFlowLiteSwift'
 
   # Pods for ARISES
 

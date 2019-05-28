@@ -25,7 +25,7 @@ class EmpaticaModelController {
             newTemp.temp = temp
             newTemp.timestamp = timestamp
 //            newTemp.localTime = getLocalTimeString(timestamp: timestamp)
-        
+            print("Temp time: ", timestamp)
             PersistenceService.saveContext()
         }
     }
