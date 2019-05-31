@@ -33,7 +33,15 @@ class SettingsController: UIViewController, UITextFieldDelegate {
         empaticaConnect.backgroundColor = #colorLiteral(red: 0.7377689481, green: 0.8417704701, blue: 0.937656343, alpha: 1)
         empaticaAPIkeyField.isUserInteractionEnabled = true
 
+        
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        if let ec = empaticaController {
+//            empaticaTableContainer.addSubview(ec.view)      //        EmpaticaViewController().beginAuthenticate()
+//
+//        }
+//    }
     
     @objc func hideEmpaticaConnect() {
         empaticaConnect.isUserInteractionEnabled = false
@@ -79,6 +87,12 @@ class SettingsController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func empaticaConnectButton(_ sender: Any) {
+        
+//        if let ec = self.empaticaController {
+//            empaticaTableContainer.addSubview(ec.view)      //        EmpaticaViewController().beginAuthenticate()
+//            return
+//        }
+     
         guard let APIkey = empaticaAPIkeyField.text else {
             return
         }

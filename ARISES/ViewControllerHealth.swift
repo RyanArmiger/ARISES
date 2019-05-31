@@ -309,16 +309,18 @@ class ViewControllerHealth: UIViewController, UITableViewDataSource, UITableView
     }
     
     @IBAction func calendarButton(_ sender: Any) {
-        var glucose: [Float]
-        var insulin: [Float]
-        var meals: [Float]
-        var timeIndex: [Int]
-
-        (glucose, meals, insulin, timeIndex) = ModelController().fetchModelInputs(date: Date())
-        print("Glucose: ", glucose)
-        print("Meals: ", meals)
-        print("Insulin: ", insulin)
-        print("TimeIndex: ", timeIndex)
+        let mlcont = MLController()
+        print(mlcont.predict())
+//        var glucose: [Float]
+//        var insulin: [Float]
+//        var meals: [Float]
+//        var timeIndex: [Float]
+//
+//        (glucose, meals, insulin, timeIndex) = ModelController().fetchModelInputs(date: Date())
+//        print("Glucose: ", glucose)
+//        print("Meals: ", meals)
+//        print("Insulin: ", insulin)
+//        print("TimeIndex: ", timeIndex)
 
     }
     

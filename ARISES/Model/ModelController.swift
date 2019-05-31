@@ -543,7 +543,7 @@ class ModelController {
     
 
     
-    func fetchModelInputs(date: Date) -> ([Float], [Float], [Float], [Int]) {
+    func fetchModelInputs(date: Date) -> ([Float], [Float], [Float], [Float]) {
         var glucose: [Float] = []
         var meals: [Float] = []
         var insulin: [Float] = []
@@ -650,7 +650,7 @@ class ModelController {
             }
         }
         
-        let timeIndex = timeIndexInt.map { time -> Int in
+        let timeIndex = timeIndexInt.map { time -> Float in
             if let timeDate = Calendar.current.date(byAdding: .minute, value: -(time * 5), to: date) {
 //                print("timeDate: ", timeDate)
                 let startOfDay = Calendar.current.startOfDay(for: date)
@@ -660,7 +660,7 @@ class ModelController {
                 let comparisonMinutes = comparison / 60
 //                print("comparison: ", comparison)
 
-                return Int(round(comparisonMinutes / 5) * 5) / 5
+                return Float((round(comparisonMinutes / 5) * 5) / 5) / 288
             }
             return 0
             

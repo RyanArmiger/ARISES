@@ -23,6 +23,7 @@ class EmpaticaViewController: UITableViewController {
             value && device.deviceStatus == kDeviceStatusDisconnected
         }
     }
+    private var storedDevice: EmpaticaDeviceManager? = nil
     
     override func viewDidLoad() {
         
@@ -233,7 +234,7 @@ extension EmpaticaViewController: EmpaticaDeviceDelegate {
         let date = Date.init(timeIntervalSince1970: timestamp)
         EmpaticaModelController().addTag(timestamp: date)
         
-//        print("\(device.serialNumber!) TAG received { \(timestamp) }")
+        print("\(device.serialNumber!) TAG received { \(timestamp) }")
     }
     
     func didReceiveGSR(_ gsr: Float, withTimestamp timestamp: Double, fromDevice device: EmpaticaDeviceManager!) {
@@ -287,7 +288,22 @@ extension EmpaticaViewController: EmpaticaDeviceDelegate {
 //
 //                self.connect(device: device)
 //            }
-            self.restartDiscovery()
+            // Remember to stop discovering before connecting
+        
+            EmpaticaAPI.cancelDiscovery()
+            
+            
+            if let device = self.storedDevice {
+                if !device.isFaulty && device.allowed {
+                    print("[didUpdate] Trying to reconnect to \(device.serialNumber!).")
+//                    device.connect(with: self, andConnectionOptions: )
+                    device.connect(with: self)
+                }
+            } else {
+                self.restartDiscovery()
+            }
+            
+            
             
             break
             
@@ -337,7 +353,7 @@ extension EmpaticaViewController {
             self.disconnect(device: device)
         }
         else if !device.isFaulty && device.allowed {
-            
+            self.storedDevice = device
             self.connect(device: device)
         }
         

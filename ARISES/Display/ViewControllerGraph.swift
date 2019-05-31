@@ -26,7 +26,7 @@ class ViewControllerGraph: UIViewController {
 //    private var dataLoaded: Bool = false
 //    private var didLayout: Bool = false
     private var glucoseArr: [GlucoseMO]?
-
+    private var model: MLController?
  
     
     @IBOutlet weak var pickerTextField: UITextField!
@@ -46,20 +46,26 @@ class ViewControllerGraph: UIViewController {
 	*/
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        model = MLController()
+
         /// Declares Notifications
         let nc = NotificationCenter.default
 //        nc.addObserver(self, selector: #selector(updateGraph), name: Notification.Name("newGlucoseValue"), object: nil)
-        nc.addObserver(self, selector: #selector(updateGraph), name: Notification.Name("GlucoseAdded"), object: nil)
+//        nc.addObserver(self, selector: #selector(updateGraph), name: Notification.Name("GlucoseAdded"), object: nil)
+        nc.addObserver(self, selector: #selector(callPred), name: Notification.Name("GlucoseAdded"), object: nil)
+
         nc.addObserver(self, selector: #selector(setDay(notification:)), name: Notification.Name("setDay"), object: nil)
         createDatePicker()
         
 //        glucoseArr = ModelController().fetchGlucose(day: today)
         //        print(glucoseArr?.count)
         nc.addObserver(self, selector: #selector(updateGlucoseValue(notification:)), name: Notification.Name("newGlucoseValue"), object: nil)
-        self.trendArrow.setImage(#imageLiteral(resourceName: "hyper"), for: .normal)
+        
+        nc.addObserver(self, selector: #selector(addPrediction(notification:)), name: Notification.Name("newPrediction"), object: nil)
 
-        updateGraph()
+        self.trendArrow.setImage(#imageLiteral(resourceName: "hyper"), for: .normal)
+        callPred()
+//        updateGraph()
         
 //        formatWeekday(date: Date())
 //        today = Calendar.current.startOfDay(for: Date())
@@ -83,7 +89,8 @@ class ViewControllerGraph: UIViewController {
         formatWeekday(date: today)
         updateDay()
 //        glucoseArr = ModelController().fetchGlucose(day: today)
-        updateGraph()
+        callPred()
+//        updateGraph()
     }
 	
 	/// Creates a Notification used to synchronize the Date throughout the app.
@@ -132,7 +139,8 @@ class ViewControllerGraph: UIViewController {
         updateDay()
         picker.date = Date()
 //        glucoseArr = ModelController().fetchGlucose(day: today)
-        updateGraph()
+        callPred()
+//        updateGraph()
     }
     
     @objc
@@ -146,18 +154,18 @@ class ViewControllerGraph: UIViewController {
         guard let arr = glucoseArr else {
             return
         }
-        
+
         var lineChartEntry = [ChartDataEntry]()
         //        let today = Calendar.current.startOfDay(for: Date())
-        
+
         // Define chart xValues formatter
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
         formatter.locale = Locale.current
-        
+
         let referenceTimeInterval = Double(0)
         let xValuesNumberFormatter = ChartXAxisFormatter(referenceTimeInterval: referenceTimeInterval, dateFormatter: formatter)
-        
+
         //For this to work correctly glucoseArr needs to be in ASCENDING order, or it won't show up
         for gluc in arr {
             if let xTime = gluc.time?.timeIntervalSinceReferenceDate {
@@ -165,14 +173,14 @@ class ViewControllerGraph: UIViewController {
                 lineChartEntry.append(value)
             }
         }
-        
+
         let line1 = LineChartDataSet(values: lineChartEntry, label: "BG mmol/l")
         line1.colors = [NSUIColor.blue]
         line1.drawCirclesEnabled = true
         line1.drawCircleHoleEnabled = false
         line1.circleRadius = 3
         line1.circleColors = [NSUIColor.gray]
-        
+
         let data = LineChartData()
         data.addDataSet(line1)
         data.setDrawValues(false)
@@ -212,6 +220,91 @@ class ViewControllerGraph: UIViewController {
             })
         }
         
+    }
+    
+    @objc func addPrediction(notification: Notification) {
+        if today < Calendar.current.startOfDay(for: Date()) {
+            updateGraph()
+        } else {
+            guard let prediction = notification.object as? Float else {
+                print("ERROR: prediction object could not be cast to float")
+                return
+            }
+            glucoseArr = ModelController().fetchGlucose(day: today)
+            guard glucoseArr != [] else {
+                chartView.isHidden = true
+                return
+            }
+            chartView.isHidden = false
+            guard let arr = glucoseArr else {
+                return
+            }
+            
+            var lineChartEntry = [ChartDataEntry]()
+            var predChartEntry = [ChartDataEntry]()
+            
+            //        let today = Calendar.current.startOfDay(for: Date())
+            
+            // Define chart xValues formatter
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm"
+            formatter.locale = Locale.current
+            
+            let referenceTimeInterval = Double(0)
+            let xValuesNumberFormatter = ChartXAxisFormatter(referenceTimeInterval: referenceTimeInterval, dateFormatter: formatter)
+            
+            //For this to work correctly glucoseArr needs to be in ASCENDING order, or it won't show up
+            for gluc in arr {
+                if let xTime = gluc.time?.timeIntervalSinceReferenceDate {
+                    let value = ChartDataEntry(x: xTime / ( 3_600 * 24 ), y: gluc.value)
+                    lineChartEntry.append(value)
+                }
+            }
+            
+            //Prediction append
+            if let lastGluc = arr.last {
+                if let xTime = lastGluc.time?.timeIntervalSinceReferenceDate {
+                    let value = ChartDataEntry(x: xTime / ( 3_600 * 24 ), y: lastGluc.value)
+                    predChartEntry.append(value)
+                }
+                let xTime = Date().timeIntervalSinceReferenceDate + TimeInterval(floatLiteral: 1800)
+                let value = ChartDataEntry(x: xTime / ( 3_600 * 24 ), y: lastGluc.value + (Double(prediction) / 18))
+                predChartEntry.append(value)
+                
+            }
+            
+            let line1 = LineChartDataSet(values: lineChartEntry, label: "BG mmol/l")
+            line1.colors = [NSUIColor.blue]
+            line1.drawCirclesEnabled = true
+            line1.drawCircleHoleEnabled = false
+            line1.circleRadius = 3
+            line1.circleColors = [NSUIColor.gray]
+            
+            let predLine = LineChartDataSet(values: predChartEntry, label: "Prediction")
+            predLine.colors = [NSUIColor.red]
+            predLine.drawCirclesEnabled = false
+            predLine.drawCircleHoleEnabled = false
+            predLine.lineDashLengths = [2, 3]
+            predLine.lineWidth = 3.0
+            
+            let data = LineChartData()
+            data.addDataSet(line1)
+            data.addDataSet(predLine)
+            data.setDrawValues(false)
+            chartView.xAxis.valueFormatter = xValuesNumberFormatter
+            chartView.xAxis.labelPosition = XAxis.LabelPosition.bottom
+            chartView.legend.enabled = false
+            //        let customYAxis = CustomYAxisRenderer(viewPortHandler: chartView.viewPortHandler, yAxis: chartView.getAxis(.left), transformer: chartView.getTransformer(forAxis: .left))
+            //        chartView.leftYAxisRenderer = customYAxis
+            //        chartView.leftAxis.drawGridLinesEnabled = true
+            chartView.data = data
+            //        chartView.chartDescription?.text = "Blood glucose chart"
+        }
+        
+    }
+    
+    @objc func callPred() {
+        model?.predict()
     }
     
     /// Function to map a glucose value to a rotation for testing a trend arrow
