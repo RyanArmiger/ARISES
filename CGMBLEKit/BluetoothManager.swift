@@ -48,8 +48,7 @@ protocol BluetoothManagerDelegate: class {
 
 
 class BluetoothManager: NSObject {
-    //MAD: if you change this from true, the Empatica works. 
-    var stayConnected = false
+    var stayConnected = true
 
     weak var delegate: BluetoothManagerDelegate?
 

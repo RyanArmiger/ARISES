@@ -8,6 +8,7 @@
 
 import CoreData
 import UIKit
+import UserNotifications
 
 /**
  Controls all UI elements within the health domain. This includes illness and stress entry, favouriting system, managing the day log and filtering.
@@ -307,10 +308,11 @@ class ViewControllerHealth: UIViewController, UITableViewDataSource, UITableView
 
         }
     }
-    
     @IBAction func calendarButton(_ sender: Any) {
         let mlcont = MLController()
         print(mlcont.predict())
+        
+
 //        var glucose: [Float]
 //        var insulin: [Float]
 //        var meals: [Float]

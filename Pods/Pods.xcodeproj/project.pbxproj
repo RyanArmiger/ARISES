@@ -31,7 +31,7 @@
 		07B9B4E0771588584A93E69D2DADE46B /* AWSS3Resources.m in Sources */ = {isa = PBXBuildFile; fileRef = 88408FE0B0FE62330A0C4BA082C43995 /* AWSS3Resources.m */; };
 		0A0A7108F73727884A13DD0D8A2E28CB /* ChartDataRendererBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87009B87139CF16892A40904CA3F4EAC /* ChartDataRendererBase.swift */; };
 		0A94B43840DCED33CF089A1F01CA759A /* AWSIdentityProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9189FD4407A4EA9FDF58021836087C /* AWSIdentityProvider.m */; };
-		0ADDB1CB3C4296FE3188541EC41C3752 /* Pods-ARISES-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 798C44E46C2ADB877EDD3E2229901F45 /* Pods-ARISES-dummy.m */; };
+		0ADDB1CB3C4296FE3188541EC41C3752 /* Pods-ARISES-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BEE80D80D0823BFBF4252DCC41D38863 /* Pods-ARISES-dummy.m */; };
 		0B9A024556C5DF7F3A38E1702CC3F36B /* AWSURLResponseSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = 855EB3B00672EBE54249DF358CEABF54 /* AWSURLResponseSerialization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0C2D39248788B1FC28BAACD880A0CB8C /* Highlight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C81C88D9D475906A79BEB9B07209649 /* Highlight.swift */; };
 		0C60E2FA6496FF40668C24E97DAD101C /* TensorFlowLiteSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B92C756789E027EFFF44F9813F57F45 /* TensorFlowLiteSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -122,6 +122,7 @@
 		4CC8C8CD13E8E9A8DB0FEEB43C58FCAB /* AnimatedZoomViewJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E00178B37D6D1F3F4F0E4A03266EED /* AnimatedZoomViewJob.swift */; };
 		4D28828E7AF9CCBC02505E067F18A86B /* BubbleChartRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBA9CA96D91C43C9E018F2B5832646B /* BubbleChartRenderer.swift */; };
 		4E771F21A81D71964206371EE20BA3F9 /* AWSCognitoIdentity.h in Headers */ = {isa = PBXBuildFile; fileRef = 9AA1FF692013E0C450132AEEF4F0B967 /* AWSCognitoIdentity.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4FDE6384124A511D7127C9463B4587DE /* Pods-ARISESTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D53CD0A9B65B36732D82FEF15CF32E0 /* Pods-ARISESTests-dummy.m */; };
 		506F9C318560FEB959D1BDD9DDCE88A3 /* AxisBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F51467B60AB2B363C0AE562130A3C6 /* AxisBase.swift */; };
 		509283A8A2B5EDEFBE683EC06CA7B70F /* BarChartRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FE9C9A8C70C6DE3450C727CF67D1B9 /* BarChartRenderer.swift */; };
 		50BB5A22BEB57BCA0CC9E9B4CE104D8A /* AWSCancellationTokenRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = D719BA6909965B0C17A0E580659D2580 /* AWSCancellationTokenRegistration.m */; };
@@ -160,7 +161,7 @@
 		681E94170AE77EC8DE6F7E65A5569B9E /* LineScatterCandleRadarRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69F558A17519B4A57AFE767C66B20FC /* LineScatterCandleRadarRenderer.swift */; };
 		68A8F6753014F79E2F47E1DF0F23AC1E /* AWSS3PreSignedURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 7688136852E3B44FBBC7E101A484DB41 /* AWSS3PreSignedURL.m */; };
 		68B74E8A2C1240CF21251E395CD9AD0C /* AWSBolts.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB736EDEF5DCC1C9C953548DF1F7285 /* AWSBolts.m */; };
-		6A0D05AFB44D504135CD5F7D55EC0CDD /* Pods-ARISES-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 65FE08D077EC00F22582DF4837D16009 /* Pods-ARISES-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6A0D05AFB44D504135CD5F7D55EC0CDD /* Pods-ARISES-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FB4D1C16AD8AF684048F3BEB733C962C /* Pods-ARISES-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6A98EBD76481E5B55DD2EBE954897FA7 /* DefaultFillFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CB472390D71254A88F785B7BDA8B0F /* DefaultFillFormatter.swift */; };
 		6B4BEF772B580094EECEDF2D81AA18B5 /* AWSS3TransferUtilityDatabaseHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 07588CEC1D2EEA0E0675E760D1028353 /* AWSS3TransferUtilityDatabaseHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6BD1DDB59D37C9F40164BDC3064F5A44 /* Fabric+FABKits.h in Headers */ = {isa = PBXBuildFile; fileRef = 7DBF919C53D7BC04FDA38A054B750531 /* Fabric+FABKits.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -453,24 +454,25 @@
 		174BF310460A99488E01E90BB4DCCCFC /* TensorFlowLiteC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TensorFlowLiteC.framework; path = Frameworks/TensorFlowLiteC.framework; sourceTree = "<group>"; };
 		17E2F5E564737ABC13A33DDA7FE48E50 /* AWSFMDB.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSFMDB.h; path = AWSCore/FMDB/AWSFMDB.h; sourceTree = "<group>"; };
 		187D65AABCB207A483ADB72F4AA0D4AF /* AWSmetamacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSmetamacros.h; path = AWSCore/Mantle/extobjc/AWSmetamacros.h; sourceTree = "<group>"; };
+		191CC01EE95F3B470186803B627541B4 /* Pods-ARISES-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ARISES-acknowledgements.markdown"; sourceTree = "<group>"; };
 		19491409814818D360DF0D4FF4816E7E /* AWSCredentialsProvider.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWSCredentialsProvider.m; path = AWSCore/Authentication/AWSCredentialsProvider.m; sourceTree = "<group>"; };
-		19F650C56DC4E780B5C52B7EA79AFE43 /* Pods-ARISES.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ARISES.modulemap"; sourceTree = "<group>"; };
 		1A712EB114BB8AAE55BB975CDCCE01B2 /* CrossShapeRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CrossShapeRenderer.swift; path = Source/Charts/Renderers/Scatter/CrossShapeRenderer.swift; sourceTree = "<group>"; };
 		1A836D972DAEA75E01F290302A3BBEFB /* AWSSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWSSerialization.m; path = AWSCore/Serialization/AWSSerialization.m; sourceTree = "<group>"; };
 		1BE40544B181DC7AF7583DD4C413826E /* AWSCore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSCore.h; path = AWSCore/AWSCore.h; sourceTree = "<group>"; };
-		1C880BC98AEB34F6705F1B192FD88BB7 /* AWSS3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AWSS3.framework; path = AWSS3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1EE10AABB9C22825EE4B68C7F098F533 /* Pods-ARISES-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ARISES-acknowledgements.plist"; sourceTree = "<group>"; };
 		1F34966E0765DB431B7240E1DF09A275 /* AWSDDLog+LOGV.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "AWSDDLog+LOGV.h"; path = "AWSCore/Logging/AWSDDLog+LOGV.h"; sourceTree = "<group>"; };
 		1FAAC98387041E9BA2B6EE3A8B6E282C /* ChartDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartDataProvider.swift; path = Source/Charts/Interfaces/ChartDataProvider.swift; sourceTree = "<group>"; };
 		209781F99B900760596A05C4885D6DA3 /* AWSS3Serializer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWSS3Serializer.m; path = AWSS3/AWSS3Serializer.m; sourceTree = "<group>"; };
 		215FD724A0A45C4D0FBBA66A8ADFE698 /* LineChartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineChartView.swift; path = Source/Charts/Charts/LineChartView.swift; sourceTree = "<group>"; };
 		21CB63D05FB4288FE465DEB5937F9CC4 /* ICandleChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ICandleChartDataSet.swift; path = Source/Charts/Data/Interfaces/ICandleChartDataSet.swift; sourceTree = "<group>"; };
+		2226562D30592C72805DE5B637B9BA77 /* libPods-ARISESTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-ARISESTests.a"; path = "libPods-ARISESTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		22B025423B89C14A7EA3CE4D60F61907 /* Pods-ARISES-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ARISES-acknowledgements.plist"; sourceTree = "<group>"; };
+		22E064346481E0165FEF7783B6E362CB /* AWSCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AWSCore.framework; path = AWSCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		22F9A233F2A9FEC0E4612C169CE424E7 /* IHighlighter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IHighlighter.swift; path = Source/Charts/Highlight/IHighlighter.swift; sourceTree = "<group>"; };
 		239E08C242260E2A6F4DFEB9556E534F /* BarChartDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarChartDataProvider.swift; path = Source/Charts/Interfaces/BarChartDataProvider.swift; sourceTree = "<group>"; };
 		245E63992A1413B79D5DC1126C60D936 /* AWSSignature.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSSignature.h; path = AWSCore/Authentication/AWSSignature.h; sourceTree = "<group>"; };
+		2550C29539B264086B6DE113089AEC8E /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Charts.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		260E824FD889DDE4CC684D8C84F49838 /* AWSMTLReflection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWSMTLReflection.m; path = AWSCore/Mantle/AWSMTLReflection.m; sourceTree = "<group>"; };
 		26641483ACA8020CC9881D968D543931 /* PieChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PieChartData.swift; path = Source/Charts/Data/Implementations/Standard/PieChartData.swift; sourceTree = "<group>"; };
-		2809005C95651B985E5E708751A620C4 /* Pods-ARISES.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ARISES.release.xcconfig"; sourceTree = "<group>"; };
 		29386874156123019211FF7049C42167 /* BarLineChartViewBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarLineChartViewBase.swift; path = Source/Charts/Charts/BarLineChartViewBase.swift; sourceTree = "<group>"; };
 		2998EB8623200A1DA66467B8A1AA6A08 /* IRadarChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IRadarChartDataSet.swift; path = Source/Charts/Data/Interfaces/IRadarChartDataSet.swift; sourceTree = "<group>"; };
 		29BC674714A13113B20A09DF70E90E95 /* AWSDDASLLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWSDDASLLogger.m; path = AWSCore/Logging/AWSDDASLLogger.m; sourceTree = "<group>"; };
@@ -519,6 +521,7 @@
 		473FAAAE5F15459172DF10DEE5FC8DCF /* RadarChartRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RadarChartRenderer.swift; path = Source/Charts/Renderers/RadarChartRenderer.swift; sourceTree = "<group>"; };
 		47E52CF97964D0475C3338036F4249C4 /* AWSFMResultSet.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWSFMResultSet.m; path = AWSCore/FMDB/AWSFMResultSet.m; sourceTree = "<group>"; };
 		481B8E11F8D3C87550F428AF8CFCD281 /* BubbleChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BubbleChartData.swift; path = Source/Charts/Data/Implementations/Standard/BubbleChartData.swift; sourceTree = "<group>"; };
+		48E6EFDBBEADBE2B44DF8FDA27C10D9C /* Pods-ARISESTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ARISESTests.release.xcconfig"; sourceTree = "<group>"; };
 		49702CAF5D6A205C34FDE5C8860DC60F /* AWSS3Service.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWSS3Service.m; path = AWSS3/AWSS3Service.m; sourceTree = "<group>"; };
 		49AFAB34221BEB8AF66D6005340F2B73 /* RadarChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RadarChartData.swift; path = Source/Charts/Data/Implementations/Standard/RadarChartData.swift; sourceTree = "<group>"; };
 		4A472C45CB00360237DDB41FDE828270 /* AWSDDLog.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSDDLog.h; path = AWSCore/Logging/AWSDDLog.h; sourceTree = "<group>"; };
@@ -541,6 +544,7 @@
 		526268AB0FE064A2A89DDC70A9DF9D97 /* AnimatedMoveViewJob.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimatedMoveViewJob.swift; path = Source/Charts/Jobs/AnimatedMoveViewJob.swift; sourceTree = "<group>"; };
 		52759DA35BA45A8C9F5528D38BE1A04D /* BubbleChartDataEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BubbleChartDataEntry.swift; path = Source/Charts/Data/Implementations/Standard/BubbleChartDataEntry.swift; sourceTree = "<group>"; };
 		53CAE441C07821F8B50C39FD39923B5D /* AWSCategory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSCategory.h; path = AWSCore/Utility/AWSCategory.h; sourceTree = "<group>"; };
+		5410AC26D014DE1C5205BB654C0ACE93 /* TensorFlowLite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TensorFlowLite.framework; path = TensorFlowLiteSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5484E0B6E8BE9F4A25D82C4700606C3B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		54A5D918CE8949E4AF7E334A43E76861 /* IScatterChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IScatterChartDataSet.swift; path = Source/Charts/Data/Interfaces/IScatterChartDataSet.swift; sourceTree = "<group>"; };
 		54DF6EE0D7DE0AA472A16CD154D3B9C5 /* CombinedChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CombinedChartData.swift; path = Source/Charts/Data/Implementations/Standard/CombinedChartData.swift; sourceTree = "<group>"; };
@@ -560,26 +564,28 @@
 		5C81C88D9D475906A79BEB9B07209649 /* Highlight.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Highlight.swift; path = Source/Charts/Highlight/Highlight.swift; sourceTree = "<group>"; };
 		5CA2A2646C419181155E0C763BE3E75E /* BarChartDataEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarChartDataEntry.swift; path = Source/Charts/Data/Implementations/Standard/BarChartDataEntry.swift; sourceTree = "<group>"; };
 		5D2F22A038A0E2083CC1FCCB7CC0EA10 /* ChartHighlighter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartHighlighter.swift; path = Source/Charts/Highlight/ChartHighlighter.swift; sourceTree = "<group>"; };
+		5D53CD0A9B65B36732D82FEF15CF32E0 /* Pods-ARISESTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ARISESTests-dummy.m"; sourceTree = "<group>"; };
+		5FCF557C2A9AE378A34B3A6CC378BCF3 /* Pods-ARISES.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ARISES.release.xcconfig"; sourceTree = "<group>"; };
 		60034A485E5A5E322AE48F382F27F135 /* AWSS3.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = AWSS3.modulemap; sourceTree = "<group>"; };
 		6020538EE82830728E6E4E3ED5BA5F54 /* TensorFlowLiteSwift.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TensorFlowLiteSwift.xcconfig; sourceTree = "<group>"; };
-		605C272C9A0843159061C2019B9B32A6 /* Pods-ARISES.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ARISES.debug.xcconfig"; sourceTree = "<group>"; };
 		610EBFE13494FE51AF3A40232BB76642 /* Interpreter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Interpreter.swift; path = tensorflow/lite/experimental/swift/Sources/Interpreter.swift; sourceTree = "<group>"; };
 		62CB472390D71254A88F785B7BDA8B0F /* DefaultFillFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DefaultFillFormatter.swift; path = Source/Charts/Formatters/DefaultFillFormatter.swift; sourceTree = "<group>"; };
-		6317C1C22391C1EB308DA4C3F44C81A9 /* TensorFlowLite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TensorFlowLite.framework; path = TensorFlowLiteSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		63602C76697742D51E9C05E55FC4D064 /* IndexAxisValueFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IndexAxisValueFormatter.swift; path = Source/Charts/Formatters/IndexAxisValueFormatter.swift; sourceTree = "<group>"; };
 		64A625BB6BB78566A7A253EBEA1C4588 /* NSDictionary+AWSMTLManipulationAdditions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDictionary+AWSMTLManipulationAdditions.m"; path = "AWSCore/Mantle/NSDictionary+AWSMTLManipulationAdditions.m"; sourceTree = "<group>"; };
 		64C6003425E39B63052C6060BA98A084 /* Charts-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Charts-Info.plist"; sourceTree = "<group>"; };
 		659E0D7AA8D0C303EFE388D5A331CEF5 /* AWSMTLValueTransformer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSMTLValueTransformer.h; path = AWSCore/Mantle/AWSMTLValueTransformer.h; sourceTree = "<group>"; };
-		65FE08D077EC00F22582DF4837D16009 /* Pods-ARISES-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ARISES-umbrella.h"; sourceTree = "<group>"; };
 		66D85235E3A9A85B82C687A979DD2D5A /* FABKitProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FABKitProtocol.h; path = AWSCore/Fabric/FABKitProtocol.h; sourceTree = "<group>"; };
+		67C5E1733B73DBB2DA72219DCA4B815B /* Pods-ARISESTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ARISESTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		67F0A6644335F9507BE51A8A41643826 /* ILineChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ILineChartDataSet.swift; path = Source/Charts/Data/Interfaces/ILineChartDataSet.swift; sourceTree = "<group>"; };
 		68370CCEB9F11CB34A18AB0F19C41C71 /* AWSFMDatabaseAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSFMDatabaseAdditions.h; path = AWSCore/FMDB/AWSFMDatabaseAdditions.h; sourceTree = "<group>"; };
 		6A914081B78167F4D3FB7A1FB744834A /* AWSServiceEnum.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSServiceEnum.h; path = AWSCore/Service/AWSServiceEnum.h; sourceTree = "<group>"; };
 		6B92C756789E027EFFF44F9813F57F45 /* TensorFlowLiteSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TensorFlowLiteSwift-umbrella.h"; sourceTree = "<group>"; };
 		6C0F80CF322B11E29A66CFD3620F9A8E /* NSError+AWSMTLModelException.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSError+AWSMTLModelException.m"; path = "AWSCore/Mantle/NSError+AWSMTLModelException.m"; sourceTree = "<group>"; };
+		6C4772BDC02A8EFF6E3A41C531935B62 /* Pods-ARISESTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ARISESTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		6CE7DCBFCCCA195C5F4CE7095039DD58 /* ChartColorTemplates.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartColorTemplates.swift; path = Source/Charts/Utils/ChartColorTemplates.swift; sourceTree = "<group>"; };
 		6CF2204F0079CE746FE1D87A0092409A /* AWSLogging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSLogging.h; path = AWSCore/Utility/AWSLogging.h; sourceTree = "<group>"; };
 		6DE00189CC25EC25F1514AF7DB7BEFA3 /* Legend.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Legend.swift; path = Source/Charts/Components/Legend.swift; sourceTree = "<group>"; };
+		6EDFDA9B6805AA5BA23931245949BDBB /* AWSS3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AWSS3.framework; path = AWSS3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F83AC3E25BEB76C52089099969A12FC /* ChevronUpShapeRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChevronUpShapeRenderer.swift; path = Source/Charts/Renderers/Scatter/ChevronUpShapeRenderer.swift; sourceTree = "<group>"; };
 		70C7C9B055B8DEBCFB8993396DC262D0 /* ComponentBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ComponentBase.swift; path = Source/Charts/Components/ComponentBase.swift; sourceTree = "<group>"; };
 		72FD6EEEAB68D2226DE510CC0C12487A /* AWSDDContextFilterLogFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSDDContextFilterLogFormatter.h; path = AWSCore/Logging/Extensions/AWSDDContextFilterLogFormatter.h; sourceTree = "<group>"; };
@@ -593,7 +599,6 @@
 		789D1D86A2D2BD59137E73CF0E0C0B51 /* AWSSTSService.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWSSTSService.m; path = AWSCore/STS/AWSSTSService.m; sourceTree = "<group>"; };
 		7937CC5952E8936CBA5D963FE4332D69 /* LineRadarChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineRadarChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/LineRadarChartDataSet.swift; sourceTree = "<group>"; };
 		797929283EFCD1884DF2AC60294DA6D4 /* AWSSTSModel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSSTSModel.h; path = AWSCore/STS/AWSSTSModel.h; sourceTree = "<group>"; };
-		798C44E46C2ADB877EDD3E2229901F45 /* Pods-ARISES-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ARISES-dummy.m"; sourceTree = "<group>"; };
 		79D5B7BB26F3F3BD110C2F319C2E271A /* AWSSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSSerialization.h; path = AWSCore/Serialization/AWSSerialization.h; sourceTree = "<group>"; };
 		7B143BBB7C6C83D0C829051245D27BF4 /* ChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/ChartDataSet.swift; sourceTree = "<group>"; };
 		7BF7622C965F803BF30F7B8DE72E5035 /* AWSCocoaLumberjack.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSCocoaLumberjack.h; path = AWSCore/Logging/AWSCocoaLumberjack.h; sourceTree = "<group>"; };
@@ -605,12 +610,14 @@
 		805010A9A49F9C04C1EC9A864FA4BF1D /* AWSNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWSNetworking.m; path = AWSCore/Networking/AWSNetworking.m; sourceTree = "<group>"; };
 		8153619AD5E1254F37231F3C482F532E /* AWSSTSService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSSTSService.h; path = AWSCore/STS/AWSSTSService.h; sourceTree = "<group>"; };
 		81BAB8AB70C6DBDBB4A43EB57E9F3BB4 /* AWSValidation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWSValidation.m; path = AWSCore/Serialization/AWSValidation.m; sourceTree = "<group>"; };
+		8205D3C4FCAF8253DD4DBA3989527AB3 /* Pods-ARISES-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ARISES-frameworks.sh"; sourceTree = "<group>"; };
 		8218E03663788620E135C19CDE409CFF /* AWSCognitoIdentity+Fabric.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "AWSCognitoIdentity+Fabric.m"; path = "AWSCore/CognitoIdentity/AWSCognitoIdentity+Fabric.m"; sourceTree = "<group>"; };
 		82B297075D0CBC9E234DF0F9E61433EC /* AWSDDOSLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWSDDOSLogger.m; path = AWSCore/Logging/AWSDDOSLogger.m; sourceTree = "<group>"; };
 		82D3FB0B2D9B2FB4AEA26BD078B4095F /* RadarChartDataEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RadarChartDataEntry.swift; path = Source/Charts/Data/Implementations/Standard/RadarChartDataEntry.swift; sourceTree = "<group>"; };
 		832E01BD8EE8E9530E54DDB0D9575219 /* AWSFMDatabase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWSFMDatabase.m; path = AWSCore/FMDB/AWSFMDatabase.m; sourceTree = "<group>"; };
 		8352DB1A2560D38AF699A65F33421037 /* AWSURLRequestSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSURLRequestSerialization.h; path = AWSCore/Serialization/AWSURLRequestSerialization.h; sourceTree = "<group>"; };
 		838C0388AE65800069D0387F346E5081 /* AWSS3TransferUtility+HeaderHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "AWSS3TransferUtility+HeaderHelper.m"; path = "AWSS3/AWSS3TransferUtility+HeaderHelper.m"; sourceTree = "<group>"; };
+		83B47B97BED28CD7278176A723F9CCA6 /* Pods-ARISES.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ARISES.debug.xcconfig"; sourceTree = "<group>"; };
 		855EB3B00672EBE54249DF358CEABF54 /* AWSURLResponseSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSURLResponseSerialization.h; path = AWSCore/Serialization/AWSURLResponseSerialization.h; sourceTree = "<group>"; };
 		87009B87139CF16892A40904CA3F4EAC /* ChartDataRendererBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartDataRendererBase.swift; path = Source/Charts/Renderers/ChartDataRendererBase.swift; sourceTree = "<group>"; };
 		870663C218834612E1D48B1767A248C9 /* Fabric.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Fabric.h; path = AWSCore/Fabric/Fabric.h; sourceTree = "<group>"; };
@@ -628,6 +635,7 @@
 		8D57FA0FE351DFA41BFC11102277D5BB /* CombinedChartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CombinedChartView.swift; path = Source/Charts/Charts/CombinedChartView.swift; sourceTree = "<group>"; };
 		8DB88C77110E7A060F0E415B1730E065 /* XAxisRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XAxisRenderer.swift; path = Source/Charts/Renderers/XAxisRenderer.swift; sourceTree = "<group>"; };
 		8DE93001B73803636A715453A1B5C385 /* CandleChartDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CandleChartDataProvider.swift; path = Source/Charts/Interfaces/CandleChartDataProvider.swift; sourceTree = "<group>"; };
+		8E7C9FAACDE39878783F80E573E11C7F /* Pods-ARISESTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ARISESTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8ECE15A284F0542BBD6AF226885314E7 /* IBarChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IBarChartDataSet.swift; path = Source/Charts/Data/Interfaces/IBarChartDataSet.swift; sourceTree = "<group>"; };
 		8F68DD0A903636FA48B08E47F50CDE9A /* BarHighlighter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarHighlighter.swift; path = Source/Charts/Highlight/BarHighlighter.swift; sourceTree = "<group>"; };
 		92AC3C7DCCDFB4EAD4EAD75B7D2329DF /* AWSS3TransferUtility+Validation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "AWSS3TransferUtility+Validation.m"; path = "AWSS3/AWSS3TransferUtility+Validation.m"; sourceTree = "<group>"; };
@@ -643,11 +651,10 @@
 		9931F5F34B4E12747C75AC6F4B7B6974 /* LineChartDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineChartDataProvider.swift; path = Source/Charts/Interfaces/LineChartDataProvider.swift; sourceTree = "<group>"; };
 		994A15FBF52DD6E4A5DCBC374AC69F48 /* AWSFMDB+AWSHelpers.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "AWSFMDB+AWSHelpers.m"; path = "AWSCore/FMDB/AWSFMDB+AWSHelpers.m"; sourceTree = "<group>"; };
 		99B157ACB7CBEFAE17C5E35100ECC753 /* AWSSynchronizedMutableDictionary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSSynchronizedMutableDictionary.h; path = AWSCore/Utility/AWSSynchronizedMutableDictionary.h; sourceTree = "<group>"; };
-		99BF23D694A156599F14FEAD01F66975 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Charts.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A988FD7247E41C89E1EF1662A3E033C /* LegendRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LegendRenderer.swift; path = Source/Charts/Renderers/LegendRenderer.swift; sourceTree = "<group>"; };
 		9AA1FF692013E0C450132AEEF4F0B967 /* AWSCognitoIdentity.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSCognitoIdentity.h; path = AWSCore/CognitoIdentity/AWSCognitoIdentity.h; sourceTree = "<group>"; };
 		9C233D350D72E54F623A0CC2B8DF0627 /* LegendEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LegendEntry.swift; path = Source/Charts/Components/LegendEntry.swift; sourceTree = "<group>"; };
-		9C371D511F910847415963D8B22A4C80 /* Pods-ARISES-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-ARISES-acknowledgements.markdown"; sourceTree = "<group>"; };
+		9CC10CACBD61DF333E0AA2151827E3B1 /* Pods_ARISES.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ARISES.framework; path = "Pods-ARISES.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9EACD3AD283349CAC0B7E6258F5F42BA /* InterpreterOptions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InterpreterOptions.swift; path = tensorflow/lite/experimental/swift/Sources/InterpreterOptions.swift; sourceTree = "<group>"; };
 		A139F8A6010922BB7A072C93E6B89227 /* FABAttributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FABAttributes.h; path = AWSCore/Fabric/FABAttributes.h; sourceTree = "<group>"; };
@@ -661,9 +668,7 @@
 		A7FFD8C1DC25A4AFD694AE918C167F81 /* AWSXMLDictionary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSXMLDictionary.h; path = AWSCore/XMLDictionary/AWSXMLDictionary.h; sourceTree = "<group>"; };
 		A8339E4A3F874AB97C8B81A881903F9E /* RadarChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RadarChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/RadarChartDataSet.swift; sourceTree = "<group>"; };
 		A84FB52168FCE0C11A54E265F6B0FCD0 /* AWSDDLegacyMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSDDLegacyMacros.h; path = AWSCore/Logging/AWSDDLegacyMacros.h; sourceTree = "<group>"; };
-		A855438B0D0E415ABB38AF42E571511C /* Pods-ARISES-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ARISES-frameworks.sh"; sourceTree = "<group>"; };
 		A88B0AC312459E26AFD86623F4058599 /* AWSCognitoIdentityResources.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSCognitoIdentityResources.h; path = AWSCore/CognitoIdentity/AWSCognitoIdentityResources.h; sourceTree = "<group>"; };
-		A8B9EC3C7E4FED6A7D20DB2182E5B695 /* Pods_ARISES.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_ARISES.framework; path = "Pods-ARISES.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9C38113AF67394871A9A42B67EFCB3A /* AWSDDMultiFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSDDMultiFormatter.h; path = AWSCore/Logging/Extensions/AWSDDMultiFormatter.h; sourceTree = "<group>"; };
 		AAB40BB7E4D5BB839990C2D4E23D9E4F /* AWSTMMemoryCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWSTMMemoryCache.m; path = AWSCore/TMCache/AWSTMMemoryCache.m; sourceTree = "<group>"; };
 		ABF363A80DD98786B2A7681C27681499 /* AWSFMDB+AWSHelpers.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "AWSFMDB+AWSHelpers.h"; path = "AWSCore/FMDB/AWSFMDB+AWSHelpers.h"; sourceTree = "<group>"; };
@@ -694,11 +699,13 @@
 		BDE6D4825739FD7E3AB10052977D6811 /* AWSS3-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AWSS3-dummy.m"; sourceTree = "<group>"; };
 		BDEE5D2E99A1EFD1D144ABA620C88A5C /* NSDictionary+AWSMTLManipulationAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDictionary+AWSMTLManipulationAdditions.h"; path = "AWSCore/Mantle/NSDictionary+AWSMTLManipulationAdditions.h"; sourceTree = "<group>"; };
 		BE13E480347C794D2676ABF8B78139D2 /* Charts-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Charts-dummy.m"; sourceTree = "<group>"; };
+		BEE80D80D0823BFBF4252DCC41D38863 /* Pods-ARISES-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-ARISES-dummy.m"; sourceTree = "<group>"; };
 		BF4204E6224E3A04DE70B7D68FC47AB8 /* AWSCognitoIdentityService.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSCognitoIdentityService.h; path = AWSCore/CognitoIdentity/AWSCognitoIdentityService.h; sourceTree = "<group>"; };
 		BF70D22065C0F64E5CEF511118DA8D6A /* AWSDDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSDDAbstractDatabaseLogger.h; path = AWSCore/Logging/AWSDDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
 		BFB5F6CB5F3C5843F0BD7174ACF06D53 /* AWSSTSResources.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSSTSResources.h; path = AWSCore/STS/AWSSTSResources.h; sourceTree = "<group>"; };
 		BFE742A6BFA3982CB8B9BA7F3D6FC114 /* AWSS3TransferUtilityTasks.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWSS3TransferUtilityTasks.m; path = AWSS3/AWSS3TransferUtilityTasks.m; sourceTree = "<group>"; };
 		BFF3F6A106CA74963F1A82556D765AF3 /* AWSExecutor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSExecutor.h; path = AWSCore/Bolts/AWSExecutor.h; sourceTree = "<group>"; };
+		C00BE65C32EC64BCCFF5187F6B17B1B3 /* Pods-ARISES.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-ARISES.modulemap"; sourceTree = "<group>"; };
 		C0B6B91D5CC1C43791EB2E0BD058BAE9 /* BarLineScatterCandleBubbleRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarLineScatterCandleBubbleRenderer.swift; path = Source/Charts/Renderers/BarLineScatterCandleBubbleRenderer.swift; sourceTree = "<group>"; };
 		C201E5B851EDCC20BB1DDE3B3387BFBE /* AWSTMDiskCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWSTMDiskCache.m; path = AWSCore/TMCache/AWSTMDiskCache.m; sourceTree = "<group>"; };
 		C2E9C709BDBBAFAF4E5011AF61346F58 /* AWSCancellationToken.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSCancellationToken.h; path = AWSCore/Bolts/AWSCancellationToken.h; sourceTree = "<group>"; };
@@ -719,7 +726,6 @@
 		CCFF42EE1CDE8AA32530B9410B4CA608 /* AWSNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSNetworking.h; path = AWSCore/Networking/AWSNetworking.h; sourceTree = "<group>"; };
 		CE6C3B68F535A38F40BF147228387049 /* NSValueTransformer+AWSMTLInversionAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSValueTransformer+AWSMTLInversionAdditions.h"; path = "AWSCore/Mantle/NSValueTransformer+AWSMTLInversionAdditions.h"; sourceTree = "<group>"; };
 		CE7B0CE0A2A3FD736F0AF1145D790370 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
-		CEF5EA01DC0F2CEBDA7218BF4B552C56 /* AWSCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AWSCore.framework; path = AWSCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF160F98837794FE27ED5260FB6546D8 /* AWSModel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWSModel.m; path = AWSCore/Utility/AWSModel.m; sourceTree = "<group>"; };
 		CF287D72634315196C389A7BC888340F /* Tensor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Tensor.swift; path = tensorflow/lite/experimental/swift/Sources/Tensor.swift; sourceTree = "<group>"; };
 		CF42A48BAF3878127F1A6810B0826E9F /* IBubbleChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IBubbleChartDataSet.swift; path = Source/Charts/Data/Interfaces/IBubbleChartDataSet.swift; sourceTree = "<group>"; };
@@ -739,7 +745,6 @@
 		D8EBF523FED4B28931611CEB7AF17ABB /* AWSTask.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWSTask.m; path = AWSCore/Bolts/AWSTask.m; sourceTree = "<group>"; };
 		D927D02AF2DD2FF088B1F91B7857C183 /* YAxis.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YAxis.swift; path = Source/Charts/Components/YAxis.swift; sourceTree = "<group>"; };
 		DA03FAB092C214BFA2DEB37545627153 /* IChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IChartDataSet.swift; path = Source/Charts/Data/Interfaces/IChartDataSet.swift; sourceTree = "<group>"; };
-		DAEFCEC93E2A76F8BAF2BF4517FDB4E2 /* Pods-ARISES-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ARISES-Info.plist"; sourceTree = "<group>"; };
 		DC0706FABF4F69CC332682E6AFDBDDD3 /* ScatterChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScatterChartData.swift; path = Source/Charts/Data/Implementations/Standard/ScatterChartData.swift; sourceTree = "<group>"; };
 		DCC4B887EB1F37BA4CED2AD515F7254B /* AWSMTLReflection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSMTLReflection.h; path = AWSCore/Mantle/AWSMTLReflection.h; sourceTree = "<group>"; };
 		DD5550CC98DD6E390076659DBDB72EA7 /* AWSDDASLLogCapture.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWSDDASLLogCapture.m; path = AWSCore/Logging/AWSDDASLLogCapture.m; sourceTree = "<group>"; };
@@ -771,6 +776,7 @@
 		EE811AD2DC45516D91A4629974CA4765 /* YAxisRendererRadarChart.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YAxisRendererRadarChart.swift; path = Source/Charts/Renderers/YAxisRendererRadarChart.swift; sourceTree = "<group>"; };
 		EFCD82A16071DA7519102B24B3E4AF09 /* AWSS3Model.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSS3Model.h; path = AWSS3/AWSS3Model.h; sourceTree = "<group>"; };
 		EFE397754BE9E0C0B2E88BF0308BC787 /* ScatterChartDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScatterChartDataProvider.swift; path = Source/Charts/Interfaces/ScatterChartDataProvider.swift; sourceTree = "<group>"; };
+		F050F17D8AA009D2B108AC71854AE36C /* Pods-ARISES-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-ARISES-Info.plist"; sourceTree = "<group>"; };
 		F07891143852EE76AAC930995052BECB /* ViewPortJob.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ViewPortJob.swift; path = Source/Charts/Jobs/ViewPortJob.swift; sourceTree = "<group>"; };
 		F133BC39B9D6F89D86F7A82BD8D1ACC1 /* AWSCognitoIdentity+Fabric.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "AWSCognitoIdentity+Fabric.h"; path = "AWSCore/CognitoIdentity/AWSCognitoIdentity+Fabric.h"; sourceTree = "<group>"; };
 		F21275FC078AEF9B3374E09FE5372E8A /* AWSTMCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSTMCache.h; path = AWSCore/TMCache/AWSTMCache.h; sourceTree = "<group>"; };
@@ -785,6 +791,7 @@
 		F7FC2C9D3FB9D0F132FB59DF275AA491 /* AWSSTS.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AWSSTS.h; path = AWSCore/STS/AWSSTS.h; sourceTree = "<group>"; };
 		F87A3D1DBEA63DD7EEFBD2BA9A3C029B /* TensorFlowLiteC.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TensorFlowLiteC.xcconfig; sourceTree = "<group>"; };
 		F9D7AAC38D24B6F9DC2A87ECF2337752 /* AWSCore.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = AWSCore.modulemap; sourceTree = "<group>"; };
+		FB4D1C16AD8AF684048F3BEB733C962C /* Pods-ARISES-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-ARISES-umbrella.h"; sourceTree = "<group>"; };
 		FB555E909F38AA26A1F317035E2620B9 /* AWSInfo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWSInfo.m; path = AWSCore/Service/AWSInfo.m; sourceTree = "<group>"; };
 		FC5498BD99F6A32140BEF94D26938B46 /* AWSEXTRuntimeExtensions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AWSEXTRuntimeExtensions.m; path = AWSCore/Mantle/extobjc/AWSEXTRuntimeExtensions.m; sourceTree = "<group>"; };
 		FCBA9CA96D91C43C9E018F2B5832646B /* BubbleChartRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BubbleChartRenderer.swift; path = Source/Charts/Renderers/BubbleChartRenderer.swift; sourceTree = "<group>"; };
@@ -797,6 +804,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D7207AA9D6162CB3EAAB16E8A2D45E3 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25E4F7AD682811124386572828BF169B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -858,27 +872,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		1E8C078BDFBD0412F84B71B338DEBECC /* Pods-ARISES */ = {
+		2A0C17696429EA6DFD47D11DE502F9D4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				19F650C56DC4E780B5C52B7EA79AFE43 /* Pods-ARISES.modulemap */,
-				9C371D511F910847415963D8B22A4C80 /* Pods-ARISES-acknowledgements.markdown */,
-				1EE10AABB9C22825EE4B68C7F098F533 /* Pods-ARISES-acknowledgements.plist */,
-				798C44E46C2ADB877EDD3E2229901F45 /* Pods-ARISES-dummy.m */,
-				A855438B0D0E415ABB38AF42E571511C /* Pods-ARISES-frameworks.sh */,
-				DAEFCEC93E2A76F8BAF2BF4517FDB4E2 /* Pods-ARISES-Info.plist */,
-				65FE08D077EC00F22582DF4837D16009 /* Pods-ARISES-umbrella.h */,
-				605C272C9A0843159061C2019B9B32A6 /* Pods-ARISES.debug.xcconfig */,
-				2809005C95651B985E5E708751A620C4 /* Pods-ARISES.release.xcconfig */,
+				22E064346481E0165FEF7783B6E362CB /* AWSCore.framework */,
+				6EDFDA9B6805AA5BA23931245949BDBB /* AWSS3.framework */,
+				2550C29539B264086B6DE113089AEC8E /* Charts.framework */,
+				2226562D30592C72805DE5B637B9BA77 /* libPods-ARISESTests.a */,
+				9CC10CACBD61DF333E0AA2151827E3B1 /* Pods_ARISES.framework */,
+				5410AC26D014DE1C5205BB654C0ACE93 /* TensorFlowLite.framework */,
 			);
-			name = "Pods-ARISES";
-			path = "Target Support Files/Pods-ARISES";
+			name = Products;
 			sourceTree = "<group>";
 		};
-		4D530E03EDE699F93B5DA1463D1D81EC /* Targets Support Files */ = {
+		2FB81D390DBC15FF8518736ED856D17C /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				1E8C078BDFBD0412F84B71B338DEBECC /* Pods-ARISES */,
+				ABD3D90B83D959F0EA07F19DC0F524B7 /* Pods-ARISES */,
+				AF0329C458F3C6D25FFC17C9C1E9C6AE /* Pods-ARISESTests */,
 			);
 			name = "Targets Support Files";
 			sourceTree = "<group>";
@@ -1130,6 +1141,36 @@
 			path = "../Target Support Files/AWSCore";
 			sourceTree = "<group>";
 		};
+		ABD3D90B83D959F0EA07F19DC0F524B7 /* Pods-ARISES */ = {
+			isa = PBXGroup;
+			children = (
+				C00BE65C32EC64BCCFF5187F6B17B1B3 /* Pods-ARISES.modulemap */,
+				191CC01EE95F3B470186803B627541B4 /* Pods-ARISES-acknowledgements.markdown */,
+				22B025423B89C14A7EA3CE4D60F61907 /* Pods-ARISES-acknowledgements.plist */,
+				BEE80D80D0823BFBF4252DCC41D38863 /* Pods-ARISES-dummy.m */,
+				8205D3C4FCAF8253DD4DBA3989527AB3 /* Pods-ARISES-frameworks.sh */,
+				F050F17D8AA009D2B108AC71854AE36C /* Pods-ARISES-Info.plist */,
+				FB4D1C16AD8AF684048F3BEB733C962C /* Pods-ARISES-umbrella.h */,
+				83B47B97BED28CD7278176A723F9CCA6 /* Pods-ARISES.debug.xcconfig */,
+				5FCF557C2A9AE378A34B3A6CC378BCF3 /* Pods-ARISES.release.xcconfig */,
+			);
+			name = "Pods-ARISES";
+			path = "Target Support Files/Pods-ARISES";
+			sourceTree = "<group>";
+		};
+		AF0329C458F3C6D25FFC17C9C1E9C6AE /* Pods-ARISESTests */ = {
+			isa = PBXGroup;
+			children = (
+				67C5E1733B73DBB2DA72219DCA4B815B /* Pods-ARISESTests-acknowledgements.markdown */,
+				6C4772BDC02A8EFF6E3A41C531935B62 /* Pods-ARISESTests-acknowledgements.plist */,
+				5D53CD0A9B65B36732D82FEF15CF32E0 /* Pods-ARISESTests-dummy.m */,
+				8E7C9FAACDE39878783F80E573E11C7F /* Pods-ARISESTests.debug.xcconfig */,
+				48E6EFDBBEADBE2B44DF8FDA27C10D9C /* Pods-ARISESTests.release.xcconfig */,
+			);
+			name = "Pods-ARISESTests";
+			path = "Target Support Files/Pods-ARISESTests";
+			sourceTree = "<group>";
+		};
 		C6769BFCDB198E59C689162FD84A2FA0 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -1145,8 +1186,8 @@
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				8B8A6F732288273C3DB551A8BD78CE60 /* Frameworks */,
 				87A03F6DCBC1D26D2665BD81CBB5E0D0 /* Pods */,
-				F32CD51D52C5F479EB20996801D174B2 /* Products */,
-				4D530E03EDE699F93B5DA1463D1D81EC /* Targets Support Files */,
+				2A0C17696429EA6DFD47D11DE502F9D4 /* Products */,
+				2FB81D390DBC15FF8518736ED856D17C /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1191,18 +1232,6 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Charts";
-			sourceTree = "<group>";
-		};
-		F32CD51D52C5F479EB20996801D174B2 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				CEF5EA01DC0F2CEBDA7218BF4B552C56 /* AWSCore.framework */,
-				1C880BC98AEB34F6705F1B192FD88BB7 /* AWSS3.framework */,
-				99BF23D694A156599F14FEAD01F66975 /* Charts.framework */,
-				A8B9EC3C7E4FED6A7D20DB2182E5B695 /* Pods_ARISES.framework */,
-				6317C1C22391C1EB308DA4C3F44C81A9 /* TensorFlowLite.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		FF3FBE35C006ACAFC994CE60FE722B28 /* AWSCore */ = {
@@ -1516,6 +1545,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CE567494EDF65C2F12E7B18D204E9F7B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -1535,7 +1571,7 @@
 			);
 			name = TensorFlowLiteSwift;
 			productName = TensorFlowLiteSwift;
-			productReference = 6317C1C22391C1EB308DA4C3F44C81A9 /* TensorFlowLite.framework */;
+			productReference = 5410AC26D014DE1C5205BB654C0ACE93 /* TensorFlowLite.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		31F0084E2E60CA68AAF7E3224C77C86E /* AWSS3 */ = {
@@ -1554,8 +1590,25 @@
 			);
 			name = AWSS3;
 			productName = AWSS3;
-			productReference = 1C880BC98AEB34F6705F1B192FD88BB7 /* AWSS3.framework */;
+			productReference = 6EDFDA9B6805AA5BA23931245949BDBB /* AWSS3.framework */;
 			productType = "com.apple.product-type.framework";
+		};
+		4D03439E9686161E9CA598763439A729 /* Pods-ARISESTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14A97E9B2E233E810F82792033AA7912 /* Build configuration list for PBXNativeTarget "Pods-ARISESTests" */;
+			buildPhases = (
+				CE567494EDF65C2F12E7B18D204E9F7B /* Headers */,
+				FA182A93151F5578369CC639C0869725 /* Sources */,
+				25E4F7AD682811124386572828BF169B /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-ARISESTests";
+			productName = "Pods-ARISESTests";
+			productReference = 2226562D30592C72805DE5B637B9BA77 /* libPods-ARISESTests.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 		509FBDA06DBC204E95DA350A45B564C0 /* Pods-ARISES */ = {
 			isa = PBXNativeTarget;
@@ -1577,7 +1630,7 @@
 			);
 			name = "Pods-ARISES";
 			productName = "Pods-ARISES";
-			productReference = A8B9EC3C7E4FED6A7D20DB2182E5B695 /* Pods_ARISES.framework */;
+			productReference = 9CC10CACBD61DF333E0AA2151827E3B1 /* Pods_ARISES.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		9B172FACE90046AA5E100E650B6109DD /* AWSCore */ = {
@@ -1595,7 +1648,7 @@
 			);
 			name = AWSCore;
 			productName = AWSCore;
-			productReference = CEF5EA01DC0F2CEBDA7218BF4B552C56 /* AWSCore.framework */;
+			productReference = 22E064346481E0165FEF7783B6E362CB /* AWSCore.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		BF03B0B2B8B052092CB5F90CC5FB3757 /* Charts */ = {
@@ -1613,7 +1666,7 @@
 			);
 			name = Charts;
 			productName = Charts;
-			productReference = 99BF23D694A156599F14FEAD01F66975 /* Charts.framework */;
+			productReference = 2550C29539B264086B6DE113089AEC8E /* Charts.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -1633,7 +1686,7 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = F32CD51D52C5F479EB20996801D174B2 /* Products */;
+			productRefGroup = 2A0C17696429EA6DFD47D11DE502F9D4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1641,6 +1694,7 @@
 				31F0084E2E60CA68AAF7E3224C77C86E /* AWSS3 */,
 				BF03B0B2B8B052092CB5F90CC5FB3757 /* Charts */,
 				509FBDA06DBC204E95DA350A45B564C0 /* Pods-ARISES */,
+				4D03439E9686161E9CA598763439A729 /* Pods-ARISESTests */,
 				AC559E53E13B6FBEF4F5CC310A73AFE6 /* TensorFlowLiteC */,
 				10418167F619D6DA72BADAD10F9EC02B /* TensorFlowLiteSwift */,
 			);
@@ -1946,6 +2000,14 @@
 				E5DB2F6630E71A1DE80EEEB34FB9A916 /* AWSS3TransferUtility.m in Sources */,
 				27CB21E3EA6E78BF6E88E09095199C41 /* AWSS3TransferUtilityDatabaseHelper.m in Sources */,
 				19CBA0234BBF4CFA0E877B8E27DE4B9E /* AWSS3TransferUtilityTasks.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA182A93151F5578369CC639C0869725 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FDE6384124A511D7127C9463B4587DE /* Pods-ARISESTests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2263,7 +2325,7 @@
 		};
 		69B7B2FDEEE6F319FD147331EAB450F6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2809005C95651B985E5E708751A620C4 /* Pods-ARISES.release.xcconfig */;
+			baseConfigurationReference = 5FCF557C2A9AE378A34B3A6CC378BCF3 /* Pods-ARISES.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -2336,6 +2398,28 @@
 			};
 			name = Release;
 		};
+		937231879500E991710115FFD8C5B2BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E7C9FAACDE39878783F80E573E11C7F /* Pods-ARISESTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
 		A0A5EF430B5268ED28BC5ECAE9395BC1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6020538EE82830728E6E4E3ED5BA5F54 /* TensorFlowLiteSwift.xcconfig */;
@@ -2370,6 +2454,29 @@
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A7F2EF2E388011AA6AC2ADE2B4FCEDB4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48E6EFDBBEADBE2B44DF8FDA27C10D9C /* Pods-ARISESTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -2410,7 +2517,7 @@
 		};
 		DA56D8602A31E76723C835D32180C9FB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 605C272C9A0843159061C2019B9B32A6 /* Pods-ARISES.debug.xcconfig */;
+			baseConfigurationReference = 83B47B97BED28CD7278176A723F9CCA6 /* Pods-ARISES.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -2525,6 +2632,15 @@
 			buildConfigurations = (
 				DD87AE86D91CCA8B91C0870FF39D952D /* Debug */,
 				254C6C88EC932C00D48FB51BF2203270 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		14A97E9B2E233E810F82792033AA7912 /* Build configuration list for PBXNativeTarget "Pods-ARISESTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				937231879500E991710115FFD8C5B2BB /* Debug */,
+				A7F2EF2E388011AA6AC2ADE2B4FCEDB4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

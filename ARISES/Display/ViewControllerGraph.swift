@@ -268,7 +268,7 @@ class ViewControllerGraph: UIViewController {
                     predChartEntry.append(value)
                 }
                 let xTime = Date().timeIntervalSinceReferenceDate + TimeInterval(floatLiteral: 1800)
-                let value = ChartDataEntry(x: xTime / ( 3_600 * 24 ), y: lastGluc.value + (Double(prediction) / 18))
+                let value = ChartDataEntry(x: xTime / ( 3_600 * 24 ), y: lastGluc.value + (Double(prediction)))
                 predChartEntry.append(value)
                 
             }
@@ -323,7 +323,7 @@ class ViewControllerGraph: UIViewController {
         } else if value >= 10 && value < 20 {
             return ( 1 / 4 ) * CGFloat.pi
         } else if value >= 20 && value < 30 {
-            return CGFloat.pi
+            return 0
         } else if value < 90 && value >= 30 {
             return 0
         } else if value > -90 && value <= -30 {

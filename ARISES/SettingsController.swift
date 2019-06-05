@@ -16,7 +16,7 @@ class SettingsController: UIViewController, UITextFieldDelegate {
     @IBOutlet private weak var empaticaConnect: UIButton!
     @IBOutlet private weak var empaticaTableContainer: UIView!
     
-    private var empaticaController: EmpaticaViewController?
+//    private var empaticaController: EmpaticaViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +33,7 @@ class SettingsController: UIViewController, UITextFieldDelegate {
         empaticaConnect.backgroundColor = #colorLiteral(red: 0.7377689481, green: 0.8417704701, blue: 0.937656343, alpha: 1)
         empaticaAPIkeyField.isUserInteractionEnabled = true
 
-        
+        loadEmpaticaController()
     }
     
 //    override func viewWillAppear(_ animated: Bool) {
@@ -92,34 +92,46 @@ class SettingsController: UIViewController, UITextFieldDelegate {
 //            empaticaTableContainer.addSubview(ec.view)      //        EmpaticaViewController().beginAuthenticate()
 //            return
 //        }
-     
+        if AppDelegate.sharedDelegate.empaticaInstance == nil {
+            print("empatical controller nil?")
+            loadEmpaticaController()
+        }
+        
+    }
+    
+    private func loadEmpaticaController() {
         guard let APIkey = empaticaAPIkeyField.text else {
             return
         }
         EmpaticaViewController.EMPATICA_API_KEY = APIkey
         UserDefaults.standard.empaticaAPIKey = APIkey
         
-        if empaticaController != nil {
-            empaticaController?.beginAuthenticate()
+        if AppDelegate.sharedDelegate.empaticaInstance != nil {
+            guard let ec = AppDelegate.sharedDelegate.empaticaInstance else {
+                view.endEditing(true)
+                return
+            }
+            // Add View Controller as Child View Controller
+            empaticaTableContainer.addSubview(ec.view)      //        EmpaticaViewController().beginAuthenticate()
             view.endEditing(true)
-            
+            hideEmpaticaConnect()
+//            ec.beginAuthenticate()
         } else {
             
             // Load Storyboard
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
             
             // Instantiate View Controller
-            empaticaController = storyboard.instantiateViewController(withIdentifier: "empaticaTable") as? EmpaticaViewController
-            guard let ec = empaticaController else {
-                    view.endEditing(true)
-                    return
-                }
+            AppDelegate.sharedDelegate.empaticaInstance = storyboard.instantiateViewController(withIdentifier: "empaticaTable") as? EmpaticaViewController
+            guard let ec = AppDelegate.sharedDelegate.empaticaInstance else {
+                view.endEditing(true)
+                return
+            }
             // Add View Controller as Child View Controller
             empaticaTableContainer.addSubview(ec.view)      //        EmpaticaViewController().beginAuthenticate()
             view.endEditing(true)
         }
     }
-    
 }
 
 private extension NSRange {

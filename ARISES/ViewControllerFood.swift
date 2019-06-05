@@ -325,8 +325,13 @@ class ViewControllerFood: UIViewController, UIPickerViewDelegate, UITableViewDat
     @IBAction private func addFoodToLog(_ sender: Any) {
 
         if ((foodNameTextField.text != "") && (foodTimeField.text != "") && (carbsTextField.text != "") && (proteinTextField.text != "") && (fatTextField.text != "")){
+            
+            if foodTimestamp == nil {
+                foodTimestamp = Date()
+            }
             ModelController().addMeal(
                     name: foodNameTextField.text!,
+                    //TODO: Breaks when called from favourites (patched_
                     time: foodTimestamp!,
                     date: currentDay,
                     carbs: Int32((Double(carbsTextField.text!)?.rounded())!),

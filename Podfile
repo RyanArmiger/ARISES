@@ -11,3 +11,8 @@ target 'ARISES' do
   # Pods for ARISES
 
 end
+
+target 'ARISESTests' do
+    inherit! :search_paths
+    # Pods for testing
+end

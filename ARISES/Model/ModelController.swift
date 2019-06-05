@@ -8,7 +8,7 @@
 
 import Foundation
 import CoreData
-
+import Accelerate
 /**
 Provides fuctions to safely add and fetch objects from the persistent relational database 'Core Data'
  */
@@ -86,6 +86,22 @@ class ModelController {
         //Should never happen
     }
     
+    private func findOrMakeSettings() -> Settings {
+        let settingsFetch: NSFetchRequest<Settings> = Settings.fetchRequest()
+        let checkForSettings = try? PersistenceService.context.fetch(settingsFetch)
+        if checkForSettings != nil {
+            if checkForSettings?.isEmpty == false {
+                return (checkForSettings!.first!)
+            } else {
+                let newSettings = Settings(context: PersistenceService.context)
+                //                newSettings.setDefault()
+                return newSettings
+            }
+        }
+        print("Error finding or creating settings")
+        return checkForSettings![0]
+        //Should never happen
+    }
     
     //MARK: - Data object setting (add/toggle)
     
@@ -224,12 +240,18 @@ class ModelController {
      - parameter date: Date, Date of insulin injected
      - note: Posts a notification "InsulinAdded" which is picked up by viewControllerGraph to update views
      */
-    func addInsulin(units: Double, time: Date, date: Date){
+    func addInsulin(units: Float, unitsUser: Float, correctionBolus: Float, mealBolus: Float, mealIOB: Float, correctionIOB: Float, time: Date, date: Date){
+        
         
         let currentDay = findOrMakeDay(day: date)
         let newInsulin = Insulin(context: PersistenceService.context)
         newInsulin.units = units
         newInsulin.time = time
+        newInsulin.corrBolus = correctionBolus
+        newInsulin.corrBolusIOB = correctionIOB
+        newInsulin.mealBolus = mealBolus
+        newInsulin.mealBolusIOB = mealIOB
+        newInsulin.unitsUser = unitsUser
         currentDay.addToInsulin(newInsulin)
         PersistenceService.saveContext()
         
@@ -325,6 +347,34 @@ class ModelController {
         newIllness.start = start
         newIllness.end = end
         currentDay.addToIllness(newIllness)
+        PersistenceService.saveContext()
+    }
+    
+    func updateSettings(icrBreakfast: Int,
+                        icrLunch: Int,
+                        icrDinner: Int,
+                        icrBreakfastExercise: Int,
+                        icrLunchExercise: Int,
+                        icrDinnerExercise: Int,
+                        iobDecayTime: Float,
+                        glucoseSetpoint: Float,
+                        glucoseMinLow: Float,
+                        glucoseMinHigh: Float,
+                        glucoseMealTimeSetpoint: Float) {
+        let settings = findOrMakeSettings()
+        
+        settings.glucoseMinHighSetpoint = glucoseMinHigh
+        settings.glucoseSetpoint = glucoseSetpoint
+        settings.glucoseMinLowSetpoint = glucoseMinLow
+        settings.mealTimeGlucoseTarget = glucoseMealTimeSetpoint
+        settings.icrBreakfast = Int32(icrBreakfast)
+        settings.icrBreakfastExercise = Int32(icrBreakfastExercise)
+        settings.icrLunch = Int32(icrLunch)
+        settings.icrLunchExercise = Int32(icrLunchExercise)
+        settings.icrDinner = Int32(icrDinner)
+        settings.icrDinnerExercise = Int32(icrDinnerExercise)
+        settings.iobTimeDecay = iobDecayTime
+        
         PersistenceService.saveContext()
     }
     
@@ -450,6 +500,29 @@ class ModelController {
         }
     }
     
+    func fetchLastMeal() -> Meals? {
+        let fetchRequest: NSFetchRequest<Meals> = Meals.fetchRequest()
+        let sectionSortDescriptor = NSSortDescriptor(key: "time", ascending: false)
+        let mealPredicate = NSPredicate(format: "carbs > %@", 15 as CVarArg)
+        if let daysAgo = Calendar.current.date(byAdding: .day, value: -2, to: Date()) {
+            let greaterThanPredicate = NSPredicate(format: "timestamp > %@", daysAgo as CVarArg)
+            
+            let andPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [mealPredicate, greaterThanPredicate])
+            fetchRequest.predicate = andPredicate
+            let sortDescriptors = [sectionSortDescriptor]
+            fetchRequest.sortDescriptors = sortDescriptors
+            let foundMeals = try? PersistenceService.context.fetch(fetchRequest)
+            guard let mealsArr = foundMeals else {
+                print("Error fetching meals")
+                return nil
+            }
+            if !mealsArr.isEmpty {
+                return mealsArr[0]
+            }
+        }
+       return nil
+    }
+    
     /**
      Fetches an array of Glucose objects, sorted by time
      - parameter day: Date, date of day object whose glucose logs are to be fetched
@@ -474,6 +547,54 @@ class ModelController {
         }
     }
     
+    func fetchRecentGlucose() -> [GlucoseMO] {
+        let fetchRequest: NSFetchRequest<GlucoseMO> = GlucoseMO.fetchRequest()
+        if let recentTime = Calendar.current.date(byAdding: .hour, value: -24, to: Date()) {
+
+            fetchRequest.predicate = NSPredicate(format: "time > %@", recentTime as CVarArg)
+            //Sorts by short time - currently not correctly
+            let sectionSortDescriptor = NSSortDescriptor(key: "time", ascending: false)
+            let sortDescriptors = [sectionSortDescriptor]
+            fetchRequest.sortDescriptors = sortDescriptors
+            let foundGlucose = try? PersistenceService.context.fetch(fetchRequest)
+            
+            if(foundGlucose == nil){
+                print("Error fetching glucose")
+                return []
+            }
+            else{
+                return foundGlucose!
+            }
+        }
+        return []
+    }
+    
+    func fetchMealGlucose(date: Date) -> GlucoseMO? {
+        let fetchRequest: NSFetchRequest<GlucoseMO> = GlucoseMO.fetchRequest()
+        if let recentTime = Calendar.current.date(byAdding: .minute, value: -10, to: date) {
+            if let futureTime = Calendar.current.date(byAdding: .minute, value: 5, to: date) {
+                let lessThanPredicate = NSPredicate(format: "time < %@", futureTime as CVarArg)
+                
+                let greaterThanPredicate = NSPredicate(format: "time > %@", recentTime as CVarArg)
+                
+                let andPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [lessThanPredicate, greaterThanPredicate])
+                
+                fetchRequest.predicate = andPredicate
+                let sectionSortDescriptor = NSSortDescriptor(key: "time", ascending: false)
+                let sortDescriptors = [sectionSortDescriptor]
+                fetchRequest.sortDescriptors = sortDescriptors
+                let foundGlucose = try? PersistenceService.context.fetch(fetchRequest)
+                
+                guard let glucArr = foundGlucose else {
+                    print("Error fetching glucose for meal")
+                    return nil
+                }
+                return glucArr[0]
+            }
+        }
+        return nil
+    }
+    
     /**
      Fetches an array of Insulin objects, sorted by time
      - parameter day: Date, date of day object whose insulin logs are to be fetched
@@ -494,6 +615,43 @@ class ModelController {
         else{
             return foundInsulin!
         }
+    }
+    
+    func fetchLastInsulin() -> Insulin? {
+        let fetchRequest: NSFetchRequest<Insulin> = Insulin.fetchRequest()
+        let sectionSortDescriptor = NSSortDescriptor(key: "time", ascending: false)
+        let sortDescriptors = [sectionSortDescriptor]
+        fetchRequest.sortDescriptors = sortDescriptors
+        let foundInsulin = try? PersistenceService.context.fetch(fetchRequest)
+        if(foundInsulin == nil){
+            print("Error fetching insulin")
+            return nil
+        }
+        else{
+            if let lastInsulin = foundInsulin {
+                return lastInsulin[0]
+            }
+        }
+        return nil
+    }
+    
+    func recentExercise() -> Bool {
+        let fetchRequest: NSFetchRequest<Exercise> = Exercise.fetchRequest()
+        
+        if let recentTime = Calendar.current.date(byAdding: .hour, value: -8, to: Date()) {
+            fetchRequest.predicate = NSPredicate(format: "time > %@", recentTime as CVarArg)
+            let sectionSortDescriptor = NSSortDescriptor(key: "time", ascending: false)
+            let sortDescriptors = [sectionSortDescriptor]
+            fetchRequest.sortDescriptors = sortDescriptors
+            guard let foundExercise = try? PersistenceService.context.fetch(fetchRequest) else {
+                print("Error fetching submission")
+                return false
+            }
+            if !foundExercise.isEmpty {
+                return true
+            }
+        }
+        return false
     }
     
     /**
@@ -539,15 +697,33 @@ class ModelController {
             return foundDay!
         }
     }
-
     
-
+    func fetchSettings() -> Settings? {
+        let fetchRequest: NSFetchRequest<Settings> = Settings.fetchRequest()
+        let foundSettings = try? PersistenceService.context.fetch(fetchRequest)
+        
+        if(foundSettings == nil){
+            print("Error fetching day")
+            return nil
+        }
+        else{
+            if let settingsArr = foundSettings {
+                if !settingsArr.isEmpty {
+                    return settingsArr[0]
+                }
+            }
+        }
+        
+        return nil
+    }
     
     func fetchModelInputs(date: Date) -> ([Float], [Float], [Float], [Float]) {
         var glucose: [Float] = []
         var meals: [Float] = []
         var insulin: [Float] = []
 //        let timeIndex: [Float] = []
+        var nonZeroGluc: [Double] = []
+        var nonZeroGlucInd: Set<Double> = []
         
         let fetchRequestGluc: NSFetchRequest<GlucoseMO> = GlucoseMO.fetchRequest()
         let fetchRequestMeals: NSFetchRequest<Meals> = Meals.fetchRequest()
@@ -606,14 +782,35 @@ class ModelController {
                 
                 let roundedTime = round(Double(comparison / 300)) * 5
 //                print("roundedTime: ", roundedTime)
-                let index = Int((80 - roundedTime) / 5)
+                let index = Int((75 - roundedTime) / 5)
 //                print("timeIndex: ", (80 - roundedTime) / 5)
                 if index >= 0 && index < 16 {
                     // 18 is here as presumption is model uses mg/dl not mmol/l
                     glucose[index] = Float(gluc.value * 18)
+                    nonZeroGlucInd.insert(Double(index))
+                    
                 }
             }
         }
+        
+        let nonZeroGlucIndArr = Array(nonZeroGlucInd.sorted())
+        let nonZeroGlucFloat = glucose.filter { $0 != 0 }
+        nonZeroGluc = nonZeroGlucFloat.map { Double($0) }
+//        print(nonZeroGluc)
+//        print(nonZeroGlucIndArr)
+        
+        var new_values = [Double](repeating: 0,
+                                  count: 16)
+        let stride = vDSP_Stride(1)
+        
+        vDSP_vgenpD(nonZeroGluc, stride,
+                    nonZeroGlucIndArr, stride,
+                    &new_values, stride,
+                    vDSP_Length(new_values.count),
+                    vDSP_Length(nonZeroGluc.count))
+        
+        let glucoseInterpolated = new_values.map{ return Float( $0 ) }
+//        print(glucoseInterpolated)
         
         foundInsulin.forEach { ins in
             if let time = ins.time {
@@ -622,7 +819,7 @@ class ModelController {
                 
                 let roundedTime = round(Double(comparison / 300)) * 5
 //                print("roundedTime: ", roundedTime)
-                let index = Int((80 - roundedTime) / 5)
+                let index = Int((75 - roundedTime) / 5)
 //                print("timeIndex: ", (80 - roundedTime) / 5)
                 if index >= 0 && index < 16 {
                     insulin[index] += Float(ins.units)
@@ -635,13 +832,14 @@ class ModelController {
             if let time = meal.time {
 //                print("meal time: ", time)
                 let comparison = date.timeIntervalSinceReferenceDate - time.timeIntervalSinceReferenceDate
-                
+//                print(comparison)
                 let roundedTime = round(Double(comparison / 300)) * 5
                 
 //                print("roundedTime: ", roundedTime)
-                let index = Int((80 - roundedTime) / 5)
+                let index = Int((75 - roundedTime) / 5)
 //                print("timeIndex: ", (80 - roundedTime) / 5)
 //                print("index: ", index)
+//                print(index)
 
                 if index >= 0 && index < 16 {
 //                    print("adding meal")
@@ -667,8 +865,9 @@ class ModelController {
         }
         
         // Extrapolate etc. missing glucose
-        
-        return (glucose, meals, insulin, timeIndex)
+//        print(meals)
+        print(glucoseInterpolated)
+        return (glucoseInterpolated, meals, insulin, timeIndex)
     }
     
 }

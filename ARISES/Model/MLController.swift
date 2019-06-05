@@ -29,11 +29,32 @@ class MLController {
     )
     
     //Mark Functions
-    
+
     
     func predict() {
         loadModel()
-        invokeAdd()
+        var glucose: [Float]
+        var insulin: [Float]
+        var meals: [Float]
+        var timeIndex: [Float]
+        
+        (glucose, meals, insulin, timeIndex) = ModelController().fetchModelInputs(date: Date())
+        
+        var inputArr: [Float32] = []
+        for i in 0...(glucose.count-1) {
+            
+            inputArr.append(glucose[i])
+            inputArr.append(insulin[i])
+            inputArr.append(meals[i])
+            inputArr.append(timeIndex[i])
+            
+        }
+        invokeAdd(input: inputArr)
+    }
+    
+    func testPredict(input: [Float32], handle: @escaping (Int32) -> Void ) {
+        loadModel()
+        testInvokeAdd(input: input, handle: handle)
     }
     
     
@@ -53,63 +74,41 @@ class MLController {
                 print("Failed to create the interpreter with error: \(error.localizedDescription)")
                 return
             }
-            print("Succeeded")
+//            print("Succeeded")
         }
     }
     
-    private func invokeAdd() {
+    private func invokeAdd(input: [Float32]) {
         interpreterQueue.async {
-            
-            var glucose: [Float]
-            var insulin: [Float]
-            var meals: [Float]
-            var timeIndex: [Float]
-            
-            (glucose, meals, insulin, timeIndex) = ModelController().fetchModelInputs(date: Date())
-            
+        
             guard let interpreter = self.interpreter else {
                 print(Constant.nilInterpreterErrorMessage)
                 return
             }
             do {
-//                let inputShape = TensorShape([1, 16, 4])
-//                try interpreter.resize/Input(at: 0, to: inputShape)
-                try interpreter.allocateTensors()
-                
-//                let input: [[Float32]] = [glucose, insulin, meals, timeIndex]
-                //Pretty weird that you need to do this
-                var inputArr: [Float32] = []
-                for i in 0...(glucose.count-1) {
-                    
-                    inputArr.append(glucose[i])
-                    inputArr.append(insulin[i])
-                    inputArr.append(meals[i])
-                    inputArr.append(timeIndex[i])
 
-                }
-//                print(glucose.count)
-//                print(insulin.count)
-//                print(meals.count)
-//                print(timeIndex.count)
-                let data = Data(copyingBufferOf: inputArr)
-                
-//                print(data)
-                
+                try interpreter.allocateTensors()
+                let data = Data(copyingBufferOf: input)
+
                 try interpreter.copy(data, toInputAt: 0)
                 try interpreter.invoke()
                 let outputTensor = try interpreter.output(at: 0)
-                let results: () -> Float? = {
+                let results: () -> Int? = {
                     guard let results = [Int32](unsafeData: outputTensor.data) else { return nil }
-                    print(outputTensor.dataType)
-                    print(outputTensor.data)
-                    print(results)
-                    return Float(results[0])
+//                    print(outputTensor.dataType)
+//                    print(outputTensor.data)
+//                    print(results)
+                    return Int(results[0])
                 }
-                print(results())
+//                print(results())
                 if let res = results() {
+                    let range: [Int] = Array(-127...128)
+                    print(range.count)
+                    let adjustedRes = range[res]
+                    print(adjustedRes)
                     DispatchQueue.main.async { [weak self] in
                         let nc = NotificationCenter.default
-                        nc.post(name: Notification.Name("newPrediction"), object: res)
+                        nc.post(name: Notification.Name("newPrediction"), object: Float(adjustedRes) / Float(18) )
                     }
                 }
                 return
@@ -120,7 +119,43 @@ class MLController {
         }
     }
     
+    private func testInvokeAdd(input: [Float32], handle: @escaping (Int32) -> Void ) {
+        interpreterQueue.async {
+            
+            guard let interpreter = self.interpreter else {
+                print(Constant.nilInterpreterErrorMessage)
+                return
+            }
+            do {
+                
+                try interpreter.allocateTensors()
+                let data = Data(copyingBufferOf: input)
+                
+                try interpreter.copy(data, toInputAt: 0)
+                try interpreter.invoke()
+                let outputTensor = try interpreter.output(at: 0)
+                let results: () -> Int32? = {
+                    guard let results = [Int32](unsafeData: outputTensor.data) else { return nil }
+//                    print(outputTensor.dataType)
+//                    print(outputTensor.data)
+//                    print(results)
+                    return results[0]
+                }
+//                print(results())
+                if let res = results() {
+                    handle(res)
+                }
+                return
+            } catch let error {
+                print("Failed to invoke the interpreter with error: \(error.localizedDescription)")
+                return
+            }
+        }
+    }
+    
 }
+
+
 
 
 private enum Constant {

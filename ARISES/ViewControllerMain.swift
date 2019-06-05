@@ -442,11 +442,11 @@ class ViewControllerMain: UIViewController{
                         guard let insulinTime = self.insulinTimestamp else {
                             return
                         }
-                        ModelController().addInsulin(units: Double((self.insulinTextField.text)!)!, time: insulinTime, date: Date())
+//                        ModelController().addInsulin(units: Double((self.insulinTextField.text)!)!, time: insulinTime, date: Date())
                         self.insulinTextField.text = ""
                     }
                     else{
-                        ModelController().addInsulin(units: Double((self.insulinTextField.text)!)!, time: Date(), date: Date())
+//                        ModelController().addInsulin(units: Double((self.insulinTextField.text)!)!, time: Date(), date: Date())
                         
                         self.insulinTextField.text = ""
                         self.insulinTimeField.text = ""

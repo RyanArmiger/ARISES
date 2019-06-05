@@ -58,8 +58,13 @@
         <relationship name="day" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="illness" inverseEntity="Day" syncable="YES"/>
     </entity>
     <entity name="Insulin" representedClassName=".Insulin" syncable="YES" codeGenerationType="category">
+        <attribute name="corrBolus" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="corrBolusIOB" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="mealBolus" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="mealBolusIOB" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="time" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="units" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="units" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="unitsUser" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="day" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="insulin" inverseEntity="Day" syncable="YES"/>
     </entity>
     <entity name="Meals" representedClassName=".Meals" syncable="YES" codeGenerationType="category">
@@ -70,6 +75,19 @@
         <attribute name="time" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="day" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="meals" inverseEntity="Day" syncable="YES"/>
         <relationship name="favourite" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Favourites" inverseName="meals" inverseEntity="Favourites" syncable="YES"/>
+    </entity>
+    <entity name="Settings" representedClassName=".Settings" syncable="YES" codeGenerationType="category">
+        <attribute name="glucoseMinHighSetpoint" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="glucoseMinLowSetpoint" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="glucoseSetpoint" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="icrBreakfast" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="icrBreakfastExercise" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="icrDinner" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="icrDinnerExercise" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="icrLunch" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="icrLunchExercise" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="iobTimeDecay" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="mealTimeGlucoseTarget" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <entity name="Stress" representedClassName=".Stress" syncable="YES" codeGenerationType="category">
         <attribute name="end" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -84,20 +102,21 @@
         <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Acc" positionX="-296.1015625" positionY="-228.7265625" width="128" height="105"/>
+        <element name="BVP" positionX="-294.65234375" positionY="-105.984375" width="128" height="73"/>
         <element name="Day" positionX="-153" positionY="11" width="128" height="163"/>
         <element name="Exercise" positionX="97" positionY="-115" width="128" height="133"/>
         <element name="Favourites" positionX="-153" positionY="-232" width="128" height="88"/>
         <element name="GlucoseMO" positionX="97" positionY="207" width="128" height="103"/>
-        <element name="Illness" positionX="99" positionY="551" width="128" height="88"/>
-        <element name="Insulin" positionX="97" positionY="326" width="128" height="88"/>
-        <element name="Meals" positionX="97" positionY="32" width="128" height="148"/>
-        <element name="Stress" positionX="99" positionY="443" width="128" height="88"/>
-        <element name="Temperature" positionX="-438.234375" positionY="-107.5546875" width="128" height="73"/>
-        <element name="Tag" positionX="-443.984375" positionY="7.546875" width="128" height="58"/>
         <element name="GSR" positionX="-439.078125" positionY="118.33984375" width="128" height="73"/>
         <element name="HR" positionX="-443.44921875" positionY="237.125" width="128" height="88"/>
-        <element name="BVP" positionX="-294.65234375" positionY="-105.984375" width="128" height="73"/>
         <element name="IBI" positionX="-302.640625" positionY="7.765625" width="128" height="73"/>
-        <element name="Acc" positionX="-234" positionY="-81" width="128" height="105"/>
+        <element name="Illness" positionX="99" positionY="551" width="128" height="88"/>
+        <element name="Insulin" positionX="97" positionY="326" width="128" height="163"/>
+        <element name="Meals" positionX="97" positionY="32" width="128" height="148"/>
+        <element name="Stress" positionX="99" positionY="443" width="128" height="88"/>
+        <element name="Tag" positionX="-443.984375" positionY="7.546875" width="128" height="58"/>
+        <element name="Temperature" positionX="-438.234375" positionY="-107.5546875" width="128" height="73"/>
+        <element name="Settings" positionX="-153.953125" positionY="223.0859375" width="128" height="208"/>
     </elements>
 </model>

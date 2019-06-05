@@ -5,6 +5,7 @@
 
 
 import UIKit
+import UserNotifications
 
 class EmpaticaViewController: UITableViewController {
     
@@ -13,6 +14,9 @@ class EmpaticaViewController: UITableViewController {
     
     private var tempCount: Int = 0
     private var tempArray: [Float] = []
+    private var onWrist: Bool = false
+    private var lowBattery: Bool = false
+    
     
     private var devices: [EmpaticaDeviceManager] = []
     
@@ -37,7 +41,7 @@ class EmpaticaViewController: UITableViewController {
         self.tableView.dataSource = self
         
         self.beginAuthenticate()
-        
+        print("viewDidLoad in empatica")
     }
     
     func beginAuthenticate() {
@@ -216,61 +220,100 @@ extension EmpaticaViewController: EmpaticaDelegate {
 extension EmpaticaViewController: EmpaticaDeviceDelegate {
     
     func didReceiveTemperature(_ temp: Float, withTimestamp timestamp: Double, fromDevice device: EmpaticaDeviceManager!) {
-        
-        let date = Date.init(timeIntervalSince1970: timestamp)
-        EmpaticaModelController().addTemp(temp: temp, timestamp: date)
-
+        if onWrist {
+            let date = Date.init(timeIntervalSince1970: timestamp)
+            EmpaticaModelController().addTemp(temp: temp, timestamp: date)
+        }
     }
     
     func didReceiveAccelerationX(_ x: Int8, y: Int8, z: Int8, withTimestamp timestamp: Double, fromDevice device: EmpaticaDeviceManager!) {
-        
+        if onWrist {
+            let date = Date.init(timeIntervalSince1970: timestamp)
+            EmpaticaModelController().addAcc(x: Int16(x), y: Int16(y), z: Int16(z), timestamp: date)
+        }
 //        print("\(device.serialNumber!) ACC > {x: \(x), y: \(y), z: \(z)}")
-        let date = Date.init(timeIntervalSince1970: timestamp)
-        EmpaticaModelController().addAcc(x: Int16(x), y: Int16(y), z: Int16(z), timestamp: date)
     }
     
     func didReceiveTag(atTimestamp timestamp: Double, fromDevice device: EmpaticaDeviceManager!) {
-        
-        let date = Date.init(timeIntervalSince1970: timestamp)
-        EmpaticaModelController().addTag(timestamp: date)
-        
-        print("\(device.serialNumber!) TAG received { \(timestamp) }")
+        if onWrist {
+            let date = Date.init(timeIntervalSince1970: timestamp)
+            EmpaticaModelController().addTag(timestamp: date)
+            
+            print("\(device.serialNumber!) TAG received { \(timestamp) }")
+        }
     }
     
     func didReceiveGSR(_ gsr: Float, withTimestamp timestamp: Double, fromDevice device: EmpaticaDeviceManager!) {
-        
-        let date = Date.init(timeIntervalSince1970: timestamp)
-        EmpaticaModelController().addGSR(gsr: gsr, timestamp: date)
-//        print("\(device.serialNumber!) GSR { \(abs(gsr)) }")
-        
-        self.updateValue(device: device, string: "\(String(format: "%.2f", abs(gsr))) µS")
+        if onWrist {
+            let date = Date.init(timeIntervalSince1970: timestamp)
+            EmpaticaModelController().addGSR(gsr: gsr, timestamp: date)
+            //        print("\(device.serialNumber!) GSR { \(abs(gsr)) }")
+            self.updateValue(device: device, string: "\(String(format: "%.2f", abs(gsr))) µS")
+        }
     }
     
     func didReceiveHR(_ hr: Float, andQualityIndex qualityIndex: Int32, withTimestamp timestamp: Double, fromDevice device: EmpaticaDeviceManager!) {
         print("HEART RATE FOUND: ", hr)
+        
         let date = Date.init(timeIntervalSince1970: timestamp)
         EmpaticaModelController().addHR(hr: hr, qualityIndex: qualityIndex, timestamp: date)
 //        print("\(device.serialNumber!) HR { \(hr) }")
-
     }
     
     func didReceiveBVP(_ bvp: Float, withTimestamp timestamp: Double, fromDevice device: EmpaticaDeviceManager!) {
-        
-        let date = Date.init(timeIntervalSince1970: timestamp)
-        EmpaticaModelController().addBVP(bvp: bvp, timestamp: date)
-        
+        if onWrist {
+            let date = Date.init(timeIntervalSince1970: timestamp)
+            EmpaticaModelController().addBVP(bvp: bvp, timestamp: date)
+        }
 //        print("\(device.serialNumber!) BVP { \(bvp) }")
 
     }
     
     func didReceiveIBI(_ ibi: Float, withTimestamp timestamp: Double, fromDevice device: EmpaticaDeviceManager!) {
-        
-        let date = Date.init(timeIntervalSince1970: timestamp)
-        EmpaticaModelController().addIBI(ibi: ibi, timestamp: date)
+        if onWrist {
+            let date = Date.init(timeIntervalSince1970: timestamp)
+            EmpaticaModelController().addIBI(ibi: ibi, timestamp: date)
 //        print("\(device.serialNumber!) IBI { \(ibi) }")
-
+        }
     }
     
+    func didUpdate(onWristStatus: SensorStatus, forDevice device: EmpaticaDeviceManager!) {
+        if onWristStatus == kE2SensorStatusOnWrist {
+            onWrist = true
+        } else if onWristStatus == kE2SensorStatusNotOnWrist {
+            onWrist = false
+        } else {
+            onWrist = false
+        }
+    }
+    
+    func didReceiveBatteryLevel(_ level: Float, withTimestamp timestamp: Double, fromDevice device: EmpaticaDeviceManager!) {
+        if level <= 0.1 {
+            let center = UNUserNotificationCenter.current()
+            
+            let content = UNMutableNotificationContent()
+            content.title = "Empatica Battery is low"
+            content.body = "Please charge the device"
+            content.sound = UNNotificationSound.default
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+            
+            let identifier = "UYLLocalNotification"
+            let request = UNNotificationRequest(identifier: identifier,
+                                                content: content, trigger: trigger)
+            center.add(request, withCompletionHandler: { (error) in
+                if let error = error {
+                    // Something went wrong
+                    print("ERROR: \(error)")
+                }
+            })
+            lowBattery = true
+        }
+        if level > 0.1 {
+            lowBattery = false
+        }
+        print(level)
+        
+    }
 //    func didReceiveBatteryLevel(_ level: Float, withTimestamp timestamp: Double, fromDevice device: EmpaticaDeviceManager!) {
 //
 //    }
@@ -282,6 +325,24 @@ extension EmpaticaViewController: EmpaticaDeviceDelegate {
         switch status {
             
         case kDeviceStatusDisconnected:
+            let center = UNUserNotificationCenter.current()
+    
+            let content = UNMutableNotificationContent()
+            content.title = "Empatica Disconnected"
+            content.body = "Hold the button to reconnect"
+            content.sound = UNNotificationSound.default
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 10, repeats: false)
+    
+            let identifier = "UYLLocalNotification"
+            let request = UNNotificationRequest(identifier: identifier,
+                                                content: content, trigger: trigger)
+            center.add(request, withCompletionHandler: { (error) in
+                if let error = error {
+                    // Something went wrong
+                    print("ERROR: \(error)")
+                }
+            })
+            
             
             print("[didUpdate] Disconnected \(device.serialNumber!).")
 //            if !device.isFaulty && device.allowed {
@@ -293,18 +354,17 @@ extension EmpaticaViewController: EmpaticaDeviceDelegate {
             EmpaticaAPI.cancelDiscovery()
             
             
-            if let device = self.storedDevice {
-                if !device.isFaulty && device.allowed {
-                    print("[didUpdate] Trying to reconnect to \(device.serialNumber!).")
-//                    device.connect(with: self, andConnectionOptions: )
-                    device.connect(with: self)
-                }
-            } else {
-                self.restartDiscovery()
-            }
-            
-            
-            
+//            if let device = self.storedDevice {
+//                if !device.isFaulty && device.allowed && !lowBattery {
+//                    print("[didUpdate] Trying to reconnect to \(device.serialNumber!).")
+////                    device.connect(with: self, andConnectionOptions: )
+//                    device.connect(with: self)
+//                }
+//            } else {
+//                self.restartDiscovery()
+//            }
+            self.restartDiscovery()
+
             break
             
         case kDeviceStatusConnecting:

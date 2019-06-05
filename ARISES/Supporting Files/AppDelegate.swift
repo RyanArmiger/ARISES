@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // swiftlint:disable force_cast
         return UIApplication.shared.delegate as! AppDelegate
     }
+    var empaticaInstance: EmpaticaViewController?
     
     var transmitterID: String? {
         didSet {
@@ -53,6 +54,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var glucose: Glucose?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+        registerForPushNotifications()
 
         transmitterID = UserDefaults.standard.transmitterID
 //
@@ -255,4 +258,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     //        }
     //    }
  
+    func registerForPushNotifications() {
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
+            granted, error in
+            print("Permission granted: \(granted)")
+            guard granted else { return }
+            self.getNotificationSettings()
+        }
+    }
+    
+    func getNotificationSettings() {
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            print("Notification settings: \(settings)")
+            guard settings.authorizationStatus == .authorized else { return }
+//            DispatchQueue.main.async(execute: {
+////                UIApplication.shared.registerForRemoteNotifications()
+//            })
+        }
+    }
 }

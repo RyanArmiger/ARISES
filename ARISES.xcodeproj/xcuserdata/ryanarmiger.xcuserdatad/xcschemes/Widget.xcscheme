@@ -43,13 +43,23 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "373B5AD322A1EC7B001D8F0D"
+               BuildableName = "ARISESTests.xctest"
+               BlueprintName = "ARISESTests"
+               ReferencedContainer = "container:ARISES.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3712A24020C583D8006DB63C"
-            BuildableName = "Widget.appex"
-            BlueprintName = "Widget"
+            BlueprintIdentifier = "375587C1209E086C00594532"
+            BuildableName = "ARISES.app"
+            BlueprintName = "ARISES"
             ReferencedContainer = "container:ARISES.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
