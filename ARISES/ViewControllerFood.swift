@@ -329,6 +329,11 @@ class ViewControllerFood: UIViewController, UIPickerViewDelegate, UITableViewDat
             if foodTimestamp == nil {
                 foodTimestamp = Date()
             }
+            
+            guard let doubleCarbs = Double(carbsTextField.text!) else {
+                print("ERROR: could not convert carbs")
+                return
+            }
             ModelController().addMeal(
                     name: foodNameTextField.text!,
                     //TODO: Breaks when called from favourites (patched_
@@ -344,6 +349,18 @@ class ViewControllerFood: UIViewController, UIPickerViewDelegate, UITableViewDat
             carbsTextField.text = ""
             proteinTextField.text = ""
             fatTextField.text = ""
+            
+            guard let insulinAdviceVC = storyboard?.instantiateViewController(withIdentifier: "insulinAdvice") as? ViewControllerInsulin else {
+                print("ERROR: could not instantiate insulin advice vc")
+                return
+            }
+            
+            insulinAdviceVC.modalPresentationStyle = .overCurrentContext
+
+            let roundedCarbs = doubleCarbs.rounded()
+            let carbs = Int(roundedCarbs)
+            insulinAdviceVC.carbohydrates = carbs
+            self.present(insulinAdviceVC, animated: true, completion: nil)
         }
     }
 }

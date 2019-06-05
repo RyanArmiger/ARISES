@@ -503,9 +503,9 @@ class ModelController {
     func fetchLastMeal() -> Meals? {
         let fetchRequest: NSFetchRequest<Meals> = Meals.fetchRequest()
         let sectionSortDescriptor = NSSortDescriptor(key: "time", ascending: false)
-        let mealPredicate = NSPredicate(format: "carbs > %@", 15 as CVarArg)
         if let daysAgo = Calendar.current.date(byAdding: .day, value: -2, to: Date()) {
-            let greaterThanPredicate = NSPredicate(format: "timestamp > %@", daysAgo as CVarArg)
+            let mealPredicate = NSPredicate(format: "carbs > 15")
+            let greaterThanPredicate = NSPredicate(format: "time > %@", daysAgo as CVarArg)
             
             let andPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [mealPredicate, greaterThanPredicate])
             fetchRequest.predicate = andPredicate
@@ -549,7 +549,7 @@ class ModelController {
     
     func fetchRecentGlucose() -> [GlucoseMO] {
         let fetchRequest: NSFetchRequest<GlucoseMO> = GlucoseMO.fetchRequest()
-        if let recentTime = Calendar.current.date(byAdding: .hour, value: -24, to: Date()) {
+        if let recentTime = Calendar.current.date(byAdding: .minute, value: -24, to: Date()) {
 
             fetchRequest.predicate = NSPredicate(format: "time > %@", recentTime as CVarArg)
             //Sorts by short time - currently not correctly

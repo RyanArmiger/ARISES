@@ -107,6 +107,7 @@
 		37B3716220B47EF20048A942 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B3716120B47EF20048A942 /* PersistenceService.swift */; };
 		37B568BB20B485600014F735 /* ARISES.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 37B568B920B485600014F735 /* ARISES.xcdatamodeld */; };
 		37CFC5D120BEDD250051FDFC /* IndicatorControllerFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CFC5D020BEDD250051FDFC /* IndicatorControllerFood.swift */; };
+		37D2F8D422A843C20075E826 /* ViewControllerInsulin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D2F8D322A843C20075E826 /* ViewControllerInsulin.swift */; };
 		37FEE41A22026FFB00FF4679 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FEE41922026FFB00FF4679 /* SettingsController.swift */; };
 		ABD020E52CA29F699278CB2F /* libPods-ARISESTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8557F12C2A6F761827B2CB /* libPods-ARISESTests.a */; };
 		B295C3A713E40AA46AFB2A98 /* Pods_ARISES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2689104CECA461FCD255CC7 /* Pods_ARISES.framework */; };
@@ -246,6 +247,7 @@
 		37B568BA20B485600014F735 /* ARISES.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ARISES.xcdatamodel; sourceTree = "<group>"; };
 		37CFC5B820BED6DF0051FDFC /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		37CFC5D020BEDD250051FDFC /* IndicatorControllerFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorControllerFood.swift; sourceTree = "<group>"; };
+		37D2F8D322A843C20075E826 /* ViewControllerInsulin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerInsulin.swift; sourceTree = "<group>"; };
 		37FEE41922026FFB00FF4679 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		4B8557F12C2A6F761827B2CB /* libPods-ARISESTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ARISESTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		863CAE274477E894C42E1381 /* Pods-ARISES.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARISES.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARISES/Pods-ARISES.debug.xcconfig"; sourceTree = "<group>"; };
@@ -399,6 +401,7 @@
 				3718B85F20AC9A42006F1A47 /* ViewControllerExercise.swift */,
 				3718B86120AC9A60006F1A47 /* ViewControllerHealth.swift */,
 				3718B86520AC9CE3006F1A47 /* ViewControllerMain.swift */,
+				37D2F8D322A843C20075E826 /* ViewControllerInsulin.swift */,
 				372141E921F5319100B8627F /* CSVreader.swift */,
 				378658AD20AC675D007C13B2 /* ViewControllerTableViewCell.swift */,
 				375587D1209E086D00594532 /* Info.plist */,
@@ -726,6 +729,7 @@
 				3712A23A20C566DD006DB63C /* Illness.swift in Sources */,
 				379651A32202645700B8EB09 /* GlucoseHistoryTxMessage.swift in Sources */,
 				3718C31A22A56F5200BC7206 /* UserSettingsController.swift in Sources */,
+				37D2F8D422A843C20075E826 /* ViewControllerInsulin.swift in Sources */,
 				379651B62202645700B8EB09 /* Transmitter.swift in Sources */,
 				379651A82202645700B8EB09 /* ResetMessage.swift in Sources */,
 				3796519C2202645700B8EB09 /* CalibrateGlucoseTxMessage.swift in Sources */,
