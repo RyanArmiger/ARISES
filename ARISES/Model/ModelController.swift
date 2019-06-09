@@ -549,11 +549,11 @@ class ModelController {
     
     func fetchRecentGlucose() -> [GlucoseMO] {
         let fetchRequest: NSFetchRequest<GlucoseMO> = GlucoseMO.fetchRequest()
-        if let recentTime = Calendar.current.date(byAdding: .minute, value: -24, to: Date()) {
+        if let recentTime = Calendar.current.date(byAdding: .minute, value: -19, to: Date()) {
 
             fetchRequest.predicate = NSPredicate(format: "time > %@", recentTime as CVarArg)
             //Sorts by short time - currently not correctly
-            let sectionSortDescriptor = NSSortDescriptor(key: "time", ascending: false)
+            let sectionSortDescriptor = NSSortDescriptor(key: "time", ascending: true)
             let sortDescriptors = [sectionSortDescriptor]
             fetchRequest.sortDescriptors = sortDescriptors
             let foundGlucose = try? PersistenceService.context.fetch(fetchRequest)
@@ -774,7 +774,8 @@ class ModelController {
         // Replace each timestamp with nearest 5 minutes
         // Replace timestamp with relevant index
         // Add to that index
-        
+//        print("Found meals: ", foundMeals)
+//        print("FoundInsulin: ", foundInsulin)
         foundGluc.forEach { gluc in
             if let time = gluc.time {
 
@@ -822,7 +823,7 @@ class ModelController {
                 let index = Int((75 - roundedTime) / 5)
 //                print("timeIndex: ", (80 - roundedTime) / 5)
                 if index >= 0 && index < 16 {
-                    insulin[index] += Float(ins.units)
+                    insulin[index] += Float(ins.unitsUser)
                 }
             }
         }
@@ -847,7 +848,7 @@ class ModelController {
                 }
             }
         }
-        
+//        print("Meals: ", meals)
         let timeIndex = timeIndexInt.map { time -> Float in
             if let timeDate = Calendar.current.date(byAdding: .minute, value: -(time * 5), to: date) {
 //                print("timeDate: ", timeDate)
@@ -863,7 +864,7 @@ class ModelController {
             return 0
             
         }
-        
+//        print("Insulin: ", insulin)
         // Extrapolate etc. missing glucose
 //        print(meals)
         print(glucoseInterpolated)

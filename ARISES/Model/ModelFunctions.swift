@@ -85,7 +85,7 @@ func calculateVariableGlucoseTarget(timeStamp: Date, mealTime: Date, mealGlucose
 //    let glucoseTarget = (highGlucoseTarget + lowGlucoseTarget) / 2
     
     let reduction = Float( 1 - max(0, (mealGlucose - highGlucoseTarget) / highGlucoseTarget) )
-    let gain: Float = 1.3
+    let gain: Float = 1.3 / 18
     mealTimeGlucoseTargetVar = mealGlucose + reduction * gain * Float(mealCarbohydrates)
 //    if mealCarbohydrates > 100 {
 //        mealTimeGlucoseTargetVar = mealTimeGlucoseTarget * 1.2
@@ -216,53 +216,57 @@ func retrieveICR(ICRs: [[Int]], timeStamp: Date, preExercise: Bool, postExercise
 //    return (ICR, submissionType)
 //}
 
-func retrieveISF(ISFs: [Float], isfTimes: [[Date]], timeStamp: Date) -> Float {
-    var calendarUTC = Calendar.current
-    //Need to adjust this based on server timezone?
-    calendarUTC.timeZone = TimeZone(secondsFromGMT: 3600)!
-    
-    let currentHourComponent = Calendar.current.dateComponents([.hour, .minute], from: timeStamp)
-    guard let currentHour = currentHourComponent.value(for: .hour) else {
-        print("ERROR: Could not convert date in retriveISF")
-//        DebugAlerts().testAlert(error: "Could not convert date in retriveISF")
 
-        return 0
-    }
-//    guard let currentMinute = currentHourComponent.value(for: .minute) else {
-//        print("ERROR: Could not convert minute in retriveISF")
-//        DebugAlerts().testAlert(error: "Could not convert minute in retriveISF")
+//func retrieveISF(ISFs: [Float], isfTimes: [[Date]], timeStamp: Date) -> Float {
+//    var calendarUTC = Calendar.current
+//    //Need to adjust this based on server timezone?
+//    calendarUTC.timeZone = TimeZone(secondsFromGMT: 0)!
+//
+//    let currentHourComponent = Calendar.current.dateComponents([.hour, .minute], from: timeStamp)
+//    guard let currentHour = currentHourComponent.value(for: .hour) else {
+//        print("ERROR: Could not convert date in retriveISF")
+////        DebugAlerts().testAlert(error: "Could not convert date in retriveISF")
 //
 //        return 0
 //    }
-    
-    // Should probably pass this is a safer way
+//
+//
+////    guard let currentMinute = currentHourComponent.value(for: .minute) else {
+////        print("ERROR: Could not convert minute in retriveISF")
+////        DebugAlerts().testAlert(error: "Could not convert minute in retriveISF")
+////
+////        return 0
+////    }
+//
+//    // Should probably pass this is a safer way
+//
+//    if let isfOneStart = (calendarUTC.dateComponents([.hour], from: isfTimes[0][0])).value(for: .hour) {
+//        if let isfOneEnd = (calendarUTC.dateComponents([.hour], from: isfTimes[0][1])).value(for: .hour) {
+//            if let isfTwoStart = (calendarUTC.dateComponents([.hour], from: isfTimes[1][0])).value(for: .hour) {
+//                if let isfTwoEnd = (calendarUTC.dateComponents([.hour], from: isfTimes[1][1])).value(for: .hour) {
+//                    if let isfThreeStart = (calendarUTC.dateComponents([.hour], from: isfTimes[2][0])).value(for: .hour) {
+//                        if let isfThreeEnd = (calendarUTC.dateComponents([.hour], from: isfTimes[2][1])).value(for: .hour) {
+//
+//                            if currentHour >= isfOneStart && currentHour < isfOneEnd {
+//                                return ISFs[0]
+//                            } else if currentHour >= isfTwoStart && currentHour < isfTwoEnd {
+//                                return ISFs[1]
+//                            } else if currentHour >= isfThreeStart && currentHour < 24 || currentHour >= 0 && currentHour < isfThreeEnd {
+//                                return ISFs[2]
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
+//    print("ERROR: ISF failed to find a time")
+////    DebugAlerts().testAlert(error: "ISF failed to find a time")
+//
+//    // An error here could be because it uses hour times, not anything more precise like half hour or minute increments.
+//    return -1
+//}
 
-    if let isfOneStart = (calendarUTC.dateComponents([.hour], from: isfTimes[0][0])).value(for: .hour) {
-        if let isfOneEnd = (calendarUTC.dateComponents([.hour], from: isfTimes[0][1])).value(for: .hour) {
-            if let isfTwoStart = (calendarUTC.dateComponents([.hour], from: isfTimes[1][0])).value(for: .hour) {
-                if let isfTwoEnd = (calendarUTC.dateComponents([.hour], from: isfTimes[1][1])).value(for: .hour) {
-                    if let isfThreeStart = (calendarUTC.dateComponents([.hour], from: isfTimes[2][0])).value(for: .hour) {
-                        if let isfThreeEnd = (calendarUTC.dateComponents([.hour], from: isfTimes[2][1])).value(for: .hour) {
-                            
-                            if currentHour >= isfOneStart && currentHour < isfOneEnd {
-                                return ISFs[0]
-                            } else if currentHour >= isfTwoStart && currentHour < isfTwoEnd {
-                                return ISFs[1]
-                            } else if currentHour >= isfThreeStart && currentHour < 24 || currentHour >= 0 && currentHour < isfThreeEnd {
-                                return ISFs[2]
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    print("ERROR: ISF failed to find a time")
-//    DebugAlerts().testAlert(error: "ISF failed to find a time")
-
-    // An error here could be because it uses hour times, not anything more precise like half hour or minute increments.
-    return -1
-}
 //Complete once ICR structure decided
 // swiftlint:disable:next large_tuple
 func calculateBolus(glucose: Float, carbohydrates: Float, ICR: Int, ROC: Float, lowGlucoseTarget: Float, highGlucoseTarget: Float, variableGlucoseTarget: Float, corrBolusIOB: Float) -> ( Float, Float, Float, Float ) {
@@ -312,76 +316,81 @@ func calculateBolus(glucose: Float, carbohydrates: Float, ICR: Int, ROC: Float, 
 }
 // swiftlint:disable:next cyclomatic_complexity
 func doseAdjustmentROC(ROC: Float, ISF: Float) -> Float {
+    
+    let mgROC = ROC * 18
+    let mgISF = ISF * 18
+    
     var IDA: Float = 0
     
-    if ROC > 3 {
-        if ISF < 25 {
+    if mgROC > 3 {
+        if mgISF < 25 {
             IDA = 4.5
-        } else if ISF >= 25 && ISF < 50 {
+        } else if mgISF >= 25 && mgISF < 50 {
             IDA = 3.5
-        } else if ISF >= 50 && ISF < 75 {
+        } else if mgISF >= 50 && mgISF < 75 {
             IDA = 2.5
-        } else if ISF >= 75 {
+        } else if mgISF >= 75 {
             IDA = 1.5
         }
-    } else if ROC > 2 && ROC <= 3 {
-        if ISF < 25 {
+    } else if mgROC > 2 && mgROC <= 3 {
+        if mgISF < 25 {
             IDA = 3.5
-        } else if ISF >= 25 && ISF < 50 {
+        } else if mgISF >= 25 && mgISF < 50 {
             IDA = 2.5
-        } else if ISF >= 50 && ISF < 75 {
+        } else if mgISF >= 50 && mgISF < 75 {
             IDA = 1.5
-        } else if ISF >= 75 {
+        } else if mgISF >= 75 {
             IDA = 1
         }
-    } else if ROC > 1 && ROC <= 2 {
-        if ISF < 25 {
+    } else if mgROC > 1 && mgROC <= 2 {
+        if mgISF < 25 {
             IDA = 2.5
-        } else if ISF >= 25 && ISF < 50 {
+        } else if mgISF >= 25 && mgISF < 50 {
             IDA = 1.5
-        } else if ISF >= 50 && ISF < 75 {
+        } else if mgISF >= 50 && mgISF < 75 {
             IDA = 1
-        } else if ISF >= 75 {
+        } else if mgISF >= 75 {
             IDA = 0.5
         }
-    } else if -1 <= ROC && ROC < 1 {
+    } else if -1 <= mgROC && mgROC < 1 {
         IDA = 0
-    } else if -2 <= ROC && ROC < -1 {
-        if ISF < 25 {
+    } else if -2 <= mgROC && mgROC < -1 {
+        if mgISF < 25 {
             IDA = -2.5
-        } else if ISF >= 25 && ISF < 50 {
+        } else if mgISF >= 25 && mgISF < 50 {
             IDA = -1.5
-        } else if ISF >= 50 && ISF < 75 {
+        } else if mgISF >= 50 && mgISF < 75 {
             IDA = -1
-        } else if ISF >= 75 {
+        } else if mgISF >= 75 {
             IDA = -0.5
         }
-    } else if -3 <= ROC && ROC < -2 {
-        if ISF < 25 {
+    } else if -3 <= mgROC && mgROC < -2 {
+        if mgISF < 25 {
             IDA = -3.5
-        } else if ISF >= 25 && ISF < 50 {
+        } else if mgISF >= 25 && mgISF < 50 {
             IDA = -2.5
-        } else if ISF >= 50 && ISF < 75 {
+        } else if mgISF >= 50 && mgISF < 75 {
             IDA = -1.5
-        } else if ISF >= 75 {
+        } else if mgISF >= 75 {
             IDA = -1
         }
-    } else if ROC < -3 {
-        if ISF < 25 {
+    } else if mgROC < -3 {
+        if mgISF < 25 {
             IDA = -4.5
-        } else if ISF >= 25 && ISF < 50 {
+        } else if mgISF >= 25 && mgISF < 50 {
             IDA = -3.5
-        } else if ISF >= 50 && ISF < 75 {
+        } else if mgISF >= 50 && mgISF < 75 {
             IDA = -2.5
-        } else if ISF >= 75 {
+        } else if mgISF >= 75 {
             IDA = -1.5
         }
     } else {
         IDA = 0
     }
     
-    return IDA
+    return IDA / 18
 }
+
 
 //func calculateGlucoseRateOfChange (sampleTime: Date, glucoseVector: [Float], numberOfSamples: Int) -> Float {
 //    let dimension = glucoseVector.count

@@ -11,7 +11,7 @@ import UIKit
 /**
  Controls all UI elements within the food domain. This includes data entry, favouriting system and managing the food log.
  */
-class ViewControllerFood: UIViewController, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate, tableCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewControllerFood: UIViewController, UIPickerViewDelegate, UITableViewDataSource, UITableViewDelegate, tableCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     //MARK: - Outlets
     @IBOutlet weak private var foodTimeField: UITextField!
@@ -32,7 +32,8 @@ class ViewControllerFood: UIViewController, UIPickerViewDelegate, UITableViewDat
     //MARK: - Properties
     ///Instantiation of a date picker for choosing time of meal
     private var foodTimePicker = UIDatePicker()
-    
+    private var model: MLController?
+
     private var foodTimestamp: Date?
     ///Tracks date set by graph and hides data entry fields when not on current day using didSet
     private var currentDay = Date(){
@@ -104,6 +105,7 @@ class ViewControllerFood: UIViewController, UIPickerViewDelegate, UITableViewDat
      */
     override func viewDidLoad() {
         super.viewDidLoad()
+        model = MLController()
 
         //Instantiation of time picker
         createFoodTimePicker()
@@ -200,6 +202,21 @@ class ViewControllerFood: UIViewController, UIPickerViewDelegate, UITableViewDat
     @objc private func doneWithKeypad(){
         view.endEditing(true)
     }
+    
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        let currentText = textField.text! + string
+//        print(textField)
+//        print(carbsTextField)
+//        if textField == carbsTextField {
+//            print("inside")
+//            if let carbInt = Int(currentText) {
+//                model?.predictCarbScrub(carbVal: Float(carbInt))
+//            }
+//        }
+//
+//        return true
+//    }
+
     
     //MARK: - Favourite buttons
     ///Toggle between favourite and daily log views
@@ -363,6 +380,26 @@ class ViewControllerFood: UIViewController, UIPickerViewDelegate, UITableViewDat
             self.present(insulinAdviceVC, animated: true, completion: nil)
         }
     }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        print(textField)
+        print(carbsTextField)
+        let currentText = textField.text! + string
+        if currentText.count > "100".count {
+            return false
+        }
+        if textField == carbsTextField {
+
+            print("inside")
+            if let carbInt = Int(currentText) {
+                model?.predictCarbScrub(carbVal: Float(carbInt))
+            }
+        }
+        
+        return true
+    }
+    
 }
 
 

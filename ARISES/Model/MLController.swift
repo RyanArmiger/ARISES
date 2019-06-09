@@ -52,6 +52,54 @@ class MLController {
         invokeAdd(input: inputArr)
     }
     
+    func predictInsulinScrub(insulinVal: Float) {
+        loadModel()
+        var glucose: [Float]
+        var insulin: [Float]
+        var meals: [Float]
+        var timeIndex: [Float]
+        
+        
+        (glucose, meals, insulin, timeIndex) = ModelController().fetchModelInputs(date: Date())
+        insulin[insulin.count - 1] += insulinVal
+        print(insulin)
+
+        var inputArr: [Float32] = []
+        for i in 0...(glucose.count-1) {
+            
+            inputArr.append(glucose[i])
+            inputArr.append(insulin[i])
+            inputArr.append(meals[i])
+            inputArr.append(timeIndex[i])
+            
+        }
+        invokeAdd(input: inputArr)
+    }
+    
+    func predictCarbScrub(carbVal: Float) {
+        loadModel()
+        var glucose: [Float]
+        var insulin: [Float]
+        var meals: [Float]
+        var timeIndex: [Float]
+        
+        
+        (glucose, meals, insulin, timeIndex) = ModelController().fetchModelInputs(date: Date())
+        meals[meals.count - 1] += carbVal
+        print(meals)
+        
+        var inputArr: [Float32] = []
+        for i in 0...(glucose.count-1) {
+            
+            inputArr.append(glucose[i])
+            inputArr.append(insulin[i])
+            inputArr.append(meals[i])
+            inputArr.append(timeIndex[i])
+            
+        }
+        invokeAdd(input: inputArr)
+    }
+    
     func testPredict(input: [Float32], handle: @escaping (Int32) -> Void ) {
         loadModel()
         testInvokeAdd(input: input, handle: handle)

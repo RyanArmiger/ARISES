@@ -23,12 +23,15 @@ class ViewControllerInsulin: UIViewController {
     private var correctionIOB: Float = -1
     private var adjustmentDoseROC: Float = -1
 
+    private var model: MLController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         addToolbar()
         
+        model = MLController()
+
         let nc = NotificationCenter.default
         nc.addObserver(self, selector: #selector(handleShowKeyboardNotification), name: UIResponder.keyboardWillShowNotification, object: nil)
         nc.addObserver(self, selector: #selector(handleHideKeyboardNotification), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -51,7 +54,8 @@ class ViewControllerInsulin: UIViewController {
                                     + "U Meal bolus + "
                                     + String(format: "%.1f", correctionBolus)
                                     + "U Correction"
-            
+            model?.predictInsulinScrub(insulinVal: saturatedBolus)
+
         }
     }
     
@@ -71,18 +75,24 @@ class ViewControllerInsulin: UIViewController {
             }
             
             ModelController().addInsulin(units: saturatedBolus, unitsUser: userInsulin, correctionBolus: correctionBolus, mealBolus: mealBolus, mealIOB: mealIOB, correctionIOB: correctionIOB, time: Date(), date: Date())
+            
+            let testAlert = UIAlertController(title: "Success", message: "Insulin submitted", preferredStyle: .alert)
+            testAlert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: {_ in self.dismiss(animated: true, completion: nil)}))
+            self.present(testAlert, animated: true, completion: nil)
+            
         }
-        
-        let testAlert = UIAlertController(title: "Success", message: "Insulin submitted", preferredStyle: .alert)
-        testAlert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: dismissButton(_:)))
-        self.present(testAlert, animated: true, completion: nil)
-        
         
     }
     
     
     @IBAction private func dismissButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        let testAlert = UIAlertController(title: "Warning", message: "Are you sure you want to leave without submitting insulin?", preferredStyle: .alert)
+        testAlert.addAction(UIAlertAction(title: NSLocalizedString("No", comment: "Default action"), style: .default, handler: nil))
+        testAlert.addAction(UIAlertAction(title: NSLocalizedString("Yes", comment: "Default action"), style: .default, handler: {_ in self.dismiss(animated: true, completion: nil)}))
+
+        self.present(testAlert, animated: true, completion: nil)
+        
+        
     }
 
     @objc private func doneWithKeypad(){
@@ -110,6 +120,42 @@ class ViewControllerInsulin: UIViewController {
     private func handleHideKeyboardNotification(notification: NSNotification) {
         self.view.frame.origin.y = 0
     }
+  
+    
+    @IBAction func handlePanGesture(recognizer: UIPanGestureRecognizer) {
+        let loc = recognizer.location(in: self.view)
+        var percHeight: CGFloat = ( loc.y - 0.1 * self.view.bounds.height ) / self.view.bounds.height
+        
+        let adjustment =  (percHeight - 0.5) * -10
+        
+        if saturatedBolus != -1
+            && mealBolus != -1
+            && correctionBolus != -1
+            && mealIOB != -1
+            && correctionIOB != -1
+            && adjustmentDoseROC != -1 {
+            if saturatedBolus + Float(adjustment)  >= 0 {
+                model?.predictInsulinScrub(insulinVal: saturatedBolus + Float(adjustment))
+                insulinTextField.text = String(format: "%.1f", saturatedBolus + Float(adjustment))
+                breakdownLabel.text = "Recommended bolus: " + String(format: "%.1f", saturatedBolus)
+            } else {
+                model?.predict()
+                insulinTextField.text = String(format: "%.1f", 0)
+                breakdownLabel.text = "Recommended bolus: " + String(format: "%.1f", saturatedBolus)
+            }
+            
+            
+        }
+        //Update prediction on graph
+        
+        
+        if recognizer.state == .ended  {
+            //Update insulin label
+            
+            
+        }
+        
+    }
     
     private func addToolbar() {
         let doneButtonBar = UIToolbar()
@@ -122,4 +168,6 @@ class ViewControllerInsulin: UIViewController {
         
         insulinTextField.inputAccessoryView = doneButtonBar
     }
+    
+    
 }
