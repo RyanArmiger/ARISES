@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ViewControllerInsulin: UIViewController {
+class ViewControllerInsulin: UIViewController, UITextFieldDelegate {
     
     @IBOutlet private weak var insulinTextField: UITextField!
     @IBOutlet private weak var breakdownLabel: UILabel!
@@ -167,6 +167,24 @@ class ViewControllerInsulin: UIViewController {
         doneButtonBar.setItems([flexible, doneButton], animated: true)
         
         insulinTextField.inputAccessoryView = doneButtonBar
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+
+        let currentText = textField.text! + string
+        if currentText.count > "10.00".count {
+            return false
+        }
+        if textField == insulinTextField {
+            
+            print("inside")
+            if let insulinFloat = Float(currentText) {
+                model?.predictInsulinScrub(insulinVal: insulinFloat)
+            }
+        }
+        
+        return true
     }
     
     

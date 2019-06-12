@@ -108,7 +108,7 @@ class MLController {
     
     private func loadModel() {
         
-        guard let modelPath = Bundle.main.path(forResource: "converted_model.tflite", ofType: nil)
+        guard let modelPath = Bundle.main.path(forResource: "converted_model_test.tflite", ofType: nil)
             else {
                 print("Failed to load the model.")
                 return

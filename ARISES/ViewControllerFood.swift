@@ -263,6 +263,8 @@ class ViewControllerFood: UIViewController, UIPickerViewDelegate, UITableViewDat
         cell.loggedFoodName.text = currentMeal.name
         
         let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        
         cell.loggedFoodTime.text = dateFormatter.string(from: currentMeal.time!)
         cell.loggedFoodCarbs.text = "\(currentMeal.carbs)g"
         cell.loggedFoodProtein.text = "\(currentMeal.protein)g"
@@ -297,7 +299,7 @@ class ViewControllerFood: UIViewController, UIPickerViewDelegate, UITableViewDat
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
-
+        
         if showFavouritesFood == true{
             foodNameTextField.text = loggedMeals[indexPath.row].name
             foodTimeField.text = dateFormatter.string(from: Date())
@@ -305,7 +307,9 @@ class ViewControllerFood: UIViewController, UIPickerViewDelegate, UITableViewDat
             proteinTextField.text = String(loggedMeals[indexPath.row].protein)
             fatTextField.text = String(loggedMeals[indexPath.row].fat)
         }
-        else if selectedCellIndexPath.contains(indexPath){
+        else if
+            selectedCellIndexPath.contains(indexPath){
+            
             selectedCellIndexPath = selectedCellIndexPath.filter() { $0 != indexPath }
             tableView.beginUpdates()
             tableView.endUpdates()

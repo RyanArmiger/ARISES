@@ -589,6 +589,10 @@ class ModelController {
                     print("Error fetching glucose for meal")
                     return nil
                 }
+                guard !glucArr.isEmpty else {
+                    print("Error empty glucose for meal")
+                    return nil
+                }
                 return glucArr[0]
             }
         }

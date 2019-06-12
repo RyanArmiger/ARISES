@@ -277,6 +277,7 @@ class ViewControllerExercise: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         if let exerciseTime = currentExercise.time {
             let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "HH:mm"
             let exerciseTimeString = dateFormatter.string(from: exerciseTime)
             cell.loggedExerciseTime.text = exerciseTimeString
         }

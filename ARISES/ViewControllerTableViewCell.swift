@@ -51,6 +51,13 @@ class ViewControllerTableViewCell: UITableViewCell {
     @IBOutlet weak var loggedHealthAvgLabel: UILabel!
     @IBOutlet weak var loggedHealthHighLabel: UILabel!
     
+    //Insulin outlets
+    @IBOutlet weak var loggedInsulinTime: UILabel!
+    @IBOutlet weak var loggedInsulinDetail: UILabel!
+    @IBOutlet weak var loggedInsulinUnits: UILabel!
+    @IBOutlet weak var loggedInsulinImage: UIImageView!
+    
+    
     //MARK: - Properties
     ///Cell delegate property. Optional and weak to prevent retain cycles
     weak var cellDelegate: tableCellDelegate?

@@ -119,7 +119,10 @@ class ARISESTests: XCTestCase {
 //            print("prediction: ", prediction)
 //            print("predVector: ", self.predVector[index])
 //            print("diff: ", prediction - self.predVector[index])
-            self.resultDiff[index] = Int(prediction - self.predVector[index])
+//            self.resultDiff[index] = Int(prediction - self.predVector[index])
+            self.resultDiff[index] = Int(prediction)
+            
+
             if index == 2588 {
                 print(self.resultDiff)
                 self.expectation.fulfill()

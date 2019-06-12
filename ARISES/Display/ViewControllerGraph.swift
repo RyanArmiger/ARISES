@@ -53,7 +53,9 @@ class ViewControllerGraph: UIViewController {
 //        nc.addObserver(self, selector: #selector(updateGraph), name: Notification.Name("newGlucoseValue"), object: nil)
 //        nc.addObserver(self, selector: #selector(updateGraph), name: Notification.Name("GlucoseAdded"), object: nil)
         nc.addObserver(self, selector: #selector(callPred), name: Notification.Name("GlucoseAdded"), object: nil)
-
+        nc.addObserver(self, selector: #selector(callPred), name: Notification.Name("InsulinAdded"), object: nil)
+        nc.addObserver(self, selector: #selector(callPred), name: Notification.Name("FoodAdded"), object: nil)
+        nc.addObserver(self, selector: #selector(callPred), name: Notification.Name("ExerciseAdded"), object: nil)
         nc.addObserver(self, selector: #selector(setDay(notification:)), name: Notification.Name("setDay"), object: nil)
         createDatePicker()
         
@@ -146,6 +148,10 @@ class ViewControllerGraph: UIViewController {
     @objc
     private func updateGraph() {
         glucoseArr = ModelController().fetchGlucose(day: today)
+        
+
+        
+        
         guard glucoseArr != [] else {
             chartView.isHidden = true
             return
@@ -154,6 +160,13 @@ class ViewControllerGraph: UIViewController {
         guard let arr = glucoseArr else {
             return
         }
+        let insulinArr = ModelController().fetchInsulin(day: today)
+        let mealArr = ModelController().fetchMeals(day: today)
+        let exerciseArr = ModelController().fetchExercise(day: today)
+        
+        var insulinChartEntry = [ChartDataEntry]()
+        var mealChartEntry = [ChartDataEntry]()
+        var exerciseChartEntry = [ChartDataEntry]()
 
         var lineChartEntry = [ChartDataEntry]()
         //        let today = Calendar.current.startOfDay(for: Date())
@@ -173,7 +186,55 @@ class ViewControllerGraph: UIViewController {
                 lineChartEntry.append(value)
             }
         }
-
+        
+        for ins in insulinArr {
+            if let xTime = ins.time?.timeIntervalSinceReferenceDate {
+                let value = ChartDataEntry(x: xTime / ( 3_600 * 24 ), y: Double(ins.unitsUser))
+                insulinChartEntry.append(value)
+            }
+        }
+        
+        for meal in mealArr {
+            if let xTime = meal.time?.timeIntervalSinceReferenceDate {
+                let value = ChartDataEntry(x: xTime / ( 3_600 * 24 ), y: Double(meal.carbs / 10))
+                mealChartEntry.append(value)
+            }
+        }
+        
+        for exer in exerciseArr {
+            if let xTime = exer.time?.timeIntervalSinceReferenceDate {
+                var value = ChartDataEntry(x: xTime / ( 3_600 * 24 ), y: Double(0))
+                if exer.intensity == "Low" {
+                    value = ChartDataEntry(x: xTime / ( 3_600 * 24 ), y: Double(5))
+                } else if exer.intensity == "Medium" {
+                    value = ChartDataEntry(x: xTime / ( 3_600 * 24 ), y: Double(6))
+                } else if exer.intensity == "High" {
+                    value = ChartDataEntry(x: xTime / ( 3_600 * 24 ), y: Double(7))
+                }
+                exerciseChartEntry.append(value)
+            }
+        }
+        let insulinLine = LineChartDataSet(values: insulinChartEntry, label: "Insulin U")
+        insulinLine.circleColors = [#colorLiteral(red: 0.5725490196, green: 0.4039215686, blue: 0.7137254902, alpha: 1)]
+        insulinLine.drawCirclesEnabled = true
+        insulinLine.drawCircleHoleEnabled = false
+        insulinLine.circleRadius = 8
+        insulinLine.lineWidth = 0
+        
+        let mealLine = LineChartDataSet(values: mealChartEntry, label: "Carbs/10")
+        mealLine.circleColors = [#colorLiteral(red: 0.9764705882, green: 0.6235294118, blue: 0.2196078431, alpha: 1)]
+        mealLine.drawCirclesEnabled = true
+        mealLine.drawCircleHoleEnabled = false
+        mealLine.circleRadius = 6
+        mealLine.lineWidth = 0
+        
+        let exerLine = LineChartDataSet(values: exerciseChartEntry, label: "Exercise")
+        exerLine.circleColors = [#colorLiteral(red: 0.3450980392, green: 0.6784313725, blue: 0.8156862745, alpha: 1)]
+        exerLine.drawCirclesEnabled = true
+        exerLine.circleRadius = 6
+        exerLine.drawCircleHoleEnabled = false
+        exerLine.lineWidth = 0
+        
         let line1 = LineChartDataSet(values: lineChartEntry, label: "BG mmol/l")
         line1.colors = [NSUIColor.blue]
         line1.drawCirclesEnabled = true
@@ -183,6 +244,10 @@ class ViewControllerGraph: UIViewController {
 
         let data = LineChartData()
         data.addDataSet(line1)
+        data.addDataSet(insulinLine)
+        data.addDataSet(mealLine)
+        data.addDataSet(exerLine)
+
         data.setDrawValues(false)
         chartView.xAxis.valueFormatter = xValuesNumberFormatter
         chartView.xAxis.labelPosition = XAxis.LabelPosition.bottom
@@ -239,6 +304,13 @@ class ViewControllerGraph: UIViewController {
             guard let arr = glucoseArr else {
                 return
             }
+            let insulinArr = ModelController().fetchInsulin(day: today)
+            let mealArr = ModelController().fetchMeals(day: today)
+            let exerciseArr = ModelController().fetchExercise(day: today)
+            
+            var insulinChartEntry = [ChartDataEntry]()
+            var mealChartEntry = [ChartDataEntry]()
+            var exerciseChartEntry = [ChartDataEntry]()
             
             var lineChartEntry = [ChartDataEntry]()
             var predChartEntry = [ChartDataEntry]()
@@ -273,6 +345,54 @@ class ViewControllerGraph: UIViewController {
                 
             }
             
+            for ins in insulinArr {
+                if let xTime = ins.time?.timeIntervalSinceReferenceDate {
+                    let value = ChartDataEntry(x: xTime / ( 3_600 * 24 ), y: Double(ins.unitsUser))
+                    insulinChartEntry.append(value)
+                }
+            }
+            
+            for meal in mealArr {
+                if let xTime = meal.time?.timeIntervalSinceReferenceDate {
+                    let value = ChartDataEntry(x: xTime / ( 3_600 * 24 ), y: Double(meal.carbs / 10))
+                    mealChartEntry.append(value)
+                }
+            }
+            
+            for exer in exerciseArr {
+                if let xTime = exer.time?.timeIntervalSinceReferenceDate {
+                    var value = ChartDataEntry(x: xTime / ( 3_600 * 24 ), y: Double(0))
+                    if exer.intensity == "Low" {
+                        value = ChartDataEntry(x: xTime / ( 3_600 * 24 ), y: Double(5))
+                    } else if exer.intensity == "Medium" {
+                        value = ChartDataEntry(x: xTime / ( 3_600 * 24 ), y: Double(6))
+                    } else if exer.intensity == "High" {
+                        value = ChartDataEntry(x: xTime / ( 3_600 * 24 ), y: Double(7))
+                    }
+                    exerciseChartEntry.append(value)
+                }
+            }
+            let insulinLine = LineChartDataSet(values: insulinChartEntry, label: "Insulin U")
+            insulinLine.circleColors = [#colorLiteral(red: 0.5725490196, green: 0.4039215686, blue: 0.7137254902, alpha: 1)]
+            insulinLine.drawCirclesEnabled = true
+            insulinLine.drawCircleHoleEnabled = false
+            insulinLine.circleRadius = 8
+            insulinLine.lineWidth = 0
+            
+            let mealLine = LineChartDataSet(values: mealChartEntry, label: "Carbs/10")
+            mealLine.circleColors = [#colorLiteral(red: 0.9764705882, green: 0.6235294118, blue: 0.2196078431, alpha: 1)]
+            mealLine.drawCirclesEnabled = true
+            mealLine.drawCircleHoleEnabled = false
+            mealLine.circleRadius = 6
+            mealLine.lineWidth = 0
+            
+            let exerLine = LineChartDataSet(values: exerciseChartEntry, label: "Exercise")
+            exerLine.circleColors = [#colorLiteral(red: 0.3450980392, green: 0.6784313725, blue: 0.8156862745, alpha: 1)]
+            exerLine.drawCirclesEnabled = true
+            exerLine.circleRadius = 6
+            exerLine.drawCircleHoleEnabled = false
+            exerLine.lineWidth = 0
+            
             let line1 = LineChartDataSet(values: lineChartEntry, label: "BG mmol/l")
             line1.colors = [NSUIColor.blue]
             line1.drawCirclesEnabled = true
@@ -288,8 +408,13 @@ class ViewControllerGraph: UIViewController {
             predLine.lineWidth = 3.0
             
             let data = LineChartData()
+
             data.addDataSet(line1)
+            data.addDataSet(insulinLine)
+            data.addDataSet(mealLine)
+            data.addDataSet(exerLine)
             data.addDataSet(predLine)
+  
             data.setDrawValues(false)
             chartView.xAxis.valueFormatter = xValuesNumberFormatter
             chartView.xAxis.labelPosition = XAxis.LabelPosition.bottom

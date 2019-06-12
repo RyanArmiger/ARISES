@@ -380,9 +380,9 @@ class ViewControllerHealth: UIViewController, UITableViewDataSource, UITableView
         }
         //Sets low/avg/high in expanded cell
         if let glucStats = currentDay.glucoseStats{
-            cell.loggedHealthLowLabel.text = "\(glucStats.low)"
-            cell.loggedHealthAvgLabel.text = "\(glucStats.average)"
-            cell.loggedHealthHighLabel.text = "\(glucStats.high)"
+            cell.loggedHealthLowLabel.text = String(format: "%.2f",glucStats.low)
+            cell.loggedHealthAvgLabel.text = String(format: "%.2f",glucStats.average)
+            cell.loggedHealthHighLabel.text = String(format: "%.2f",glucStats.high)
         }
         else{
             cell.loggedHealthLowLabel.text = "N/A"

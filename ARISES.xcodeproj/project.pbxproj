@@ -48,9 +48,7 @@
 		373B5B0022A2F0F6001D8F0D /* cgm0.txt in Resources */ = {isa = PBXBuildFile; fileRef = 373B5AFF22A2F0F6001D8F0D /* cgm0.txt */; };
 		373B5B0222A2F0FC001D8F0D /* insulin1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 373B5B0122A2F0FC001D8F0D /* insulin1.txt */; };
 		373B5B0422A2F853001D8F0D /* pred.txt in Resources */ = {isa = PBXBuildFile; fileRef = 373B5B0322A2F853001D8F0D /* pred.txt */; };
-		373B5B0C22A30930001D8F0D /* pred_ind.txt in Resources */ = {isa = PBXBuildFile; fileRef = 373B5B0B22A30930001D8F0D /* pred_ind.txt */; };
 		373B5B0E22A309A4001D8F0D /* converted_model.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 373B5B0D22A30945001D8F0D /* converted_model.tflite */; };
-		373B5B1022A317D2001D8F0D /* ourPred.txt in Resources */ = {isa = PBXBuildFile; fileRef = 373B5B0F22A317D2001D8F0D /* ourPred.txt */; };
 		375587C6209E086C00594532 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375587C5209E086C00594532 /* AppDelegate.swift */; };
 		375587CB209E086C00594532 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375587C9209E086C00594532 /* Main.storyboard */; };
 		375587CD209E086D00594532 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 375587CC209E086D00594532 /* Assets.xcassets */; };
@@ -108,6 +106,8 @@
 		37B568BB20B485600014F735 /* ARISES.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 37B568B920B485600014F735 /* ARISES.xcdatamodeld */; };
 		37CFC5D120BEDD250051FDFC /* IndicatorControllerFood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CFC5D020BEDD250051FDFC /* IndicatorControllerFood.swift */; };
 		37D2F8D422A843C20075E826 /* ViewControllerInsulin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D2F8D322A843C20075E826 /* ViewControllerInsulin.swift */; };
+		37D2F8D822AEF10B0075E826 /* pred_ind.txt in Resources */ = {isa = PBXBuildFile; fileRef = 37D2F8D722AEF10B0075E826 /* pred_ind.txt */; };
+		37D2F8DA22AEF1380075E826 /* converted_model_test.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 37D2F8D922AEF12A0075E826 /* converted_model_test.tflite */; };
 		37FEE41A22026FFB00FF4679 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FEE41922026FFB00FF4679 /* SettingsController.swift */; };
 		ABD020E52CA29F699278CB2F /* libPods-ARISESTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8557F12C2A6F761827B2CB /* libPods-ARISESTests.a */; };
 		B295C3A713E40AA46AFB2A98 /* Pods_ARISES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2689104CECA461FCD255CC7 /* Pods_ARISES.framework */; };
@@ -182,9 +182,7 @@
 		373B5AFF22A2F0F6001D8F0D /* cgm0.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = cgm0.txt; sourceTree = "<group>"; };
 		373B5B0122A2F0FC001D8F0D /* insulin1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = insulin1.txt; sourceTree = "<group>"; };
 		373B5B0322A2F853001D8F0D /* pred.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pred.txt; sourceTree = "<group>"; };
-		373B5B0B22A30930001D8F0D /* pred_ind.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pred_ind.txt; sourceTree = "<group>"; };
 		373B5B0D22A30945001D8F0D /* converted_model.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = converted_model.tflite; sourceTree = "<group>"; };
-		373B5B0F22A317D2001D8F0D /* ourPred.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = ourPred.txt; sourceTree = "<group>"; };
 		375587C2209E086C00594532 /* ARISES.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARISES.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		375587C5209E086C00594532 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		375587CA209E086C00594532 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -248,6 +246,8 @@
 		37CFC5B820BED6DF0051FDFC /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		37CFC5D020BEDD250051FDFC /* IndicatorControllerFood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorControllerFood.swift; sourceTree = "<group>"; };
 		37D2F8D322A843C20075E826 /* ViewControllerInsulin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerInsulin.swift; sourceTree = "<group>"; };
+		37D2F8D722AEF10B0075E826 /* pred_ind.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = pred_ind.txt; path = "../../../../../FYP docs/ARISES Docs/Re__about_ARISES_project/pred_ind.txt"; sourceTree = "<group>"; };
+		37D2F8D922AEF12A0075E826 /* converted_model_test.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = converted_model_test.tflite; sourceTree = "<group>"; };
 		37FEE41922026FFB00FF4679 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		4B8557F12C2A6F761827B2CB /* libPods-ARISESTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ARISESTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		863CAE274477E894C42E1381 /* Pods-ARISES.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARISES.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARISES/Pods-ARISES.debug.xcconfig"; sourceTree = "<group>"; };
@@ -348,13 +348,12 @@
 		373B5AFA22A1FF5C001D8F0D /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				373B5B0B22A30930001D8F0D /* pred_ind.txt */,
+				37D2F8D722AEF10B0075E826 /* pred_ind.txt */,
 				373B5B0322A2F853001D8F0D /* pred.txt */,
 				373B5B0122A2F0FC001D8F0D /* insulin1.txt */,
 				373B5AFF22A2F0F6001D8F0D /* cgm0.txt */,
 				373B5AFD22A2F0EB001D8F0D /* time3.txt */,
 				373B5AFB22A2F0E5001D8F0D /* meal2.txt */,
-				373B5B0F22A317D2001D8F0D /* ourPred.txt */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -362,6 +361,7 @@
 		375587B9209E086C00594532 = {
 			isa = PBXGroup;
 			children = (
+				37D2F8D922AEF12A0075E826 /* converted_model_test.tflite */,
 				373B5ACC229F0FBC001D8F0D /* model2.tflite */,
 				373B5B0D22A30945001D8F0D /* converted_model.tflite */,
 				373B5AC8229DA4B5001D8F0D /* model.tflite */,
@@ -617,11 +617,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37D2F8D822AEF10B0075E826 /* pred_ind.txt in Resources */,
 				373B5AFC22A2F0E5001D8F0D /* meal2.txt in Resources */,
 				373B5B0222A2F0FC001D8F0D /* insulin1.txt in Resources */,
-				373B5B1022A317D2001D8F0D /* ourPred.txt in Resources */,
 				373B5B0022A2F0F6001D8F0D /* cgm0.txt in Resources */,
-				373B5B0C22A30930001D8F0D /* pred_ind.txt in Resources */,
 				373B5AFE22A2F0EB001D8F0D /* time3.txt in Resources */,
 				373B5B0422A2F853001D8F0D /* pred.txt in Resources */,
 			);
@@ -631,6 +630,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37D2F8DA22AEF1380075E826 /* converted_model_test.tflite in Resources */,
 				373B5B0E22A309A4001D8F0D /* converted_model.tflite in Resources */,
 				373B5ACD229F0FC3001D8F0D /* model2.tflite in Resources */,
 				373B5AC9229DA979001D8F0D /* model.tflite in Resources */,
