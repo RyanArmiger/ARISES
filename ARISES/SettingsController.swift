@@ -8,6 +8,8 @@
 
 import HealthKit
 import UIKit
+//import AWSCognito
+import AWSS3
 
 class SettingsController: UIViewController, UITextFieldDelegate {
     
@@ -132,7 +134,60 @@ class SettingsController: UIViewController, UITextFieldDelegate {
             view.endEditing(true)
         }
     }
+    
+    
+    @IBAction func uploadDataAWS(_ sender: Any) {
+        let currentDay = Calendar.current.startOfDay(for: Date())
+        let loggedMeals = ModelController().fetchMeals(day: currentDay)
+        var topLevel: [NSMealsEncode?] = []
+        for meal in loggedMeals{
+            topLevel.append(meal.createEncoded())
+        }
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        let uploadData = try? encoder.encode(topLevel)
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first{
+            let key  = "data.json"
+            let fileURL = dir.appendingPathComponent(key)
+            do{
+                try uploadData?.write(to: fileURL)
+            }catch {}
+            print("JSONPath: \(fileURL)")
+            uploadFile(with: fileURL,key: key)
+            
+            
+        }
+    }
+    
+    func uploadFile(with JsonURL:URL,key:String){
+        
+        
+        
+        DispatchQueue.main.async (execute: {
+            
+            let transferUtility = AWSS3TransferUtility.default()
+            let bucketname = "arises"
+            let expression = AWSS3TransferUtilityUploadExpression()
+            
+            transferUtility.uploadFile(JsonURL, bucket: bucketname, key: key, contentType: "binary/octet-stream", expression: expression){(task,error) in
+                if let error = error{
+                    print(error.localizedDescription)
+                    return
+                }
+                
+                print("Uploaded File")
+                
+                //                self.uploadStatus.text = "Uploaded data!"
+            }
+            
+            
+        })
+        
+        
+    }
+    
 }
+
 
 private extension NSRange {
     func rangeOfString(_ string: String) -> Range<String.Index> {

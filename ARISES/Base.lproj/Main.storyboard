@@ -356,7 +356,7 @@
                                 <rect key="frame" x="0.0" y="249" width="375" height="418"/>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9ka-To-RwC">
-                                <rect key="frame" x="94" y="84" width="187.5" height="28"/>
+                                <rect key="frame" x="15" y="84" width="168.5" height="28"/>
                                 <color key="backgroundColor" red="0.73776894810000004" green="0.84177047009999995" blue="0.937656343" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                 <state key="normal" title="User Settings">
@@ -371,30 +371,49 @@
                                     <segue destination="PM2-Ct-KuO" kind="show" id="2Kp-Hs-gDp"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MtD-7B-P2j">
+                                <rect key="frame" x="191.5" y="84" width="168.5" height="28"/>
+                                <color key="backgroundColor" red="0.73776894810000004" green="0.84177047009999995" blue="0.937656343" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                <state key="normal" title="Upload">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="uploadDataAWS:" destination="sEt-9P-Hz8" eventType="touchUpInside" id="SSU-4y-qgx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Wvl-9I-hTW" firstAttribute="top" secondItem="rcl-mq-8Jf" secondAttribute="bottom" constant="15" id="1zT-NA-F17"/>
+                            <constraint firstItem="MtD-7B-P2j" firstAttribute="leading" secondItem="9ka-To-RwC" secondAttribute="trailing" constant="8" symbolic="YES" id="2FK-fb-V51"/>
                             <constraint firstItem="AlA-nd-uYl" firstAttribute="width" secondItem="qrL-d6-2UL" secondAttribute="width" multiplier="0.66" id="2RW-3D-RaA"/>
                             <constraint firstItem="gYN-Wk-Jr4" firstAttribute="top" secondItem="AlA-nd-uYl" secondAttribute="bottom" constant="15" id="2iP-c6-1MK"/>
                             <constraint firstItem="LIr-62-hDT" firstAttribute="trailing" secondItem="PRZ-sa-feN" secondAttribute="trailing" constant="15" id="2mN-QH-4Sr"/>
                             <constraint firstItem="9ka-To-RwC" firstAttribute="top" secondItem="Nau-1J-SbN" secondAttribute="bottom" constant="20" id="3vs-S2-Gvc"/>
+                            <constraint firstItem="MtD-7B-P2j" firstAttribute="trailing" secondItem="PRZ-sa-feN" secondAttribute="trailing" id="5ao-LD-8V5"/>
                             <constraint firstItem="LIr-62-hDT" firstAttribute="trailing" secondItem="Wvl-9I-hTW" secondAttribute="trailing" id="8IQ-RM-BSP"/>
-                            <constraint firstItem="9ka-To-RwC" firstAttribute="width" secondItem="qrL-d6-2UL" secondAttribute="width" multiplier="0.5" id="IOv-Hq-lj3"/>
+                            <constraint firstItem="9ka-To-RwC" firstAttribute="width" secondItem="MtD-7B-P2j" secondAttribute="width" id="9OG-2i-HRd"/>
                             <constraint firstItem="LIr-62-hDT" firstAttribute="bottom" secondItem="Wvl-9I-hTW" secondAttribute="bottom" id="KgN-hC-xhR"/>
                             <constraint firstItem="PRZ-sa-feN" firstAttribute="leading" secondItem="AlA-nd-uYl" secondAttribute="trailing" constant="8" symbolic="YES" id="PfD-nb-a6Z"/>
                             <constraint firstItem="eJ1-PP-wI1" firstAttribute="centerY" secondItem="rcl-mq-8Jf" secondAttribute="centerY" id="Q4E-l5-M0U"/>
                             <constraint firstItem="gYN-Wk-Jr4" firstAttribute="leading" secondItem="LIr-62-hDT" secondAttribute="leading" constant="15" id="RVZ-OL-Rgl"/>
-                            <constraint firstItem="9ka-To-RwC" firstAttribute="centerX" secondItem="LIr-62-hDT" secondAttribute="centerX" id="V55-Hi-4Tq"/>
                             <constraint firstItem="Nau-1J-SbN" firstAttribute="leading" secondItem="LIr-62-hDT" secondAttribute="leading" id="Y9D-Qi-Dd4"/>
                             <constraint firstItem="rcl-mq-8Jf" firstAttribute="top" secondItem="gYN-Wk-Jr4" secondAttribute="bottom" constant="8" symbolic="YES" id="ZW5-to-Jx9"/>
                             <constraint firstItem="AlA-nd-uYl" firstAttribute="leading" secondItem="LIr-62-hDT" secondAttribute="leading" constant="15" id="blH-U8-nMZ"/>
                             <constraint firstItem="rcl-mq-8Jf" firstAttribute="leading" secondItem="LIr-62-hDT" secondAttribute="leading" constant="15" id="bzs-Ic-Ii6"/>
+                            <constraint firstItem="9ka-To-RwC" firstAttribute="leading" secondItem="AlA-nd-uYl" secondAttribute="leading" id="fVB-Nt-QRw"/>
                             <constraint firstItem="eJ1-PP-wI1" firstAttribute="leading" secondItem="rcl-mq-8Jf" secondAttribute="trailing" constant="8" symbolic="YES" id="gKf-k6-0Yx"/>
                             <constraint firstItem="LIr-62-hDT" firstAttribute="trailing" secondItem="eJ1-PP-wI1" secondAttribute="trailing" constant="15" id="gY0-3O-oFk"/>
                             <constraint firstItem="Wvl-9I-hTW" firstAttribute="leading" secondItem="LIr-62-hDT" secondAttribute="leading" id="qtk-qM-GaX"/>
                             <constraint firstItem="PRZ-sa-feN" firstAttribute="centerY" secondItem="AlA-nd-uYl" secondAttribute="centerY" id="rg3-u7-smj"/>
                             <constraint firstItem="Nau-1J-SbN" firstAttribute="top" secondItem="LIr-62-hDT" secondAttribute="top" id="s8o-7B-Qo5"/>
+                            <constraint firstItem="MtD-7B-P2j" firstAttribute="centerY" secondItem="9ka-To-RwC" secondAttribute="centerY" id="tKm-8j-waa"/>
                             <constraint firstItem="Nau-1J-SbN" firstAttribute="trailing" secondItem="LIr-62-hDT" secondAttribute="trailing" id="vqz-FT-bNN"/>
                             <constraint firstItem="AlA-nd-uYl" firstAttribute="top" secondItem="9ka-To-RwC" secondAttribute="bottom" constant="15" id="x07-uC-Tgq"/>
                             <constraint firstItem="LIr-62-hDT" firstAttribute="trailing" secondItem="gYN-Wk-Jr4" secondAttribute="trailing" constant="15" id="y3y-6D-sYh"/>

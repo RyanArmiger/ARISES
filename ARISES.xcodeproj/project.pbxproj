@@ -108,6 +108,10 @@
 		37D2F8D422A843C20075E826 /* ViewControllerInsulin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D2F8D322A843C20075E826 /* ViewControllerInsulin.swift */; };
 		37D2F8D822AEF10B0075E826 /* pred_ind.txt in Resources */ = {isa = PBXBuildFile; fileRef = 37D2F8D722AEF10B0075E826 /* pred_ind.txt */; };
 		37D2F8DA22AEF1380075E826 /* converted_model_test.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 37D2F8D922AEF12A0075E826 /* converted_model_test.tflite */; };
+		37D2F8DF22B29E350075E826 /* NSInsulinEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D2F8DC22B29E340075E826 /* NSInsulinEncode.swift */; };
+		37D2F8E022B29E350075E826 /* NSMealsEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D2F8DD22B29E350075E826 /* NSMealsEncode.swift */; };
+		37D2F8E122B29E350075E826 /* NSGlucoseEncode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D2F8DE22B29E350075E826 /* NSGlucoseEncode.swift */; };
+		37D2F8E322B29F0D0075E826 /* HiddenAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D2F8E222B29F0D0075E826 /* HiddenAppDelegate.swift */; };
 		37FEE41A22026FFB00FF4679 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FEE41922026FFB00FF4679 /* SettingsController.swift */; };
 		ABD020E52CA29F699278CB2F /* libPods-ARISESTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B8557F12C2A6F761827B2CB /* libPods-ARISESTests.a */; };
 		B295C3A713E40AA46AFB2A98 /* Pods_ARISES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2689104CECA461FCD255CC7 /* Pods_ARISES.framework */; };
@@ -248,6 +252,10 @@
 		37D2F8D322A843C20075E826 /* ViewControllerInsulin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerInsulin.swift; sourceTree = "<group>"; };
 		37D2F8D722AEF10B0075E826 /* pred_ind.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = pred_ind.txt; path = "../../../../../FYP docs/ARISES Docs/Re__about_ARISES_project/pred_ind.txt"; sourceTree = "<group>"; };
 		37D2F8D922AEF12A0075E826 /* converted_model_test.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = converted_model_test.tflite; sourceTree = "<group>"; };
+		37D2F8DC22B29E340075E826 /* NSInsulinEncode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSInsulinEncode.swift; sourceTree = "<group>"; };
+		37D2F8DD22B29E350075E826 /* NSMealsEncode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSMealsEncode.swift; sourceTree = "<group>"; };
+		37D2F8DE22B29E350075E826 /* NSGlucoseEncode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSGlucoseEncode.swift; sourceTree = "<group>"; };
+		37D2F8E222B29F0D0075E826 /* HiddenAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenAppDelegate.swift; sourceTree = "<group>"; };
 		37FEE41922026FFB00FF4679 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		4B8557F12C2A6F761827B2CB /* libPods-ARISESTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ARISESTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		863CAE274477E894C42E1381 /* Pods-ARISES.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARISES.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARISES/Pods-ARISES.debug.xcconfig"; sourceTree = "<group>"; };
@@ -283,6 +291,7 @@
 		3718079E20B81F4F00D7C81A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				37D2F8DB22B29E270075E826 /* Encode */,
 				373B5AB5229648CB001D8F0D /* Empatica Files */,
 				372141E821F52DDF00B8627F /* Test Data */,
 				3718C31D22A6D09200BC7206 /* ModelFunctions.swift */,
@@ -415,6 +424,7 @@
 				379651C3220267D300B8EB09 /* CommandQueue.swift */,
 				379651C12202654E00B8EB09 /* NSUserDefaults.swift */,
 				375587C5209E086C00594532 /* AppDelegate.swift */,
+				37D2F8E222B29F0D0075E826 /* HiddenAppDelegate.swift */,
 				37B3716120B47EF20048A942 /* PersistenceService.swift */,
 				375587CE209E086D00594532 /* LaunchScreen.storyboard */,
 				375587CC209E086D00594532 /* Assets.xcassets */,
@@ -498,6 +508,16 @@
 				37CFC5D020BEDD250051FDFC /* IndicatorControllerFood.swift */,
 			);
 			path = Indicators;
+			sourceTree = "<group>";
+		};
+		37D2F8DB22B29E270075E826 /* Encode */ = {
+			isa = PBXGroup;
+			children = (
+				37D2F8DE22B29E350075E826 /* NSGlucoseEncode.swift */,
+				37D2F8DC22B29E340075E826 /* NSInsulinEncode.swift */,
+				37D2F8DD22B29E350075E826 /* NSMealsEncode.swift */,
+			);
+			path = Encode;
 			sourceTree = "<group>";
 		};
 		5D25042C28CD398D98F1751D /* Pods */ = {
@@ -736,11 +756,13 @@
 				3718B86020AC9A42006F1A47 /* ViewControllerExercise.swift in Sources */,
 				3718B86620AC9CE3006F1A47 /* ViewControllerMain.swift in Sources */,
 				379651B02202645700B8EB09 /* DisconnectTxMessage.swift in Sources */,
+				37D2F8DF22B29E350075E826 /* NSInsulinEncode.swift in Sources */,
 				3796519D2202645700B8EB09 /* GlucoseBackfillMessage.swift in Sources */,
 				379651A12202645700B8EB09 /* SessionStartRxMessage.swift in Sources */,
 				379651A92202645700B8EB09 /* AuthRequestRxMessage.swift in Sources */,
 				375587C6209E086C00594532 /* AppDelegate.swift in Sources */,
 				371807A320B8500F00D7C81A /* ModelController.swift in Sources */,
+				37D2F8E122B29E350075E826 /* NSGlucoseEncode.swift in Sources */,
 				379651952202645700B8EB09 /* Data.swift in Sources */,
 				379651AC2202645700B8EB09 /* KeepAliveTxMessage.swift in Sources */,
 				379651BF2202645700B8EB09 /* PeripheralManager+G5.swift in Sources */,
@@ -792,6 +814,7 @@
 				37B568BB20B485600014F735 /* ARISES.xcdatamodeld in Sources */,
 				379651B92202645700B8EB09 /* CalibrationState.swift in Sources */,
 				3723CA4B220B210500380050 /* EmpaticaViewController.swift in Sources */,
+				37D2F8E322B29F0D0075E826 /* HiddenAppDelegate.swift in Sources */,
 				379651BB2202645700B8EB09 /* NSData+CRC.swift in Sources */,
 				379651BD2202645700B8EB09 /* PeripheralManager.swift in Sources */,
 				3712A23C20C566FF006DB63C /* Stress.swift in Sources */,
@@ -801,6 +824,7 @@
 				37FEE41A22026FFB00FF4679 /* SettingsController.swift in Sources */,
 				379651AD2202645700B8EB09 /* FirmwareVersionTxMessage.swift in Sources */,
 				379651A72202645700B8EB09 /* GlucoseTxMessage.swift in Sources */,
+				37D2F8E022B29E350075E826 /* NSMealsEncode.swift in Sources */,
 				379651A02202645700B8EB09 /* BondRequestTxMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
